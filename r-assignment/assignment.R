@@ -6,7 +6,7 @@ library('dplyr')
 library('ggplot2')
 
 # Set current working directory 
-setwd('/home/nischalshakya/data-analysis-assignment')
+setwd('/home/nischalshakya/data-analysis-assignment/r-assignment')
 
 # Load data from csv file into data frame
 data <- read.csv('input.csv', sep = ',', header = TRUE, stringsAsFactors = FALSE)
