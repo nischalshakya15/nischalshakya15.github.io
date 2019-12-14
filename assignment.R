@@ -54,9 +54,9 @@ countNoofSchoolOnBasiscOfDistrict <- count(data, data$District)
 # Generating pie-chart
 ggplot(countNoofSchoolOnBasiscOfDistrict, aes(x="", y=countNoofSchoolOnBasiscOfDistrict$n, fill=countNoofSchoolOnBasiscOfDistrict$`data$District`)) +
   geom_bar(stat="identity", width=1, color="white") +
-  coord_polar("y", start=0) +
-  
-  theme_void() # remove background, grid, numeric labels
+  coord_polar("y", start=0) + theme_void()
 
 # Count no of school on basics of geographical region
 countNoofSchoolOnBasiscOfGeographicalRegion <- count(data, data$Geographical.Region)
+# Generating bar graph showing total no of student on basics of geographical region 
+ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBasiscOfGeographicalRegion$`data$Geographical.Region`, y = countNoofSchoolOnBasiscOfGeographicalRegion$n, label = countNoofSchoolOnBasiscOfGeographicalRegion$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black') + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Geographical region') + ylab('Total No of Student')
