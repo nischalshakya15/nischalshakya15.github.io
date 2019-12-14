@@ -46,10 +46,17 @@ for (d in districts) {
 }
 
 # Generating bar graph showing total no of student in each district
-ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) + geom_bar(stat = 'identity', show.legend = TRUE) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Districts') + ylab('Total No of Student')
+ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black') + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Districts') + ylab('Total No of Student')
 
 # Count no of school on basics of district
 countNoofSchoolOnBasiscOfDistrict <- count(data, data$District)
+
+# Generating pie-chart
+ggplot(countNoofSchoolOnBasiscOfDistrict, aes(x="", y=countNoofSchoolOnBasiscOfDistrict$n, fill=countNoofSchoolOnBasiscOfDistrict$`data$District`)) +
+  geom_bar(stat="identity", width=1, color="white") +
+  coord_polar("y", start=0) +
+  
+  theme_void() # remove background, grid, numeric labels
 
 # Count no of school on basics of geographical region
 countNoofSchoolOnBasiscOfGeographicalRegion <- count(data, data$Geographical.Region)
