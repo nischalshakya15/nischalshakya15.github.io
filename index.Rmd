@@ -1,3 +1,12 @@
+---
+title: "Data analysis and visualization"
+author: "NischalShakya"
+date: "December 14, 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 # Clearing enviroment variables
 remove(list=ls())
 # Using library dplyr for data manupulation
@@ -17,13 +26,8 @@ data <- select(data, -c(Zone, Development.Region))
 # Calculate fail percentage
 data <- data %>% mutate('FAIL.PERCENTAGE' = 100 - data$PASS.PERCENT)
 
-# Get information about data type used in csv
-str(data)
-
-# Get unique districts from data frame
 districts <- c(unique(data$District))
 
-# Initialize an empty data frame 
 distinctionDataFrame <- data.frame();
 hundredPercentPassPercentDataFrame <- data.frame();
 totalNoOfStudentDataFrame <- data.frame();
@@ -43,12 +47,39 @@ for (d in districts) {
   
   hundredPercentPassPercentDataFrame <- rbind(hundredPercentPassPercentDataFrame, filter(data, District == d & FAIL == 0 & PASS.PERCENT == max(PASS.PERCENT)))
 }
+```
 
+## School performance for the year 2063 BS
+
+This dataset includes the school performance data for the year 2063 BS based on the average scores and pass percentage in School Leaving Certificate (SLC) examination of Bagmati zone, an examination marking the completion of grade 10.
+
+## General summary of column used in data set
+```{r general summary of data}
+str(data)
+```
+
+## Filtering unique districts of Bagmati Zone
+
+```{r filtering unique district of Bagmati Zone}
+# Get unique districts from data frame
+districts <- c(unique(data$District))
+```
+``` {r unique district, echo = FALSE}
+print(districts)
+```
+
+## Bargraph showing total no of student on basics of district
+```{r Bar graph showing total no of student on basics of district}
 # Plot bar graph showing total no of student in each district
+print(totalNoOfStudentDataFrame)
 ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black') + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Districts') + ylab('Total No of Student')
+```
 
+## No of school on basics of district
+``` {r No of school on basics of district}
 # Count no of school on basics of district
 countNoofSchoolOnBasiscOfDistrict <- count(data, data$District)
+print(countNoofSchoolOnBasiscOfDistrict)
 
 # load countNoOfSchoolOnBasicsOfDistrict in donut dataframe
 donut <- data.frame(
@@ -81,15 +112,23 @@ ggplot(donut, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=District)) +
   xlim(c(1, 4)) +
   theme_void() +
   theme(legend.position = "right")
+```
 
+## No of school on basics of geographical region
+``` {r No of school on basics of geographical region}
 # Count no of school on basics of geographical region
 countNoofSchoolOnBasiscOfGeographicalRegion <- count(data, data$Geographical.Region)
+print(countNoofSchoolOnBasiscOfGeographicalRegion)
 # Plot bar graph showing total no of student on basics of geographical region 
-ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBasiscOfGeographicalRegion$`data$Geographical.Region`, y = countNoofSchoolOnBasiscOfGeographicalRegion$n, label = countNoofSchoolOnBasiscOfGeographicalRegion$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.3) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Geographical region') + ylab('Total No of Student')
+ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBasiscOfGeographicalRegion$`data$Geographical.Region`, y = countNoofSchoolOnBasiscOfGeographicalRegion$n, label = countNoofSchoolOnBasiscOfGeographicalRegion$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.3) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school on basics of geographical region') + xlab('Geographical region') + ylab('Total No of School')
+````
 
+## No of school having 100 percent pass result
+```{r No of school having 100 percent pass result} 
 # Count no of school having 100% pass result
+print(select(hundredPercentPassPercentDataFrame, District, Name.of.School))
 noOfSchoolWithHundredPercentPass <- count(hundredPercentPassPercentDataFrame, hundredPercentPassPercentDataFrame$District)
 # Plot bar graph showing total no of school with 100% pass result 
 ggplot(noOfSchoolWithHundredPercentPass, aes(x = noOfSchoolWithHundredPercentPass$`hundredPercentPassPercentDataFrame$District`, y = noOfSchoolWithHundredPercentPass$n, label = noOfSchoolWithHundredPercentPass$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.5) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school with 100% pass result') + xlab('District') + ylab('Total No of School')
 
-
+```
