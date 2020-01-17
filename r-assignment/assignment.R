@@ -5,14 +5,18 @@ library('dplyr')
 # Using library ggplot2 
 library('ggplot2')
 
+source('./utils.R')
+
 # Set current working directory 
-setwd('/home/nischalshakya/data-analysis-assignment/r-assignment')
+setwd('/home/nischal/nischalshakya15.github.io/r-assignment')
 
 # Load data from csv file into data frame
 data <- read.csv('input.csv', sep = ',', header = TRUE, stringsAsFactors = FALSE)
 
 # Remove Zone Bagmati and Development Region beacuse it is redudant
 data <- select(data, -c(Zone, Development.Region))
+ 
+districtWiseData <- getFilterData(data = data, filterColumn = 'District', filterValue = 'Nuwakot')
 
 # Calculate fail percentage
 data <- data %>% mutate('FAIL.PERCENTAGE' = 100 - data$PASS.PERCENT)

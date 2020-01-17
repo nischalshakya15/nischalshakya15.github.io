@@ -15,7 +15,7 @@ library('dplyr')
 library('ggplot2')
 
 # Set current working directory 
-setwd('/home/nischalshakya/data-analysis-assignment')
+setwd('/home/nischal/nischalshakya15.github.io/r-assignment')
 
 # Load data from csv file into data frame
 data <- read.csv('input.csv', sep = ',', header = TRUE, stringsAsFactors = FALSE)
@@ -132,3 +132,16 @@ noOfSchoolWithHundredPercentPass <- count(hundredPercentPassPercentDataFrame, hu
 ggplot(noOfSchoolWithHundredPercentPass, aes(x = noOfSchoolWithHundredPercentPass$`hundredPercentPassPercentDataFrame$District`, y = noOfSchoolWithHundredPercentPass$n, label = noOfSchoolWithHundredPercentPass$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.5) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school with 100% pass result') + xlab('District') + ylab('Total No of School')
 
 ```
+
+## General summary of data on basic of district
+Despite of 100% pass result, it seems in some school there is zero distiction. 
+So, this seciton will summarize the school on basics of district having zero distinction within 100% pass result and vice versa.
+
+Furthermore, we can also calculate among 100% pass student which shool have the highest distinction, first division, second division, third division, fail also
+we can decide which school stand on top on basics of this attribute within district
+
+we can also filter top 5 school subject wise highest
+
+filtering data on basics of highest pass percentage and lowest pass percentage
+
+thinking that some of the school have equal number of student 
