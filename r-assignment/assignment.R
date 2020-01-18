@@ -103,12 +103,18 @@ ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBas
 # Count no of school having 100% pass result
 noOfSchoolWithHundredPercentPass <- count(hundredPercentPassPercentDataFrame, hundredPercentPassPercentDataFrame$District)
 # Plot bar graph showing total no of school with 100% pass result 
-ggplot(noOfSchoolWithHundredPercentPass, aes(x = noOfSchoolWithHundredPercentPass$`hundredPercentPassPercentDataFrame$District`, y = noOfSchoolWithHundredPercentPass$n, label = noOfSchoolWithHundredPercentPass$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.5) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school with 100% pass result') + xlab('District') + ylab('Total No of School')
+ggplot(noOfSchoolWithHundredPercentPass, aes(x = noOfSchoolWithHundredPercentPass$`hundredPercentPassPercentDataFrame$District`, 
+                                         y = noOfSchoolWithHundredPercentPass$n, label = noOfSchoolWithHundredPercentPass$n)) + 
+                                         geom_bar(stat = 'identity',fill = 'steelblue', color = 'black', width = 0.5) + 
+                                         geom_text(size = 3, vjust = -1) + 
+                                         labs(title = 'Total no of school with 100% pass result') + 
+                                         xlab('District') + 
+                                         ylab('Total No of School')
 
 # Count no of student scoring Distinction, 1st Division, 2nd Division and 3rd Division within 100% pass result
 # Initialize an empty data frame 
-totalGradeOfHundredPassPercentWithDistinction <- data.frame();
-totalGradeOfHundredPassPercentWithoutDistinction <- data.frame();
+totalGradeOfHundredPassPercentWithDistinction <- data.frame()
+totalGradeOfHundredPassPercentWithoutDistinction <- data.frame()
 
 # Filtering unique district of hundred pass percent with distinction 
 districtsHundredPassPercentWithDistinction <- c(unique(schoolGradeOfHundredPassPercentWithDistinctionDataFrame$District))
@@ -121,7 +127,8 @@ for (d in districtsHundredPassPercentWithDistinction) {
                                                                            Distinction = filterDistrict %>% select(DISTINCTION) %>% sum(),
                                                                            FirstDivision = filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
                                                                            SecondDivision = filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
-                                                                           ThirdDivision = filterDistrict %>% select(THIRD.DIVISION) %>% sum()))
+                                                                           ThirdDivision = filterDistrict %>% select(THIRD.DIVISION) %>% sum(),
+                                                                           Total = filterDistrict %>% select(DISTINCTION,FIRST.DIVISION,SECOND.DIVISION,THIRD.DIVISION) %>% sum()))
 }
 
 # Filtering unique district of hundred pass percent without distinction 
@@ -135,7 +142,6 @@ for (d in districtsHundredPassPercentWithoutDistinction) {
                                                                            Distinction = filterDistrict %>% select(DISTINCTION) %>% sum(),
                                                                            FirstDivision = filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
                                                                            SecondDivision = filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
-                                                                           ThirdDivision = filterDistrict %>% select(THIRD.DIVISION) %>% sum()))
+                                                                           ThirdDivision = filterDistrict %>% select(THIRD.DIVISION) %>% sum(),
+                                                                           Total = filterDistrict %>% select(DISTINCTION,FIRST.DIVISION,SECOND.DIVISION,THIRD.DIVISION) %>% sum()))
 }
-
-
