@@ -43,6 +43,7 @@ for (d in districts) {
   
 
   totalNoOfStudentDataFrame <- rbind(totalNoOfStudentDataFrame, data.frame(District = d,
+      
                                                                            Distinction = filterDistrict %>% select(DISTINCTION) %>% sum(),
                                                                            FirstDivision = filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
                                                                            SecondDivision = filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
@@ -62,7 +63,7 @@ for (d in districts) {
 }
 
 # Plot bar graph showing total no of student in each district
-ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black') + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Districts') + ylab('Total No of Student')
+ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) + geom_bar(stat = 'identity', fill = "darkred", color = 'black') + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Districts') + ylab('Total No of Student')
 
 # Count no of school on basics of district
 countNoofSchoolOnBasiscOfDistrict <- count(data, data$District)

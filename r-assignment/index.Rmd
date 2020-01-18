@@ -43,22 +43,29 @@ schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- data.frame();
 
 for (d in districts) {
   
-  filterDistrict <- filter(data, District == d)
+ filterDistrict <- filter(data, District == d)
   
 
-  totalNoOfStudentDataFrame <- rbind(totalNoOfStudentDataFrame, data.frame(District = d,
-                                                                           Pass = filterDistrict %>% select(PASS) %>% sum(),
-                                                                           Fail = filterDistrict %>% select(FAIL) %>% sum(),
-                                                                           Total = filterDistrict %>% select(PASS,FAIL) %>% sum()))
+ totalNoOfStudentDataFrame <- rbind(totalNoOfStudentDataFrame, data.frame(
+                                                                      District = d,
+                                                                      Distinction = filterDistrict %>% select(DISTINCTION) %>% sum(),
+                                                                      FirstDivision = filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
+                                                                      SecondDivision = filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
+                                                                      ThirdDivision = filterDistrict %>% select(THIRD.DIVISION) %>% sum(),
+                                                                      Pass = filterDistrict %>% select(PASS) %>% sum(),
+                                                                      Fail = filterDistrict %>% select(FAIL) %>% sum(),
+                                                                      Total = filterDistrict %>% select(PASS,FAIL) %>% sum()
+                                                                      )
+                                    )
   
   hundredPercentPassPercentDataFrame <- rbind(hundredPercentPassPercentDataFrame, 
                                               filter(data, District == d & FAIL == 0 & PASS.PERCENT == max(PASS.PERCENT)))
   
   schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- rbind(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame, 
-                                                                   filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION == 0))
+                                                                filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION == 0))
   
   schoolGradeOfHundredPassPercentWithDistinctionDataFrame <- rbind(schoolGradeOfHundredPassPercentWithDistinctionDataFrame,
-                                                                      filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION != 0))
+                                                             filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION != 0))
 }
 ```
 
@@ -83,18 +90,21 @@ print(districts)
 
 ## Bargraph showing total no of student on basics of district
 ```{r Bar graph showing total no of student on basics of district, fig.cap='Fig 1:- Total No of Student in each district', fig.align='c'}
-# Plot bar graph showing total no of student in each district
 paged_table(totalNoOfStudentDataFrame)
 
+# Plot bar graph showing total no of student in each district
 ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black') + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Districts') + ylab('Total No of Student')
 ```
 
-## No of school on basics of district
+## No of school basics of district and geographical region {.tabset .tabset-fade}
+
+### District
+
 ``` {r No of school on basics of district}
-# Count no of school on basics of district
 countNoofSchoolOnBasiscOfDistrict <- count(data, data$District)
 paged_table(countNoofSchoolOnBasiscOfDistrict)
-
+```
+```{r Donut showing total no of school on basics of district, echo=FALSE}
 # load countNoOfSchoolOnBasicsOfDistrict in donut dataframe
 donut <- data.frame(
   District=countNoofSchoolOnBasiscOfDistrict$`data$District`,
@@ -128,12 +138,13 @@ ggplot(donut, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=District)) +
   theme(legend.position = "right")
 ```
 
-## No of school on basics of geographical region
+### Geographical region
+
 ``` {r No of school on basics of geographical region}
-# Count no of school on basics of geographical region
 countNoofSchoolOnBasiscOfGeographicalRegion <- count(data, data$Geographical.Region)
 paged_table(countNoofSchoolOnBasiscOfGeographicalRegion)
-# Plot bar graph showing total no of student on basics of geographical region 
+```
+``` {r Bar graph showing total no student on baiscs of geopgraphica region, echo = FALSE}
 ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBasiscOfGeographicalRegion$`data$Geographical.Region`, y = countNoofSchoolOnBasiscOfGeographicalRegion$n, label = countNoofSchoolOnBasiscOfGeographicalRegion$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.3) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school on basics of geographical region') + xlab('Geographical region') + ylab('Total No of School')
 ````
 
@@ -257,6 +268,7 @@ ggplot(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf,
 
 ```
 
+## Heading
 Furthermore, we can also calculate among 100% pass student which shool have the highest distinction, first division, second division, third division, fail also
 
 we can decide which school stand on top on basics of this attribute within district

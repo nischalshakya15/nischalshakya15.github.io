@@ -61,17 +61,17 @@ districts <- c(unique(data$District))
 ## Bargraph showing total no of student on basics of district
 
 ```r
-# Plot bar graph showing total no of student in each district
 paged_table(totalNoOfStudentDataFrame)
 ```
 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
-{"columns":[{"label":["District"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["Pass"],"name":[2],"type":["int"],"align":["right"]},{"label":["Fail"],"name":[3],"type":["int"],"align":["right"]},{"label":["Total"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"Sindhupalchok","2":"2109","3":"862","4":"2971"},{"1":"Rasuwa","2":"307","3":"170","4":"477"},{"1":"Nuwakot","2":"1629","3":"1542","4":"3171"},{"1":"Dhading","2":"1874","3":"1485","4":"3359"},{"1":"Kavre","2":"4068","3":"1557","4":"5625"},{"1":"Bhaktapur","2":"3603","3":"1105","4":"4708"},{"1":"Kathmandu","2":"18719","3":"3643","4":"22362"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+{"columns":[{"label":["District"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["Distinction"],"name":[2],"type":["int"],"align":["right"]},{"label":["FirstDivision"],"name":[3],"type":["int"],"align":["right"]},{"label":["SecondDivision"],"name":[4],"type":["int"],"align":["right"]},{"label":["ThirdDivision"],"name":[5],"type":["int"],"align":["right"]},{"label":["Pass"],"name":[6],"type":["int"],"align":["right"]},{"label":["Fail"],"name":[7],"type":["int"],"align":["right"]},{"label":["Total"],"name":[8],"type":["int"],"align":["right"]}],"data":[{"1":"Sindhupalchok","2":"5","3":"383","4":"1599","5":"122","6":"2109","7":"862","8":"2971"},{"1":"Rasuwa","2":"1","3":"67","4":"225","5":"14","6":"307","7":"170","8":"477"},{"1":"Nuwakot","2":"14","3":"494","4":"1057","5":"64","6":"1629","7":"1542","8":"3171"},{"1":"Dhading","2":"11","3":"448","4":"1342","5":"73","6":"1874","7":"1485","8":"3359"},{"1":"Kavre","2":"190","3":"1607","4":"2118","5":"153","6":"4068","7":"1557","8":"5625"},{"1":"Bhaktapur","2":"447","3":"1991","4":"1118","5":"47","6":"3603","7":"1105","8":"4708"},{"1":"Kathmandu","2":"2173","3":"11710","4":"4718","5":"118","6":"18719","7":"3643","8":"22362"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
 
 ```r
+# Plot bar graph showing total no of student in each district
 ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black') + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Districts') + ylab('Total No of Student')
 ```
 
@@ -80,10 +80,12 @@ ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) +
 <p class="caption">Fig 1:- Total No of Student in each district</p>
 </div>
 
-## No of school on basics of district
+## No of school basics of district and geographical region {.tabset .tabset-fade}
+
+### District
+
 
 ```r
-# Count no of school on basics of district
 countNoofSchoolOnBasiscOfDistrict <- count(data, data$District)
 paged_table(countNoofSchoolOnBasiscOfDistrict)
 ```
@@ -93,47 +95,12 @@ paged_table(countNoofSchoolOnBasiscOfDistrict)
 {"columns":[{"label":["data$District"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Bhaktapur","2":"103"},{"1":"Dhading","2":"64"},{"1":"Kathmandu","2":"599"},{"1":"Kavre","2":"120"},{"1":"Nuwakot","2":"67"},{"1":"Rasuwa","2":"13"},{"1":"Sindhupalchok","2":"60"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+![](index_files/figure-html/Donut showing total no of school on basics of district-1.png)<!-- -->
+
+### Geographical region
+
 
 ```r
-# load countNoOfSchoolOnBasicsOfDistrict in donut dataframe
-donut <- data.frame(
-  District=countNoofSchoolOnBasiscOfDistrict$`data$District`,
-  Count=countNoofSchoolOnBasiscOfDistrict$n
-)
-
-# Compute percentages
-donut$fraction <- donut$Count / sum(donut$Count)
-
-# Compute the cumulative percentages (top of each rectangle)
-donut$ymax <- cumsum(donut$fraction)
-
-# Compute the bottom of each rectangle
-donut$ymin <- c(0, head(donut$ymax, n=-1))
-
-# Compute label position
-donut$labelPosition <- (donut$ymax + donut$ymin) / 2
-
-# Compute a good label
-donut$label <- paste0(donut$Count)
-
-# Create donut 
-ggplot(donut, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=District)) +
-  geom_rect() +
-  geom_text( x=3.5, aes(y=labelPosition, label=label), size=3) + # x here controls label position (inner / outer)
-  scale_fill_brewer(palette=3) +
-  scale_color_brewer(palette=3) +
-  coord_polar(theta="y") +
-  xlim(c(1, 4)) +
-  theme_void() +
-  theme(legend.position = "right")
-```
-
-![](index_files/figure-html/No of school on basics of district-1.png)<!-- -->
-
-## No of school on basics of geographical region
-
-```r
-# Count no of school on basics of geographical region
 countNoofSchoolOnBasiscOfGeographicalRegion <- count(data, data$Geographical.Region)
 paged_table(countNoofSchoolOnBasiscOfGeographicalRegion)
 ```
@@ -143,13 +110,7 @@ paged_table(countNoofSchoolOnBasiscOfGeographicalRegion)
 {"columns":[{"label":["data$Geographical.Region"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Hill","2":"953"},{"1":"Mountain","2":"73"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
-
-```r
-# Plot bar graph showing total no of student on basics of geographical region 
-ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBasiscOfGeographicalRegion$`data$Geographical.Region`, y = countNoofSchoolOnBasiscOfGeographicalRegion$n, label = countNoofSchoolOnBasiscOfGeographicalRegion$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.3) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school on basics of geographical region') + xlab('Geographical region') + ylab('Total No of School')
-```
-
-![](index_files/figure-html/No of school on basics of geographical region-1.png)<!-- -->
+![](index_files/figure-html/Bar graph showing total no student on baiscs of geopgraphica region-1.png)<!-- -->
 
 ## No of school having 100 percent pass result
 
@@ -194,6 +155,7 @@ From above table, we can conclude that there is not a single student scoring thi
   </script>
 </div>![](index_files/figure-html/No of student on baiscs of grade within 100 percent pass result school scoring with zero distinction-1.png)<!-- -->
 
+## Heading
 Furthermore, we can also calculate among 100% pass student which shool have the highest distinction, first division, second division, third division, fail also
 
 we can decide which school stand on top on basics of this attribute within district
