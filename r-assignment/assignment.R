@@ -16,10 +16,13 @@ data <- read.csv('input.csv', sep = ',', header = TRUE, stringsAsFactors = FALSE
 # Remove Zone Bagmati and Development Region beacuse it is redudant
 data <- select(data, -c(Zone, Development.Region))
  
-districtWiseData <- getFilterData(data = data, filterColumn = 'District', filterValue = 'Nuwakot')
+districtWiseData <- getFilterData(data = data, filterColumn = 'District', filterValue = 'Dhading')
 
 # Calculate fail percentage
 data <- data %>% mutate('FAIL.PERCENTAGE' = 100 - data$PASS.PERCENT)
+
+# Get total number of student
+data <- data %>% mutate('TOTAL.NO.OF.STUDENT' = data$PASS + data$FAIL)
 
 # Get information about data type used in csv
 str(data)
@@ -28,24 +31,30 @@ str(data)
 districts <- c(unique(data$District))
 
 # Initialize an empty data frame 
-distinctionDataFrame <- data.frame();
-hundredPercentPassPercentDataFrame <- data.frame();
 totalNoOfStudentDataFrame <- data.frame();
+
+hundredPercentPassPercentDataFrame <- data.frame();
+schoolGradeOfHundredPassPercentWithDistinctionDataFrame <- data.frame();
+schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- data.frame();
 
 for (d in districts) {
   
   filterDistrict <- filter(data, District == d)
   
-  row = data.frame(District = d,
-                   Pass = filterDistrict %>% select(PASS) %>% sum(),
-                   Fail = filterDistrict %>% select(FAIL) %>% sum(),
-                   Total = filterDistrict %>% select(PASS,FAIL) %>% sum())
-  
-  totalNoOfStudentDataFrame <- rbind(totalNoOfStudentDataFrame, row)
 
-  distinctionDataFrame <- rbind(distinctionDataFrame, filter(data, District == d & DISTINCTION == max(DISTINCTION)))
+  totalNoOfStudentDataFrame <- rbind(totalNoOfStudentDataFrame, data.frame(District = d,
+                                                                           Pass = filterDistrict %>% select(PASS) %>% sum(),
+                                                                           Fail = filterDistrict %>% select(FAIL) %>% sum(),
+                                                                           Total = filterDistrict %>% select(PASS,FAIL) %>% sum()))
   
-  hundredPercentPassPercentDataFrame <- rbind(hundredPercentPassPercentDataFrame, filter(data, District == d & FAIL == 0 & PASS.PERCENT == max(PASS.PERCENT)))
+  hundredPercentPassPercentDataFrame <- rbind(hundredPercentPassPercentDataFrame, 
+                                              filter(data, District == d & FAIL == 0 & PASS.PERCENT == max(PASS.PERCENT)))
+  
+  schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- rbind(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame, 
+                                                                   filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION == 0))
+  
+  schoolGradeOfHundredPassPercentWithDistinctionDataFrame <- rbind(schoolGradeOfHundredPassPercentWithDistinctionDataFrame,
+                                                                      filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION != 0))
 }
 
 # Plot bar graph showing total no of student in each district
@@ -95,5 +104,38 @@ ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBas
 noOfSchoolWithHundredPercentPass <- count(hundredPercentPassPercentDataFrame, hundredPercentPassPercentDataFrame$District)
 # Plot bar graph showing total no of school with 100% pass result 
 ggplot(noOfSchoolWithHundredPercentPass, aes(x = noOfSchoolWithHundredPercentPass$`hundredPercentPassPercentDataFrame$District`, y = noOfSchoolWithHundredPercentPass$n, label = noOfSchoolWithHundredPercentPass$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.5) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school with 100% pass result') + xlab('District') + ylab('Total No of School')
+
+# Count no of student scoring Distinction, 1st Division, 2nd Division and 3rd Division within 100% pass result
+# Initialize an empty data frame 
+totalGradeOfHundredPassPercentWithDistinction <- data.frame();
+totalGradeOfHundredPassPercentWithoutDistinction <- data.frame();
+
+# Filtering unique district of hundred pass percent with distinction 
+districtsHundredPassPercentWithDistinction <- c(unique(schoolGradeOfHundredPassPercentWithDistinctionDataFrame$District))
+
+for (d in districtsHundredPassPercentWithDistinction) {
+  filterDistrict <- filter(schoolGradeOfHundredPassPercentWithDistinctionDataFrame, District == d)
+  
+  totalGradeOfHundredPassPercentWithDistinction <- rbind(totalGradeOfHundredPassPercentWithDistinction, data.frame(
+                                                                           District = d, 
+                                                                           Distinction = filterDistrict %>% select(DISTINCTION) %>% sum(),
+                                                                           FirstDivision = filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
+                                                                           SecondDivision = filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
+                                                                           ThirdDivision = filterDistrict %>% select(THIRD.DIVISION) %>% sum()))
+}
+
+# Filtering unique district of hundred pass percent without distinction 
+districtsHundredPassPercentWithoutDistinction <- c(unique(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame$District))
+
+for (d in districtsHundredPassPercentWithoutDistinction) {
+  filterDistrict <- filter(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame, District == d)
+  
+  totalGradeOfHundredPassPercentWithoutDistinction <- rbind(totalGradeOfHundredPassPercentWithoutDistinction, data.frame(
+                                                                           District = d, 
+                                                                           Distinction = filterDistrict %>% select(DISTINCTION) %>% sum(),
+                                                                           FirstDivision = filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
+                                                                           SecondDivision = filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
+                                                                           ThirdDivision = filterDistrict %>% select(THIRD.DIVISION) %>% sum()))
+}
 
 

@@ -130,7 +130,7 @@ print(select(hundredPercentPassPercentDataFrame, District, Name.of.School))
 noOfSchoolWithHundredPercentPass <- count(hundredPercentPassPercentDataFrame, hundredPercentPassPercentDataFrame$District)
 # Plot bar graph showing total no of school with 100% pass result 
 ggplot(noOfSchoolWithHundredPercentPass, aes(x = noOfSchoolWithHundredPercentPass$`hundredPercentPassPercentDataFrame$District`, y = noOfSchoolWithHundredPercentPass$n, label = noOfSchoolWithHundredPercentPass$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.5) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school with 100% pass result') + xlab('District') + ylab('Total No of School')
-
+# It seems Rasuwa was a district which is unable to acheive 100 percent pass result
 ```
 
 ## General summary of data on basic of district
@@ -145,3 +145,6 @@ we can also filter top 5 school subject wise highest
 filtering data on basics of highest pass percentage and lowest pass percentage
 
 thinking that some of the school have equal number of student 
+
+it seems school having distinction within 100% pass result have the 0 no of student scoring third division 
+and with 0 distinction the stdudent scoring 1st division is more with less third division
