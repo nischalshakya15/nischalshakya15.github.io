@@ -43,6 +43,10 @@ for (d in districts) {
   
 
   totalNoOfStudentDataFrame <- rbind(totalNoOfStudentDataFrame, data.frame(District = d,
+                                                                           Distinction = filterDistrict %>% select(DISTINCTION) %>% sum(),
+                                                                           FirstDivision = filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
+                                                                           SecondDivision = filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
+                                                                           ThirdDivision = filterDistrict %>% select(THIRD.DIVISION) %>% sum(),
                                                                            Pass = filterDistrict %>% select(PASS) %>% sum(),
                                                                            Fail = filterDistrict %>% select(FAIL) %>% sum(),
                                                                            Total = filterDistrict %>% select(PASS,FAIL) %>% sum()))

@@ -136,8 +136,14 @@ print(select(hundredPercentPassPercentDataFrame, District, Name.of.School))
 noOfSchoolWithHundredPercentPass <- count(hundredPercentPassPercentDataFrame, hundredPercentPassPercentDataFrame$District)
 # Plot bar graph showing total no of school with 100% pass result 
 ggplot(noOfSchoolWithHundredPercentPass, aes(x = noOfSchoolWithHundredPercentPass$`hundredPercentPassPercentDataFrame$District`, y = noOfSchoolWithHundredPercentPass$n, label = noOfSchoolWithHundredPercentPass$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.5) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school with 100% pass result') + xlab('District') + ylab('Total No of School')
-# It seems Rasuwa was a district which is unable to acheive 100 percent pass result
 ```
+
+Here, we can see Rasuwa was only a district without 100 percent pass result. Hence, we can assume that there is lack of quality education in Rasuwa district.
+
+## General summary of data on basic of district
+Despite of 100% pass result, it seems in some school there is zero distiction. 
+So, this seciton will summarize the total no of student on basics of grade having zero distinction within 100% pass result and vice versa.
+
 ## No of student on baiscs of grade within 100 percent pass result school scoring non-zero distinction
 ```{r No of student on baiscs of grade within 100 percent pass result school scoring non-zero distinction, echo=FALSE} 
 totalGradeOfHundredPassPercentWithDistinction <- data.frame()
@@ -242,10 +248,6 @@ ggplot(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf,
   ylab('Total No of Student')
 
 ```
-
-## General summary of data on basic of district
-Despite of 100% pass result, it seems in some school there is zero distiction. 
-So, this seciton will summarize the school on basics of district having zero distinction within 100% pass result and vice versa.
 
 Furthermore, we can also calculate among 100% pass student which shool have the highest distinction, first division, second division, third division, fail also
 
