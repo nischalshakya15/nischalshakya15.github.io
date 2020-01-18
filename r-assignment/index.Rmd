@@ -2,7 +2,12 @@
 title: "Data analysis and visualization"
 author: "NischalShakya"
 date: "December 14, 2019"
-output: html_document
+output: 
+    html_document: 
+      fig_caption: yes
+      fig_width: 8
+      highlight: haddock
+      keep_md: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -13,6 +18,8 @@ remove(list=ls())
 library('dplyr')
 # Using library ggplot2 
 library('ggplot2')
+# Using library rmarkdown
+library('rmarkdown')
 
 # Set current working directory 
 setwd('/home/nischal/nischalshakya15.github.io/r-assignment')
@@ -75,9 +82,10 @@ print(districts)
 ```
 
 ## Bargraph showing total no of student on basics of district
-```{r Bar graph showing total no of student on basics of district}
+```{r Bar graph showing total no of student on basics of district, fig.cap='Fig 1:- Total No of Student in each district', fig.align='c'}
 # Plot bar graph showing total no of student in each district
-print(totalNoOfStudentDataFrame)
+paged_table(totalNoOfStudentDataFrame)
+
 ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black') + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Districts') + ylab('Total No of Student')
 ```
 
@@ -85,7 +93,7 @@ ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) +
 ``` {r No of school on basics of district}
 # Count no of school on basics of district
 countNoofSchoolOnBasiscOfDistrict <- count(data, data$District)
-print(countNoofSchoolOnBasiscOfDistrict)
+paged_table(countNoofSchoolOnBasiscOfDistrict)
 
 # load countNoOfSchoolOnBasicsOfDistrict in donut dataframe
 donut <- data.frame(
@@ -124,7 +132,7 @@ ggplot(donut, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=District)) +
 ``` {r No of school on basics of geographical region}
 # Count no of school on basics of geographical region
 countNoofSchoolOnBasiscOfGeographicalRegion <- count(data, data$Geographical.Region)
-print(countNoofSchoolOnBasiscOfGeographicalRegion)
+paged_table(countNoofSchoolOnBasiscOfGeographicalRegion)
 # Plot bar graph showing total no of student on basics of geographical region 
 ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBasiscOfGeographicalRegion$`data$Geographical.Region`, y = countNoofSchoolOnBasiscOfGeographicalRegion$n, label = countNoofSchoolOnBasiscOfGeographicalRegion$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.3) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school on basics of geographical region') + xlab('Geographical region') + ylab('Total No of School')
 ````
@@ -132,7 +140,7 @@ ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBas
 ## No of school having 100 percent pass result
 ```{r No of school having 100 percent pass result} 
 # Count no of school having 100% pass result
-print(select(hundredPercentPassPercentDataFrame, District, Name.of.School))
+paged_table(select(hundredPercentPassPercentDataFrame, District, Name.of.School), options = list(rows.print = 15))
 noOfSchoolWithHundredPercentPass <- count(hundredPercentPassPercentDataFrame, hundredPercentPassPercentDataFrame$District)
 # Plot bar graph showing total no of school with 100% pass result 
 ggplot(noOfSchoolWithHundredPercentPass, aes(x = noOfSchoolWithHundredPercentPass$`hundredPercentPassPercentDataFrame$District`, y = noOfSchoolWithHundredPercentPass$n, label = noOfSchoolWithHundredPercentPass$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.5) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school with 100% pass result') + xlab('District') + ylab('Total No of School')
@@ -176,7 +184,7 @@ for (d in districtsHundredPassPercentWithDistinction) {
   
 }
 
-print(totalGradeOfHundredPassPercentWithDistinction)
+paged_table(totalGradeOfHundredPassPercentWithDistinction)
 
 # Plot grouped barchart showing no of student in grade with 100% pass result without district kathmandu
 ggplot(filter(totalGradeOfHundredPassPercentWithDistinctionBarchartDf, District != 'Kathmandu'), 
@@ -236,7 +244,7 @@ for (d in districtsHundredPassPercentWithoutDistinction) {
   )
 }
 
-print(totalGradeOfHundredPassPercentWithoutDistinction)
+paged_table(totalGradeOfHundredPassPercentWithoutDistinction)
 # Plot grouped barchart showing no of student in grade with 100% pass result without district kathmandu
 ggplot(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf, 
        aes(fill=Grade, 
