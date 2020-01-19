@@ -261,7 +261,8 @@ ggplot(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf,
 From above barchart, we can conclude that Kathmandu district had the maximum pass rate in comparision to another district. So we can assume that another district lacks the proper educational facilities as well as school.
 
 ## Heading
-Furthermore, we can also calculate among 100% pass student which shool have the highest distinction, first division, second division, third division, fail also
+Furthermore, we can also calculate among 100% pass student 
+which shool have the highest distinction, first division, second division, third division, fail and maximum no of student also
 
 we can decide which school stand on top on basics of this attribute within district
 
@@ -269,4 +270,4 @@ we can also filter top 5 school subject wise highest
 
 filtering data on basics of highest pass percentage and lowest pass percentage
 
-thinking that some of the school have equal number of student 
+assuming that some of the school have equal number of student 

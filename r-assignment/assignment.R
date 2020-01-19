@@ -14,9 +14,7 @@ setwd('/home/nischal/nischalshakya15.github.io/r-assignment')
 data <- read.csv('input.csv', sep = ',', header = TRUE, stringsAsFactors = FALSE)
 
 # Remove Zone Bagmati and Development Region beacuse it is redudant
-data <- select(data, -c(Zone, Development.Region))
- 
-districtWiseData <- getFilterData(data = data, filterColumn = 'District', filterValue = 'Dhading')
+data <- select(data, -c(Zone, Development.Region, School.Number, School.Code, ENGLISH, NEPALI, MATHS, SCIENCE, SOCIAL.STUDIES, HEALTH.POPULATION.AND.ENVIRONMENT))
 
 # Calculate fail percentage
 data <- data %>% mutate('FAIL.PERCENTAGE' = 100 - data$PASS.PERCENT)
@@ -213,6 +211,4 @@ ggplot(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf,
   geom_bar(position='dodge', stat='identity') +
   xlab('District') + 
   ylab('Total No of Student')
-
-
 
