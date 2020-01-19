@@ -80,7 +80,7 @@ str(data)
 
 ## Filtering unique districts of Bagmati Zone
 
-```{r filtering unique district of Bagmati Zone}
+```{r filtering unique district of Bagmati Zone, echo = FALSE}
 # Get unique districts from data frame
 districts <- c(unique(data$District))
 ```
@@ -89,7 +89,7 @@ print(districts)
 ```
 
 ## Bargraph showing total no of student on basics of district
-```{r Bar graph showing total no of student on basics of district, fig.cap='Fig 1:- Total No of Student in each district', fig.align='c'}
+```{r Bar graph showing total no of student on basics of district, fig.cap='Fig 1:- Total No of Student in each district', fig.align='c', echo = FALSE}
 paged_table(totalNoOfStudentDataFrame)
 
 # Plot bar graph showing total no of student in each district
@@ -100,7 +100,7 @@ ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) +
 
 ### District
 
-``` {r No of school on basics of district}
+``` {r No of school on basics of district, echo = FALSE}
 countNoofSchoolOnBasiscOfDistrict <- count(data, data$District)
 paged_table(countNoofSchoolOnBasiscOfDistrict)
 ```
@@ -140,7 +140,7 @@ ggplot(donut, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=District)) +
 
 ### Geographical region
 
-``` {r No of school on basics of geographical region}
+``` {r No of school on basics of geographical region, echo = FALSE}
 countNoofSchoolOnBasiscOfGeographicalRegion <- count(data, data$Geographical.Region)
 paged_table(countNoofSchoolOnBasiscOfGeographicalRegion)
 ```
@@ -149,7 +149,7 @@ ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBas
 ````
 
 ## No of school having 100 percent pass result
-```{r No of school having 100 percent pass result} 
+```{r No of school having 100 percent pass result, echo = FALSE} 
 # Count no of school having 100% pass result
 paged_table(select(hundredPercentPassPercentDataFrame, District, Name.of.School), options = list(rows.print = 15))
 noOfSchoolWithHundredPercentPass <- count(hundredPercentPassPercentDataFrame, hundredPercentPassPercentDataFrame$District)
@@ -159,18 +159,18 @@ ggplot(noOfSchoolWithHundredPercentPass, aes(x = noOfSchoolWithHundredPercentPas
 
 Here, we can see Rasuwa was only a district without 100 percent pass result. Hence, we can assume that there is lack of quality education in Rasuwa district.
 
-## General summary of data on basic of district
+## General summary of 100% pass result {.tabset .tabset-fade}
 Despite of 100% pass result, it seems in some school there is zero distiction. 
 So, this seciton will summarize the total no of student on basics of grade having zero distinction within 100% pass result and vice versa.
 
-## No of student on baiscs of grade within 100 percent pass result school scoring non-zero distinction
+### Having Distinction 
 ```{r No of student on baiscs of grade within 100 percent pass result school scoring non-zero distinction, echo=FALSE} 
 totalGradeOfHundredPassPercentWithDistinction <- data.frame()
 totalGradeOfHundredPassPercentWithDistinctionBarchartDf <- data.frame()
 districtsHundredPassPercentWithDistinction <- c(unique(schoolGradeOfHundredPassPercentWithDistinctionDataFrame$District))
 for (d in districtsHundredPassPercentWithDistinction) {
   
-  totalGradeOfHundredPassPercentWithDistinctionBarchart <- c(rep(d, 4))
+  totalGradeOfHundredPassPercentWithDistinctionBarchart <- c(rep(d, 3))
   
   filterDistrict <- filter(schoolGradeOfHundredPassPercentWithDistinctionDataFrame, District == d)
   
@@ -185,43 +185,32 @@ for (d in districtsHundredPassPercentWithDistinction) {
   totalGradeOfHundredPassPercentWithDistinctionBarchartDf <- rbind(totalGradeOfHundredPassPercentWithDistinctionBarchartDf,
                                                                    data.frame(
                                                                      District = totalGradeOfHundredPassPercentWithDistinctionBarchart,
-                                                                     Grade = c(rep("Distinction", 1), rep("FirstDivision", 1), rep("SecondDivison",1), rep("ThirdDivision",1)),
+                                                                     Grade = c(rep("Distinction", 1), rep("FirstDivision", 1), rep("SecondDivison",1)),
                                                                      NoOfStudent = c(filterDistrict %>% select(DISTINCTION) %>% sum(), 
                                                                                      filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
-                                                                                     filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
-                                                                                     filterDistrict %>% select(THIRD.DIVISION) %>% sum())
+                                                                                     filterDistrict %>% select(SECOND.DIVISION) %>% sum()
                                                                      )
-                                                                   )
+                                                                   ))
   
 }
 
 paged_table(totalGradeOfHundredPassPercentWithDistinction)
-
-# Plot grouped barchart showing no of student in grade with 100% pass result without district kathmandu
-ggplot(filter(totalGradeOfHundredPassPercentWithDistinctionBarchartDf, District != 'Kathmandu'), 
-       aes(fill=Grade, 
-           y=NoOfStudent, 
-           x=District,
-           label=NoOfStudent)) + 
-  geom_bar(position='dodge', stat='identity') +
-  xlab('District') + 
-  ylab('Total No of Student')
-
-# Plot grouped barchart showing no of student in grade with 100% pass result without district Nuwakot and Dhading
-ggplot(filter(totalGradeOfHundredPassPercentWithDistinctionBarchartDf, District != 'Nuwakot' & District != 'Dhading'), 
-       aes(fill=Grade, 
-           y=NoOfStudent, 
-           x=District,
-           label=NoOfStudent)) + 
-  geom_bar(position='dodge', stat='identity') +
-  xlab('District') + 
-  ylab('Total No of Student')
-
 ``` 
+From above table, we can conclude that school having 100% pass rate with distinction the no of student acheiving the third division is Zero. Hence, we can remove the column third division while visualizing data. 
+```{r Stack bar chart representing no of student on basics of grade, echo=FALSE, fig.cap='Fig 4:- Total No of Student in each district on basics of grade', fig.align='c'} 
 
-From above table, we can conclude that there is not a single student scoring third division from the school with 100 percent pass rate with 0 distinction 
+ggplot(totalGradeOfHundredPassPercentWithDistinctionBarchartDf, 
+       aes(fill=Grade, 
+           y=NoOfStudent, 
+           x=District,
+           label=NoOfStudent)) + 
+  geom_bar(position='dodge', stat='identity') +
+  xlab('District') + 
+  ylab('Total No of Student')
+```
+From above barchart, we can conclude that Kathmandu district had the maximum pass rate in comparision to another district. So we can assume that another district lacks the proper educational facilities as well as school.
 
-## No of student on baiscs of grade within 100 percent pass result school scoring with zero distinction
+### Without Having Distinction 
 ```{r No of student on baiscs of grade within 100 percent pass result school scoring with zero distinction, echo = FALSE} 
 # Initialize an empty dataframe 
 totalGradeOfHundredPassPercentWithoutDistinction <- data.frame()
@@ -233,7 +222,7 @@ for (d in districtsHundredPassPercentWithoutDistinction) {
   
   filterDistrict <- filter(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame, District == d)
   
-  totalGradeOfHundredPassPercentWithoutDistinctionBarchart <- c(rep(d, 4))
+  totalGradeOfHundredPassPercentWithoutDistinctionBarchart <- c(rep(d, 3))
   
   totalGradeOfHundredPassPercentWithoutDistinction <- rbind(totalGradeOfHundredPassPercentWithoutDistinction, data.frame(
                                                                            District = d, 
@@ -246,9 +235,8 @@ for (d in districtsHundredPassPercentWithoutDistinction) {
   totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf <- rbind(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf,
                                                                    data.frame(
                                                                      District = totalGradeOfHundredPassPercentWithoutDistinctionBarchart,
-                                                                     Grade = c(rep("Distinction", 1), rep("FirstDivision", 1), rep("SecondDivison",1), rep("ThirdDivision",1)),
-                                                                     NoOfStudent = c(filterDistrict %>% select(DISTINCTION) %>% sum(), 
-                                                                                     filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
+                                                                     Grade = c(rep("FirstDivision", 1), rep("SecondDivison",1), rep("ThirdDivision",1)),
+                                                                     NoOfStudent = c(filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
                                                                                      filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
                                                                                      filterDistrict %>% select(THIRD.DIVISION) %>% sum())
                                                                    )
@@ -256,6 +244,9 @@ for (d in districtsHundredPassPercentWithoutDistinction) {
 }
 
 paged_table(totalGradeOfHundredPassPercentWithoutDistinction)
+```
+Since, we are filtering school without having distinction. It will be obvious that there will be zero distinction. So, we can remove distinction while visualizing data.
+```{r Stack bar chart representing no of student on basics of grade with zero distinction, echo=FALSE, fig.cap='Fig 6:- Total No of Student in each district on basics of grade', fig.align='c'} 
 # Plot grouped barchart showing no of student in grade with 100% pass result without district kathmandu
 ggplot(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf, 
        aes(fill=Grade, 
@@ -267,6 +258,7 @@ ggplot(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf,
   ylab('Total No of Student')
 
 ```
+From above barchart, we can conclude that Kathmandu district had the maximum pass rate in comparision to another district. So we can assume that another district lacks the proper educational facilities as well as school.
 
 ## Heading
 Furthermore, we can also calculate among 100% pass student which shool have the highest distinction, first division, second division, third division, fail also
@@ -278,6 +270,3 @@ we can also filter top 5 school subject wise highest
 filtering data on basics of highest pass percentage and lowest pass percentage
 
 thinking that some of the school have equal number of student 
-
-it seems school having distinction within 100% pass result have the 0 no of student scoring third division 
-and with 0 distinction the stdudent scoring 1st division is more with less third division
