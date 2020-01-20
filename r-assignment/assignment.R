@@ -32,6 +32,7 @@ districts <- c(unique(data$District))
 totalNoOfStudentDataFrame <- data.frame();
 
 hundredPercentPassPercentDataFrame <- data.frame();
+failPercentDataFrame <- data.frame();
 schoolGradeOfHundredPassPercentWithDistinctionDataFrame <- data.frame();
 schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- data.frame();
 
@@ -52,6 +53,8 @@ for (d in districts) {
   
   hundredPercentPassPercentDataFrame <- rbind(hundredPercentPassPercentDataFrame, 
                                               filter(data, District == d & FAIL == 0 & PASS.PERCENT == max(PASS.PERCENT)))
+  
+  failPercentDataFrame <- rbind(failPercentDataFrame, filter(data, District == d & FAIL != 0 & FAIL.PERCENTAGE != 0.0))
   
   schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- rbind(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame, 
                                                                    filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION == 0))
@@ -208,7 +211,22 @@ ggplot(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf,
            y=NoOfStudent, 
            x=District,
            label=NoOfStudent)) + 
+  
   geom_bar(position='dodge', stat='identity') +
   xlab('District') + 
   ylab('Total No of Student')
+
+# Since, in hundred pass percent data set it is natural that the school having highest number of student is the school scoring the highest pass rate. As well as, since
+# total no of student is not same in every school so we can't compare the grade 
+
+# Initialize an empty data frame for school having highest number of student 
+passSchoolWithMaxStudentDataFrame <- data.frame()
+
+for (d in districts) {
+  filterDistrict <- filter(hundredPercentPassPercentDataFrame, District == d)
+  
+  passSchoolWithMaxStudentDataFrame <- rbind(passSchoolWithMaxStudentDataFrame, filterDistrict %>% filter(TOTAL.NO.OF.STUDENT == max(TOTAL.NO.OF.STUDENT)))
+  
+}
+
 
