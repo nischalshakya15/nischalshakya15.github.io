@@ -32,7 +32,11 @@ districts <- c(unique(data$District))
 totalNoOfStudentDataFrame <- data.frame();
 
 hundredPercentPassPercentDataFrame <- data.frame();
+
 failPercentDataFrame <- data.frame();
+zeroDistinctionFailPercentDataFrame <- data.frame();
+distinctionFailPercentDataFrame <- data.frame();
+
 schoolGradeOfHundredPassPercentWithDistinctionDataFrame <- data.frame();
 schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- data.frame();
 
@@ -56,6 +60,10 @@ for (d in districts) {
   
   failPercentDataFrame <- rbind(failPercentDataFrame, filter(data, District == d & FAIL != 0 & FAIL.PERCENTAGE != 0.0))
   
+  zeroDistinctionFailPercentDataFrame <- rbind(zeroDistinctionFailPercentDataFrame, filter(failPercentDataFrame, District == d & DISTINCTION == 0))
+  
+  distinctionFailPercentDataFrame <- rbind(distinctionFailPercentDataFrame, filter(failPercentDataFrame, District == d & DISTINCTION != 0))
+    
   schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- rbind(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame, 
                                                                    filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION == 0))
   

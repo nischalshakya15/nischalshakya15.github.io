@@ -38,34 +38,43 @@ districts <- c(unique(data$District))
 totalNoOfStudentDataFrame <- data.frame();
 
 hundredPercentPassPercentDataFrame <- data.frame();
+
+failPercentDataFrame <- data.frame();
+zeroDistinctionFailPercentDataFrame <- data.frame();
+distinctionFailPercentDataFrame <- data.frame();
+
 schoolGradeOfHundredPassPercentWithDistinctionDataFrame <- data.frame();
 schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- data.frame();
 
 for (d in districts) {
   
- filterDistrict <- filter(data, District == d)
+  filterDistrict <- filter(data, District == d)
   
 
- totalNoOfStudentDataFrame <- rbind(totalNoOfStudentDataFrame, data.frame(
-                                                                      District = d,
-                                                                      Distinction = filterDistrict %>% select(DISTINCTION) %>% sum(),
-                                                                      FirstDivision = filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
-                                                                      SecondDivision = filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
-                                                                      ThirdDivision = filterDistrict %>% select(THIRD.DIVISION) %>% sum(),
-                                                                      Pass = filterDistrict %>% select(PASS) %>% sum(),
-                                                                      Fail = filterDistrict %>% select(FAIL) %>% sum(),
-                                                                      Total = filterDistrict %>% select(PASS,FAIL) %>% sum()
-                                                                      )
-                                    )
+  totalNoOfStudentDataFrame <- rbind(totalNoOfStudentDataFrame, data.frame(District = d,
+      
+                                                                           Distinction = filterDistrict %>% select(DISTINCTION) %>% sum(),
+                                                                           FirstDivision = filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
+                                                                           SecondDivision = filterDistrict %>% select(SECOND.DIVISION) %>% sum(),
+                                                                           ThirdDivision = filterDistrict %>% select(THIRD.DIVISION) %>% sum(),
+                                                                           Pass = filterDistrict %>% select(PASS) %>% sum(),
+                                                                           Fail = filterDistrict %>% select(FAIL) %>% sum(),
+                                                                           Total = filterDistrict %>% select(PASS,FAIL) %>% sum()))
   
   hundredPercentPassPercentDataFrame <- rbind(hundredPercentPassPercentDataFrame, 
                                               filter(data, District == d & FAIL == 0 & PASS.PERCENT == max(PASS.PERCENT)))
   
+  failPercentDataFrame <- rbind(failPercentDataFrame, filter(data, District == d & FAIL != 0 & FAIL.PERCENTAGE != 0.0))
+  
+  zeroDistinctionFailPercentDataFrame <- rbind(zeroDistinctionFailPercentDataFrame, filter(failPercentDataFrame, District == d & DISTINCTION == 0))
+  
+  distinctionFailPercentDataFrame <- rbind(distinctionFailPercentDataFrame, filter(failPercentDataFrame, District == d & DISTINCTION != 0))
+    
   schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- rbind(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame, 
-                                                                filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION == 0))
+                                                                   filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION == 0))
   
   schoolGradeOfHundredPassPercentWithDistinctionDataFrame <- rbind(schoolGradeOfHundredPassPercentWithDistinctionDataFrame,
-                                                             filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION != 0))
+                                                                      filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION != 0))
 }
 ```
 
