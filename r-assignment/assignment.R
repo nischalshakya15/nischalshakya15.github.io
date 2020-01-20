@@ -38,6 +38,8 @@ zeroDistinctionFailPercentDataFrame <- data.frame()
 distinctionFailPercentDataFrame <- data.frame()
 totalGradeOfZeroDistinctionFailPercentDataFrame <- data.frame()
 totalGradeOfDistinctionFailPercentDataFrame <- data.frame()
+totalGradeOfZeroDistinctionBarChartDf <- data.frame()
+totalGradeOfDistinctionFailPercentBarChartDf <- data.frame()
 
 schoolGradeOfHundredPassPercentWithDistinctionDataFrame <- data.frame()
 schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- data.frame()
@@ -76,7 +78,15 @@ for (d in districts) {
                                                              ThirdDivision = filterDistrictOfZeroDistinctionFailPercentDataFrame %>% select(THIRD.DIVISION) %>% sum(),
                                                              Total = filterDistrictOfZeroDistinctionFailPercentDataFrame %>% select(DISTINCTION,FIRST.DIVISION,SECOND.DIVISION,THIRD.DIVISION) %>% sum()))
   
-  
+  totalGradeOfZeroDistinctionBarChartDf <- rbind(totalGradeOfZeroDistinctionBarChartDf,
+                                                                   data.frame(
+                                                                     District = c(rep(d, 3)),
+                                                                     Grade = c(rep("FirstDivision", 1), rep("SecondDivision", 1), rep("ThirdDivision",1)),
+                                                                     NoOfStudent = c(filterDistrictOfZeroDistinctionFailPercentDataFrame %>% select(FIRST.DIVISION) %>% sum(), 
+                                                                                     filterDistrictOfZeroDistinctionFailPercentDataFrame %>% select(SECOND.DIVISION) %>% sum(),
+                                                                                     filterDistrictOfZeroDistinctionFailPercentDataFrame %>% select(THIRD.DIVISION) %>% sum()
+                                                                     )
+                                                                   ))
   
   distinctionFailPercentDataFrame <- rbind(distinctionFailPercentDataFrame, filter(failPercentDataFrame, District == d & DISTINCTION != 0))
   
@@ -90,6 +100,16 @@ for (d in districts) {
                                                          SecondDivision = filterDistrictOfDistinctionFailPercentDataFrame %>% select(SECOND.DIVISION) %>% sum(),
                                                          ThirdDivision = filterDistrictOfDistinctionFailPercentDataFrame %>% select(THIRD.DIVISION) %>% sum(),
                                                          Total = filterDistrictOfDistinctionFailPercentDataFrame %>% select(DISTINCTION,FIRST.DIVISION,SECOND.DIVISION,THIRD.DIVISION) %>% sum()))
+  
+  totalGradeOfDistinctionFailPercentBarChartDf  <- rbind(totalGradeOfDistinctionFailPercentBarChartDf,
+                                                         data.frame(
+                                                           District = c(rep(d, 4)),
+                                                           Grade = c(rep("Distinction", 1), rep("FirstDivision", 1), rep("SecondDivison",1), rep("ThirdDivision",1)),
+                                                           NoOfStudent = c(filterDistrictOfDistinctionFailPercentDataFrame %>% select(DISTINCTION) %>% sum(), 
+                                                                           filterDistrictOfDistinctionFailPercentDataFrame %>% select(FIRST.DIVISION) %>% sum(),
+                                                                           filterDistrictOfDistinctionFailPercentDataFrame %>% select(SECOND.DIVISION) %>% sum(),
+                                                                           filterDistrictOfDistinctionFailPercentDataFrame %>% select(THIRD.DIVISION) %>% sum())
+                                                         ))
     
   schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- rbind(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame, 
                                                                    filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION == 0))
