@@ -125,7 +125,30 @@ Since, in hundred pass percent data set it is natural that the school having hig
 </div>
 
 
-## Heading
+## General summary of fail result {.tabset .tabset-fade}
+As we can see, the school having fail percentage also able to secure distintion in SLC exam. So, this section will summarize the total no of student on basics of grade having zero distinction with fail percentage and vice versa. 
+
+### Having Distinction
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["District"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["Distinction"],"name":[2],"type":["int"],"align":["right"]},{"label":["FirstDivision"],"name":[3],"type":["int"],"align":["right"]},{"label":["SecondDivision"],"name":[4],"type":["int"],"align":["right"]},{"label":["ThirdDivision"],"name":[5],"type":["int"],"align":["right"]},{"label":["Total"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"Sindhupalchok","2":"5","3":"24","4":"41","5":"1","6":"71"},{"1":"Rasuwa","2":"1","3":"19","4":"67","5":"1","6":"88"},{"1":"Nuwakot","2":"8","3":"63","4":"97","5":"1","6":"169"},{"1":"Dhading","2":"6","3":"66","4":"133","5":"4","6":"209"},{"1":"Kavre","2":"42","3":"262","4":"166","5":"1","6":"471"},{"1":"Bhaktapur","2":"186","3":"945","4":"632","5":"9","6":"1772"},{"1":"Kathmandu","2":"716","3":"3938","4":"1331","5":"13","6":"5998"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+Let's plot the above information in stack barchart for data visualiztion 
+![](index_files/figure-html/Stack barchar of student on basics of grade having fail percentage school scoring distinction-1.png)<!-- -->
+
+### Without Having Distinction 
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["District"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["Distinction"],"name":[2],"type":["int"],"align":["right"]},{"label":["FirstDivision"],"name":[3],"type":["int"],"align":["right"]},{"label":["SecondDivision"],"name":[4],"type":["int"],"align":["right"]},{"label":["ThirdDivision"],"name":[5],"type":["int"],"align":["right"]},{"label":["Total"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"Sindhupalchok","2":"0","3":"322","4":"1508","5":"119","6":"1949"},{"1":"Rasuwa","2":"0","3":"48","4":"158","5":"13","6":"219"},{"1":"Nuwakot","2":"0","3":"366","4":"933","5":"63","6":"1362"},{"1":"Dhading","2":"0","3":"307","4":"1202","5":"69","6":"1578"},{"1":"Kavre","2":"0","3":"664","4":"1865","5":"152","6":"2681"},{"1":"Bhaktapur","2":"0","3":"219","4":"400","5":"38","6":"657"},{"1":"Kathmandu","2":"0","3":"1822","4":"2768","5":"104","6":"4694"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+Since, we are filtering total no of school with zero distinction. So, it is not required to plot distinction while making barchart
+![](index_files/figure-html/Stack barchar of student on basics of grade having fail percentage school without any distinction-1.png)<!-- -->
+
+## Conclusion
 Furthermore, we can also calculate among 100% pass student 
 which shool have the highest distinction, first division, second division, third division, fail and maximum no of student also
 

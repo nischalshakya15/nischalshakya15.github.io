@@ -277,5 +277,24 @@ for (d in districts) {
   filterDistrict <- filter(hundredPercentPassPercentDataFrame, District == d)
   
   passSchoolWithMaxStudentDataFrame <- rbind(passSchoolWithMaxStudentDataFrame, filterDistrict %>% filter(TOTAL.NO.OF.STUDENT == max(TOTAL.NO.OF.STUDENT)))
-  
 }
+
+# Plot grouped barchart showing no of student in grade having fail percentage with distinction
+ggplot(totalGradeOfDistinctionFailPercentBarChartDf, 
+       aes(fill=Grade, 
+           y=NoOfStudent, 
+           x=District,
+           label=NoOfStudent)) + 
+  geom_bar(position='dodge', stat='identity') +
+  xlab('District') + 
+  ylab('Total No of Student')
+
+# Plot grouped barchart showing no of student in grade having fail percentage without distinction
+ggplot(totalGradeOfZeroDistinctionBarChartDf, 
+       aes(fill=Grade, 
+           y=NoOfStudent, 
+           x=District,
+           label=NoOfStudent)) + 
+  geom_bar(position='dodge', stat='identity') +
+  xlab('District') + 
+  ylab('Total No of Student')

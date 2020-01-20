@@ -44,6 +44,8 @@ zeroDistinctionFailPercentDataFrame <- data.frame()
 distinctionFailPercentDataFrame <- data.frame()
 totalGradeOfZeroDistinctionFailPercentDataFrame <- data.frame()
 totalGradeOfDistinctionFailPercentDataFrame <- data.frame()
+totalGradeOfZeroDistinctionBarChartDf <- data.frame()
+totalGradeOfDistinctionFailPercentBarChartDf <- data.frame()
 
 schoolGradeOfHundredPassPercentWithDistinctionDataFrame <- data.frame()
 schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- data.frame()
@@ -82,7 +84,15 @@ for (d in districts) {
                                                              ThirdDivision = filterDistrictOfZeroDistinctionFailPercentDataFrame %>% select(THIRD.DIVISION) %>% sum(),
                                                              Total = filterDistrictOfZeroDistinctionFailPercentDataFrame %>% select(DISTINCTION,FIRST.DIVISION,SECOND.DIVISION,THIRD.DIVISION) %>% sum()))
   
-  
+  totalGradeOfZeroDistinctionBarChartDf <- rbind(totalGradeOfZeroDistinctionBarChartDf,
+                                                                   data.frame(
+                                                                     District = c(rep(d, 3)),
+                                                                     Grade = c(rep("FirstDivision", 1), rep("SecondDivision", 1), rep("ThirdDivision",1)),
+                                                                     NoOfStudent = c(filterDistrictOfZeroDistinctionFailPercentDataFrame %>% select(FIRST.DIVISION) %>% sum(), 
+                                                                                     filterDistrictOfZeroDistinctionFailPercentDataFrame %>% select(SECOND.DIVISION) %>% sum(),
+                                                                                     filterDistrictOfZeroDistinctionFailPercentDataFrame %>% select(THIRD.DIVISION) %>% sum()
+                                                                     )
+                                                                   ))
   
   distinctionFailPercentDataFrame <- rbind(distinctionFailPercentDataFrame, filter(failPercentDataFrame, District == d & DISTINCTION != 0))
   
@@ -96,6 +106,16 @@ for (d in districts) {
                                                          SecondDivision = filterDistrictOfDistinctionFailPercentDataFrame %>% select(SECOND.DIVISION) %>% sum(),
                                                          ThirdDivision = filterDistrictOfDistinctionFailPercentDataFrame %>% select(THIRD.DIVISION) %>% sum(),
                                                          Total = filterDistrictOfDistinctionFailPercentDataFrame %>% select(DISTINCTION,FIRST.DIVISION,SECOND.DIVISION,THIRD.DIVISION) %>% sum()))
+  
+  totalGradeOfDistinctionFailPercentBarChartDf  <- rbind(totalGradeOfDistinctionFailPercentBarChartDf,
+                                                         data.frame(
+                                                           District = c(rep(d, 4)),
+                                                           Grade = c(rep("Distinction", 1), rep("FirstDivision", 1), rep("SecondDivison",1), rep("ThirdDivision",1)),
+                                                           NoOfStudent = c(filterDistrictOfDistinctionFailPercentDataFrame %>% select(DISTINCTION) %>% sum(), 
+                                                                           filterDistrictOfDistinctionFailPercentDataFrame %>% select(FIRST.DIVISION) %>% sum(),
+                                                                           filterDistrictOfDistinctionFailPercentDataFrame %>% select(SECOND.DIVISION) %>% sum(),
+                                                                           filterDistrictOfDistinctionFailPercentDataFrame %>% select(THIRD.DIVISION) %>% sum())
+                                                         ))
     
   schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame <- rbind(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame, 
                                                                    filter(hundredPercentPassPercentDataFrame, District == d & DISTINCTION == 0))
@@ -309,7 +329,44 @@ paged_table(select(passSchoolWithMaxStudentDataFrame, District, Name.of.School, 
 ```
 
 
-## Heading
+## General summary of fail result {.tabset .tabset-fade}
+As we can see, the school having fail percentage also able to secure distintion in SLC exam. So, this section will summarize the total no of student on basics of grade having zero distinction with fail percentage and vice versa. 
+
+### Having Distinction
+``` {r No of student on baiscs of grade having fail percentage school scoring distinction, echo=FALSE}
+paged_table(totalGradeOfDistinctionFailPercentDataFrame)
+``` 
+
+Let's plot the above information in stack barchart for data visualiztion 
+```{r Stack barchar of student on basics of grade having fail percentage school scoring distinction, echo = FALSE}
+ggplot(totalGradeOfDistinctionFailPercentBarChartDf, 
+       aes(fill=Grade, 
+           y=NoOfStudent, 
+           x=District,
+           label=NoOfStudent)) + 
+  geom_bar(position='dodge', stat='identity') +
+  xlab('District') + 
+  ylab('Total No of Student')
+``` 
+
+### Without Having Distinction 
+``` {r No of student on baiscs of grade having fail percentage school without any distinction, echo=FALSE}
+paged_table(totalGradeOfZeroDistinctionFailPercentDataFrame)
+``` 
+
+Since, we are filtering total no of school with zero distinction. So, it is not required to plot distinction while making barchart
+```{r Stack barchar of student on basics of grade having fail percentage school without any distinction, echo = FALSE}
+ggplot(totalGradeOfZeroDistinctionBarChartDf, 
+       aes(fill=Grade, 
+           y=NoOfStudent, 
+           x=District,
+           label=NoOfStudent)) + 
+  geom_bar(position='dodge', stat='identity') +
+  xlab('District') + 
+  ylab('Total No of Student')
+``` 
+
+## Conclusion
 Furthermore, we can also calculate among 100% pass student 
 which shool have the highest distinction, first division, second division, third division, fail and maximum no of student also
 
