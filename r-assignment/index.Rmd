@@ -28,7 +28,7 @@ setwd('/home/nischal/nischalshakya15.github.io/r-assignment')
 data <- read.csv('input.csv', sep = ',', header = TRUE, stringsAsFactors = FALSE)
 
 # Remove Zone Bagmati and Development Region beacuse it is redudant
-data <- select(data, -c(Zone, Development.Region))
+data <- select(data, -c(Zone, Development.Region, School.Number, School.Code, ENGLISH, NEPALI, MATHS, SCIENCE, SOCIAL.STUDIES, HEALTH.POPULATION.AND.ENVIRONMENT))
 
 # Calculate fail percentage
 data <- data %>% mutate('FAIL.PERCENTAGE' = 100 - data$PASS.PERCENT)
@@ -259,6 +259,23 @@ ggplot(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf,
 
 ```
 From above barchart, we can conclude that Kathmandu district had the maximum pass rate in comparision to another district. So we can assume that another district lacks the proper educational facilities as well as school.
+
+## Max number of student within hunderd pass percent
+Since, in hundred pass percent data set it is natural that the school having highest number of student is the school scoring the highest pass rate. As well as, since total no of student is not same in every school so we can't compare the grade 
+
+```{r School with highest number of student, echo = FALSE} 
+passSchoolWithMaxStudentDataFrame <- data.frame()
+
+for (d in districts) {
+  filterDistrict <- filter(hundredPercentPassPercentDataFrame, District == d)
+  
+  passSchoolWithMaxStudentDataFrame <- rbind(passSchoolWithMaxStudentDataFrame, filterDistrict %>% filter(PASS == max(PASS)))
+  
+}
+
+paged_table(select(passSchoolWithMaxStudentDataFrame, District, Name.of.School, PASS))
+```
+
 
 ## Heading
 Furthermore, we can also calculate among 100% pass student 
