@@ -127,8 +127,6 @@ districtsHundredPassPercentWithDistinction <- c(unique(schoolGradeOfHundredPassP
 
 for (d in districtsHundredPassPercentWithDistinction) {
   
-  totalGradeOfHundredPassPercentWithDistinctionBarchart <- c(rep(d, 3))
-  
   filterDistrict <- filter(schoolGradeOfHundredPassPercentWithDistinctionDataFrame, District == d)
   
   totalGradeOfHundredPassPercentWithDistinction <- rbind(totalGradeOfHundredPassPercentWithDistinction, 
@@ -142,7 +140,7 @@ for (d in districtsHundredPassPercentWithDistinction) {
   
   totalGradeOfHundredPassPercentWithDistinctionBarchartDf <- rbind(totalGradeOfHundredPassPercentWithDistinctionBarchartDf,
                                                                    data.frame(
-                                                                     District = totalGradeOfHundredPassPercentWithDistinctionBarchart,
+                                                                     District = c(rep(d, 3)),
                                                                      Grade = c(rep("Distinction", 1), rep("FirstDivision", 1), rep("SecondDivison",1)),
                                                                      NoOfStudent = c(filterDistrict %>% select(DISTINCTION) %>% sum(), 
                                                                                      filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
@@ -183,8 +181,6 @@ for (d in districtsHundredPassPercentWithoutDistinction) {
   
   filterDistrict <- filter(schoolGradeOfHundredPassPercentWithoutDistinctionDataFrame, District == d)
   
-  totalGradeOfHundredPassPercentWithoutDistinctionBarchart <- c(rep(d, 4))
-  
   totalGradeOfHundredPassPercentWithoutDistinction <- rbind(totalGradeOfHundredPassPercentWithoutDistinction, data.frame(
                                                                            District = d, 
                                                                            Distinction = filterDistrict %>% select(DISTINCTION) %>% sum(),
@@ -195,7 +191,7 @@ for (d in districtsHundredPassPercentWithoutDistinction) {
   
   totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf <- rbind(totalGradeOfHundredPassPercentWithoutDistinctionBarchartDf,
                                                                    data.frame(
-                                                                     District = totalGradeOfHundredPassPercentWithoutDistinctionBarchart,
+                                                                     District = c(rep(d, 4)),
                                                                      Grade = c(rep("Distinction", 1), rep("FirstDivision", 1), rep("SecondDivison",1), rep("ThirdDivision",1)),
                                                                      NoOfStudent = c(filterDistrict %>% select(DISTINCTION) %>% sum(), 
                                                                                      filterDistrict %>% select(FIRST.DIVISION) %>% sum(),
