@@ -366,6 +366,21 @@ ggplot(totalGradeOfZeroDistinctionBarChartDf,
   ylab('Total No of Student')
 ``` 
 
+# Maximum number of passed student within fail percent 
+Even in fail percent, we can filter the school having highest number of pass student. Like previous, since total no of student is not same in every school so we can't compare grade. The table below, summarize the information with name of school having maxium pass student.
+
+```{r School with highest pass percent among fail percent, echo = FALSE}
+failSchoolWithMaxStudentDataFrame <- data.frame()
+
+for (d in districts) {
+  filterDistrict <- filter(distinctionFailPercentDataFrame, District == d)
+  
+  failSchoolWithMaxStudentDataFrame <- rbind(failSchoolWithMaxStudentDataFrame, filterDistrict %>% select(District, Name.of.School, PASS, FAIL) %>% filter(PASS == max(PASS)))
+}
+paged_table(arrange(failSchoolWithMaxStudentDataFrame, PASS))
+```
+
+
 ## Conclusion
 Furthermore, we can also calculate among 100% pass student 
 which shool have the highest distinction, first division, second division, third division, fail and maximum no of student also

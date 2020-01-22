@@ -148,6 +148,16 @@ Let's plot the above information in stack barchart for data visualiztion
 Since, we are filtering total no of school with zero distinction. So, it is not required to plot distinction while making barchart
 ![](index_files/figure-html/Stack barchar of student on basics of grade having fail percentage school without any distinction-1.png)<!-- -->
 
+# Maximum number of passed student within fail percent 
+Even in fail percent, we can filter the school having highest number of pass student. Like previous, since total no of student is not same in every school so we can't compare grade. The table below, summarize the information with name of school having maxium pass student.
+
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["District"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Name.of.School"],"name":[2],"type":["chr"],"align":["left"]},{"label":["PASS"],"name":[3],"type":["int"],"align":["right"]},{"label":["FAIL"],"name":[4],"type":["int"],"align":["right"]}],"data":[{"1":"Sindhupalchok","2":"BAGHA BHAIRAB MA VI THOKARPA","3":"71","4":"24"},{"1":"Nuwakot","2":"JANAGYAN NIKETAN MA VI THAPAGAUN","3":"83","4":"15"},{"1":"Kavre","2":"GOLDEN FUTURE MA VI PANCHKHAL","3":"86","4":"1"},{"1":"Rasuwa","2":"NILKANTHA MA VI BOGATITAR","3":"88","4":"19"},{"1":"Dhading","2":"BAGESHWORI MA VI BAIRENI","3":"95","4":"65"},{"1":"Bhaktapur","2":"BAGESWORI HIGHER SECONDARY SCHOOL TAULACHHEN TOLE","3":"207","4":"20"},{"1":"Kathmandu","2":"SIDDHARTHA VANASTHALI INSTITUTE BALAJU","3":"418","4":"3"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+
 ## Conclusion
 Furthermore, we can also calculate among 100% pass student 
 which shool have the highest distinction, first division, second division, third division, fail and maximum no of student also

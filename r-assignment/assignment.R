@@ -298,3 +298,14 @@ ggplot(totalGradeOfZeroDistinctionBarChartDf,
   geom_bar(position='dodge', stat='identity') +
   xlab('District') + 
   ylab('Total No of Student')
+
+failSchoolWithMaxStudentDataFrame <- data.frame()
+
+for (d in districts) {
+  filterDistrict <- filter(distinctionFailPercentDataFrame, District == d)
+  
+  failSchoolWithMaxStudentDataFrame <- rbind(failSchoolWithMaxStudentDataFrame, filterDistrict %>% select(District, Name.of.School, PASS, FAIL) %>% filter(PASS == max(PASS)))
+}
+
+arrange(failSchoolWithMaxStudentDataFrame, PASS)
+
