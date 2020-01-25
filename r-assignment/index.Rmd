@@ -146,7 +146,7 @@ print(districts)
 
 ## Bargraph showing total no of student on basics of district
 ```{r Bar graph showing total no of student on basics of district, fig.cap='Fig 1:- Total No of Student in each district', fig.align='c', echo = FALSE}
-paged_table(totalNoOfStudentDataFrame)
+paged_table(arrange(totalNoOfStudentDataFrame,Total))
 
 # Plot bar graph showing total no of student in each district
 ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black') + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of student in each district') + xlab('Districts') + ylab('Total No of Student')
@@ -158,7 +158,7 @@ ggplot(totalNoOfStudentDataFrame, aes(x = District, y = Total, label = Total)) +
 
 ``` {r No of school on basics of district, echo = FALSE}
 countNoofSchoolOnBasiscOfDistrict <- count(data, data$District)
-paged_table(countNoofSchoolOnBasiscOfDistrict)
+paged_table(arrange(countNoofSchoolOnBasiscOfDistrict,n))
 ```
 ```{r Donut showing total no of school on basics of district, echo=FALSE}
 # load countNoOfSchoolOnBasicsOfDistrict in donut dataframe
@@ -198,7 +198,7 @@ ggplot(donut, aes(ymax=ymax, ymin=ymin, xmax=4, xmin=3, fill=District)) +
 
 ``` {r No of school on basics of geographical region, echo = FALSE}
 countNoofSchoolOnBasiscOfGeographicalRegion <- count(data, data$Geographical.Region)
-paged_table(countNoofSchoolOnBasiscOfGeographicalRegion)
+paged_table(arrange(countNoofSchoolOnBasiscOfGeographicalRegion,n))
 ```
 ``` {r Bar graph showing total no student on baiscs of geopgraphica region, echo = FALSE}
 ggplot(countNoofSchoolOnBasiscOfGeographicalRegion, aes(x = countNoofSchoolOnBasiscOfGeographicalRegion$`data$Geographical.Region`, y = countNoofSchoolOnBasiscOfGeographicalRegion$n, label = countNoofSchoolOnBasiscOfGeographicalRegion$n)) + geom_bar(stat = 'identity', fill = 'steelblue', color = 'black', width = 0.3) + geom_text(size = 3, vjust = -1) + labs(title = 'Total no of school on basics of geographical region') + xlab('Geographical region') + ylab('Total No of School')
@@ -248,7 +248,7 @@ for (d in districtsHundredPassPercentWithDistinction) {
   
 }
 
-paged_table(totalGradeOfHundredPassPercentWithDistinction)
+paged_table(arrange(totalGradeOfHundredPassPercentWithDistinction,Total))
 ``` 
 From above table, we can conclude that school having 100% pass rate with distinction the no of student acheiving the third division is Zero. Hence, we can remove the column third division while visualizing data. 
 ```{r Stack bar chart representing no of student on basics of grade, echo=FALSE, fig.cap='Fig 4:- Total No of Student in each district on basics of grade', fig.align='c'} 
@@ -295,7 +295,7 @@ for (d in districtsHundredPassPercentWithoutDistinction) {
   )
 }
 
-paged_table(totalGradeOfHundredPassPercentWithoutDistinction)
+paged_table(arrange(totalGradeOfHundredPassPercentWithoutDistinction,Total))
 ```
 Since, we are filtering school without having distinction. It will be obvious that there will be zero distinction. So, we can remove distinction while visualizing data.
 ```{r Stack bar chart representing no of student on basics of grade with zero distinction, echo=FALSE, fig.cap='Fig 6:- Total No of Student in each district on basics of grade', fig.align='c'} 
@@ -325,7 +325,7 @@ for (d in districts) {
   
 }
 
-paged_table(select(passSchoolWithMaxStudentDataFrame, District, Name.of.School, PASS))
+paged_table(arrange(select(passSchoolWithMaxStudentDataFrame, District, Name.of.School, PASS), PASS))
 ```
 
 
@@ -334,7 +334,7 @@ As we can see, the school having fail percentage also able to secure distintion 
 
 ### Having Distinction
 ``` {r No of student on baiscs of grade having fail percentage school scoring distinction, echo=FALSE}
-paged_table(totalGradeOfDistinctionFailPercentDataFrame)
+paged_table(arrange(totalGradeOfDistinctionFailPercentDataFrame, Total))
 ``` 
 
 Let's plot the above information in stack barchart for data visualiztion 
@@ -351,7 +351,7 @@ ggplot(totalGradeOfDistinctionFailPercentBarChartDf,
 
 ### Without Having Distinction 
 ``` {r No of student on baiscs of grade having fail percentage school without any distinction, echo=FALSE}
-paged_table(totalGradeOfZeroDistinctionFailPercentDataFrame)
+paged_table(arrange(totalGradeOfZeroDistinctionFailPercentDataFrame, Total))
 ``` 
 
 Since, we are filtering total no of school with zero distinction. So, it is not required to plot distinction while making barchart

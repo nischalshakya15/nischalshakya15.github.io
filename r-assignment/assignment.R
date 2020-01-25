@@ -21,13 +21,15 @@ data <- data %>% mutate('FAIL.PERCENTAGE' = 100 - data$PASS.PERCENT)
 
 # Get total number of student
 data <- data %>% mutate('TOTAL.NO.OF.STUDENT' = data$PASS + data$FAIL)
-
+ 
 # Get information about data type used in csv
 str(data)
 
+summary(data)
+
 # Get unique districts from data frame
 districts <- c(unique(data$District))
-
+ 
 # Initialize an empty data frame 
 totalNoOfStudentDataFrame <- data.frame()
 
