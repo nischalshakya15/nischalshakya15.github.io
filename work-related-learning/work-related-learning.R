@@ -8,7 +8,7 @@ source('./utils.R')
 
 setwd('/home/nischal/nischalshakya15.github.io/work-related-learning')
 
-df <- read.csv('data-sets/2018/Jan/JavaProgrammingOne.csv')
+df <- read.csv('data-sets/2018/Jan/JavaProgrammingOne1stSem.csv')
 
 colnames(df)
 
@@ -42,4 +42,8 @@ plotBarGraph(df = gradeDf, x = gradeDf$NoOfStudent.Grade, y = gradeDf$NoOfStuden
              title = 'No of student on basics of grade',
              xlab = 'Grade', ylab = 'Total No of Student')
 
-newdf <- findTopTen(df, df$Grade.Point)
+topTenDf <- findTopTen(df, df$Grade.Point)
+
+summary(df$Total.Marks)
+
+sd(df$Total.Marks)
