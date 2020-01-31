@@ -72,14 +72,116 @@ sd(javaProgrammingOneDf$Total)
 # R code for java programming two 
 javaTwoDf <- read.csv('data-sets/JavaProgrammingTwo.csv')
 
-common <- intersect(javaProgrammingOneDf$Name, javaTwoDf$Name)
+colnames(javaTwoDf)
 
-print(common)
+javaTwoDf <- javaTwoDf %>% rename(
+             Mid.Term.Full.Marks = Full.Marks, Mid.Term.Marks.Obtained = Score, Mid.Term.Fifteen.Percent.Marks = Marks.Obtained..15..,
+             Lab.Test.Full.Marks = Full.Marks.1, Lab.Test.Marks.Obtained = Marks.Obtained..15...1,
+             Assignment.Full.Marks = Full.Marks.2, Assignment.Marks.Obtained = Marks.Obtained..25..,
+             Tutorial.Full.Marks = Full.Marks.3, Tutorial.Marks.Obtained = Marks.Obtained..5..,
+             Internal.Marks = Internal.Marks..60.., 
+             Final.Exam.Full.Marks = Full.Marks.4, Final.Exam.Marks.Obtained = Score.1, Final.Exam.FortyPercent.Marks = Marks.Obtained..40..,
+             Total = Total..100.., 
+             Grade = Grade.after.40..rule
+)
 
-javaTwoDf[javaTwoDf$Name %in% javaProgrammingOneDf$Name,]
+colnames(javaTwoDf)
 
+# filter unique grade
+uniqueGradeJavaTwo <- getUniqueAttribute(javaTwoDf$Grade)
 
-print(javaProgrammingOneDf)
+print(uniqueGradeJavaTwo)
 
+javaTwoCountDf <- data.frame()
 
+str(javaTwoDf)
 
+for (u in uniqueGradeJavaTwo) {
+  javaTwoCountDf <- rbind(javaTwoCountDf, 
+                                     data.frame(
+                                       NoOfStudent = javaTwoDf %>% filter(Grade == u) %>% count(Grade)
+                                     ))
+}
+
+#Sort the count in ascending order on basics of grade 
+javaTwoCountDf <- sortInAscendingOrder(javaTwoCountDf, javaTwoCountDf$NoOfStudent.n)
+
+plotBarGraph(df = javaTwoCountDf, x = javaTwoCountDf$NoOfStudent.Grade, 
+             y = javaTwoCountDf$NoOfStudent.n, label = javaTwoCountDf$NoOfStudent.n, 
+             title = 'No of student on basics of grade',
+             xlab = 'Grade', ylab = 'Total No of Student')
+
+# find top 5 student
+javaTwoTopFive <- findTopTen(javaTwoDf, javaTwoDf$Grade.Point, top = 5)
+
+# Sort on basics of grade point
+javaTwoTopFive <- sortInAscendingOrder(javaTwoTopFive, javaTwoTopFive$Grade.Point)
+
+# Total number of student attending exam
+totalStudentInJavaTwo <- javaTwoCountDf %>% select(NoOfStudent.n) %>% sum()
+
+print(totalStudentInJavaTwo)
+
+# Genearate summary 
+summary(javaTwoDf$Total)
+
+# Find out standard deviation 
+sd(javaTwoDf$Total)
+
+# load csv file into data frame
+javaWebDf <- read.csv('data-sets/JavaWebProgramming.csv')
+
+colnames(javaWebDf)
+
+javaWebDf <- javaWebDf %>% rename(
+             Mid.Term.Full.Marks = Full.Marks, Mid.Term.Marks.Obtained = Score, Mid.Term.Twenty.Percent.Marks = Marks.Obtained..20..,
+             Individual.Assignment.Full.Marks = Full.Marks.1, Individual.Assignment.Marks.Obtained = Assignment.Score..20.,  
+             Group.Assignment.Full.Marks = Full.Marks.2, Group.Assignment.Marks.Obtained = Group.Proj..Score..20.,
+             Internal.Marks = Internal.Marks..60..,
+             Final.Exam.Full.Marks = Full.Marks.3, Final.Exam.Marks.Obtained = Score.1, Final.Exam.FortyPercent.Marks=Marks.Obtained..40..,
+             Total = Total..100.., 
+             Grade = Grade.after.40..rule
+)
+
+colnames(javaWebDf)
+
+# filter unique grade
+uniqueGradeJavaWeb <- getUniqueAttribute(javaWebDf$Grade)
+
+print(uniqueGradeJavaWeb)
+
+javaWebCountDf <- data.frame()
+
+str(javaWebDf)
+
+for (u in uniqueGradeJavaWeb) {
+  javaWebCountDf <- rbind(javaWebCountDf, 
+                          data.frame(
+                            NoOfStudent = javaWebDf %>% filter(Grade == u) %>% count(Grade)
+                          ))
+}
+
+#Sort the count in ascending order on basics of grade 
+javaWebCountDf <- sortInAscendingOrder(javaWebCountDf, javaWebCountDf$NoOfStudent.n)
+
+plotBarGraph(df = javaWebCountDf, x = javaWebCountDf$NoOfStudent.Grade, 
+             y = javaWebCountDf$NoOfStudent.n, label = javaWebCountDf$NoOfStudent.n, 
+             title = 'No of student on basics of grade',
+             xlab = 'Grade', ylab = 'Total No of Student')
+
+# find top 5 student
+javaWebTopFive <- findTopTen(javaWebDf, javaWebDf$Grade.Point, top = 5)
+
+# Sort on basics of grade point
+javaWebTopFive <- sortInAscendingOrder(javaWebTopFive, javaWebTopFive$Grade.Point)
+
+# Total number of student attending exam
+totalStudentInJavaWeb <- javaWebCountDf %>% select(NoOfStudent.n) %>% sum()
+
+print(totalStudentInJavaWeb)
+
+# Genearate summary 
+summary(javaWebDf$Total)
+
+# Find out standard deviation 
+sd(javaWebDf$Total)
