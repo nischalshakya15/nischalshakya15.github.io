@@ -87,3 +87,7 @@ topTendfJan <- findTopTen(dfJan2ndSem, dfJan2ndSem$Grade.Point)
 summary(dfJan2ndSem$Total)
 
 sd(dfJan2ndSem$Total)
+
+print(dfJan$Name)
+
+jandf <- data.frame(Name = c(dfJan$Name))
