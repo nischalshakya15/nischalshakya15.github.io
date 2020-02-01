@@ -1,0 +1,166 @@
+---
+title: "index"
+author: "Nischal Shakya"
+date: "2/1/2020"
+output: 
+    html_document: 
+      fig_caption: yes
+      fig_width: 8
+      highlight: haddock
+      keep_md: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+remove(list = ls())
+
+library('dplyr')
+
+library('ggplot2')
+
+library('rmarkdown')
+
+source('./utils.R')
+
+setwd('/home/nischal/nischalshakya15.github.io/work-related-learning')
+
+javaProgrammingOneDf <- read.csv('data-sets/JavaProgrammingOne.csv')
+
+javaTwoDf <- read.csv('data-sets/JavaProgrammingTwo.csv')
+
+javaWebDf <- read.csv('data-sets/JavaWebProgramming.csv')
+```
+
+## Java Programming One 
+This section shows the information about Java Programming One.
+```{r Analysis of Java Programming One, echo=FALSE}
+colnames(javaProgrammingOneDf)
+
+javaProgrammingOneDf <- javaProgrammingOneDf %>% rename(
+                        Tutorial.Full.Marks = Full.Marks, Tutorial.Marks.Obtained = Marks.Obtained,
+                        Group.Project.Full.Marks = Full.Marks.1, Group.Project.Obtained.Marks = Marks.Obtained.1,
+                        Assignment.Full.Marks = Full.Marks.2, Assignment.Marks.Obtained = Marks.Obtained.2,
+                        Mid.Term.Full.Marks = Full.Marks.3, Mid.Term.Marks.Obtained = Marks.Obtained.3, Mid.Term.FifteenPercent.Marks = Marks.Obtained.4,
+                        Lab.Test.Full.Marks = Full.Marks.4, Lab.Test.Marks.Obtained = Marks.Obtained.5, Lab.Test.FifteenPercent.Marks = Marks.Obtained.6,
+                        FinalExam.Full.Marks = Full.Marks.5, Final.Exam.Marks.Obtained = Marks.Obtained.7, Final.Exam.FortyPercent.Marks = Marks.Obtained..40.)
+
+colnames(javaProgrammingOneDf)
+```
+
+Since, we are grouping student on basiscs of grade we have to filter unique grade.
+```{r Unique grades of Java Programming One, echo=FALSE}
+uniqueGradeJavaProgrammingOne <- getUniqueAttribute(javaProgrammingOneDf$Grade)
+print(uniqueGradeJavaProgrammingOne)
+```
+
+General inforamtion about variables
+```{r General inforamtion about data of java programming one, echo=FALSE}
+str(javaProgrammingOneDf)
+```
+
+Now, what we want to know is total number number of student on basics of grade.
+```{r Counting totoal number of student of java programming one onn basics of grade, echo=FALSE}
+javaProgrammingOneCountDf <- data.frame()
+
+for (u in uniqueGradeJavaProgrammingOne) {
+  javaProgrammingOneCountDf <- rbind(javaProgrammingOneCountDf, 
+                      data.frame(
+                        NoOfStudent = javaProgrammingOneDf %>% filter(Grade == u) %>% count(Grade)
+                      ))
+}
+
+javaProgrammingOneCountDf <- sortInAscendingOrder(javaProgrammingOneCountDf, javaProgrammingOneCountDf$NoOfStudent.n)
+
+paged_table(javaProgrammingOneCountDf)
+
+```
+
+Plot bargraph to know the total number of student on basics of grade.
+```{r Java programming one bargraph, echo=FALSE}
+plotBarGraph(df = javaProgrammingOneCountDf, x = javaProgrammingOneCountDf$NoOfStudent.Grade, 
+             y = javaProgrammingOneCountDf$NoOfStudent.n, label = javaProgrammingOneCountDf$NoOfStudent.n, 
+             title = 'No of student on basics of grade',
+             xlab = 'Grade', ylab = 'Total No of Student')
+```
+
+Top 5 student of java programming one
+```{r Java programming one top five student, echo = FALSE}
+javaProgrammingOneTopFive <- findTopTen(javaProgrammingOneDf, javaProgrammingOneDf$Grade.Point, top = 5)
+javaProgrammingOneTopFive <- sortInAscendingOrder(javaProgrammingOneTopFive, javaProgrammingOneTopFive$Grade.Point)
+paged_table(javaProgrammingOneTopFive %>% select(Name, Total, Grade, Grade.Point))
+```
+
+Total number of student attending java programming one, summary and standard deviation
+```{r Total number of student attending java programming one, echo = FALSE}
+totalStudentInJavaOne <- javaProgrammingOneCountDf %>% select(NoOfStudent.n) %>% sum()
+print(totalStudentInJavaOne)
+
+summary(javaProgrammingOneDf$Total)
+sd(javaProgrammingOneDf$Total)
+```
+
+## Java Programing Two 
+This section shows the information about java programming two.
+```{r Analysis of java programming one, echo = FALSE} 
+colnames(javaTwoDf)
+
+javaTwoDf <- javaTwoDf %>% rename(
+             Mid.Term.Full.Marks = Full.Marks, Mid.Term.Marks.Obtained = Score, Mid.Term.Fifteen.Percent.Marks = Marks.Obtained..15..,
+             Lab.Test.Full.Marks = Full.Marks.1, Lab.Test.Marks.Obtained = Marks.Obtained..15...1,
+             Assignment.Full.Marks = Full.Marks.2, Assignment.Marks.Obtained = Marks.Obtained..25..,
+             Tutorial.Full.Marks = Full.Marks.3, Tutorial.Marks.Obtained = Marks.Obtained..5..,
+             Internal.Marks = Internal.Marks..60.., 
+             Final.Exam.Full.Marks = Full.Marks.4, Final.Exam.Marks.Obtained = Score.1, Final.Exam.FortyPercent.Marks = Marks.Obtained..40..,
+             Total = Total..100.., 
+             Grade = Grade.after.40..rule
+)
+
+colnames(javaTwoDf)
+```
+
+Filter unique grades 
+``` {r Java two unique grades}
+uniqueGradeJavaTwo <- getUniqueAttribute(javaTwoDf$Grade)
+
+print(uniqueGradeJavaTwo)
+
+```
+Total number of student on basics of grade. 
+``` {r Java two total number of student on basics of grade, echo = FALSE}
+javaTwoCountDf <- data.frame()
+
+str(javaTwoDf)
+
+for (u in uniqueGradeJavaTwo) {
+  javaTwoCountDf <- rbind(javaTwoCountDf, 
+                                     data.frame(
+                                       NoOfStudent = javaTwoDf %>% filter(Grade == u) %>% count(Grade)
+                                     ))
+}
+javaTwoCountDf <- sortInAscendingOrder(javaTwoCountDf, javaTwoCountDf$NoOfStudent.n)
+
+paged_table(javaTwoCountDf)
+```
+Bar graph showing total number of student on basics of grade 
+```{r Java two bargraph showing student on basics of grade, echo = FALSE} 
+plotBarGraph(df = javaTwoCountDf, x = javaTwoCountDf$NoOfStudent.Grade, 
+             y = javaTwoCountDf$NoOfStudent.n, label = javaTwoCountDf$NoOfStudent.n, 
+             title = 'No of student on basics of grade',
+             xlab = 'Grade', ylab = 'Total No of Student')
+```
+Top 5 student of java programming one 
+```{r Java two top 5 student, echo = FALSE} 
+javaTwoTopFive <- findTopTen(javaTwoDf, javaTwoDf$Grade.Point, top = 5)
+javaTwoTopFive <- sortInAscendingOrder(javaTwoTopFive, javaTwoTopFive$Grade.Point)
+paged_table(javaTwoTopFive %>% select(Name, Total, Grade, Grade.Point))
+
+```
+
+Total number of student, summary and standard deviation 
+```{r Java two summary, echo = FALSE} 
+totalStudentInJavaTwo <- javaTwoCountDf %>% select(NoOfStudent.n) %>% sum()
+print(totalStudentInJavaTwo)
+summary(javaTwoDf$Total)
+sd(javaTwoDf$Total)
+``` 
