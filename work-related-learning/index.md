@@ -173,8 +173,10 @@ Total number of student on basics of grade.
 {"columns":[{"label":["NoOfStudent.Grade"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["NoOfStudent.n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"D","2":"1"},{"1":"C","2":"1"},{"1":"D-","2":"1"},{"1":"B+","2":"1"},{"1":"A-","2":"1"},{"1":"F","2":"2"},{"1":"B","2":"2"},{"1":"A","2":"3"},{"1":"C-","2":"5"},{"1":"C+","2":"6"},{"1":"B-","2":"8"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 </div>
+
 Bar graph showing total number of student on basics of grade 
 ![](index_files/figure-html/Java two bargraph showing student on basics of grade-1.png)<!-- -->
+
 Top 5 student of java programming one 
 <div data-pagedtable="false">
   <script data-pagedtable-source type="application/json">
@@ -196,3 +198,93 @@ Total number of student, summary and standard deviation
 ```
 ## [1] 18.49138
 ```
+
+## Java Web Programming 
+This section shows the information of java web programming 
+
+```
+##  [1] "Student.ID"             "Name"                   "Full.Marks"            
+##  [4] "Score"                  "Marks.Obtained..20.."   "Full.Marks.1"          
+##  [7] "Assignment.Score..20."  "Full.Marks.2"           "Group.Proj..Score..20."
+## [10] "Internal.Marks..60.."   "Full.Marks.3"           "Score.1"               
+## [13] "Marks.Obtained..40.."   "Total..100.."           "Grade.after.40..rule"  
+## [16] "Grade.Point"            "Remarks"
+```
+
+```
+##  [1] "Student.ID"                          
+##  [2] "Name"                                
+##  [3] "Mid.Term.Full.Marks"                 
+##  [4] "Mid.Term.Marks.Obtained"             
+##  [5] "Mid.Term.Twenty.Percent.Marks"       
+##  [6] "Individual.Assignment.Full.Marks"    
+##  [7] "Individual.Assignment.Marks.Obtained"
+##  [8] "Group.Assignment.Full.Marks"         
+##  [9] "Group.Assignment.Marks.Obtained"     
+## [10] "Internal.Marks"                      
+## [11] "Final.Exam.Full.Marks"               
+## [12] "Final.Exam.Marks.Obtained"           
+## [13] "Final.Exam.FortyPercent.Marks"       
+## [14] "Total"                               
+## [15] "Grade"                               
+## [16] "Grade.Point"                         
+## [17] "Remarks"
+```
+
+Since, we are grouping student on basiscs of grade we have to filter unique grade.
+
+```
+## [1] "B-" "B"  "B+" "A"  "A-" "C+" "F"
+```
+
+Total number of student on basics of grade. 
+
+```
+## 'data.frame':	34 obs. of  17 variables:
+##  $ Student.ID                          : int  1001749291 1001749046 1001749153 1001749154 1001749155 1001749156 1001749157 1001749158 1001749159 1001749071 ...
+##  $ Name                                : Factor w/ 34 levels "Aakash Maharjan",..: 1 2 3 4 5 6 7 8 9 10 ...
+##  $ Mid.Term.Full.Marks                 : int  50 50 50 50 50 50 50 50 50 50 ...
+##  $ Mid.Term.Marks.Obtained             : int  6 13 17 41 12 21 28 37 15 11 ...
+##  $ Mid.Term.Twenty.Percent.Marks       : int  2 5 7 16 5 8 11 15 6 4 ...
+##  $ Individual.Assignment.Full.Marks    : int  20 20 20 20 20 20 20 20 20 20 ...
+##  $ Individual.Assignment.Marks.Obtained: int  12 14 17 17 14 13 15 14 13 11 ...
+##  $ Group.Assignment.Full.Marks         : int  20 20 20 20 20 20 20 20 20 20 ...
+##  $ Group.Assignment.Marks.Obtained     : int  16 16 17 19 18 17 19 19 14 14 ...
+##  $ Internal.Marks                      : int  30 35 41 52 37 38 45 48 33 29 ...
+##  $ Final.Exam.Full.Marks               : int  100 100 100 100 100 100 100 100 100 100 ...
+##  $ Final.Exam.Marks.Obtained           : int  76 81 76 97 73 87 75 71 55 66 ...
+##  $ Final.Exam.FortyPercent.Marks       : int  30 32 30 39 29 35 30 28 22 26 ...
+##  $ Total                               : int  60 67 71 91 66 73 75 76 55 55 ...
+##  $ Grade                               : Factor w/ 7 levels "A","A-","B","B-",..: 4 3 5 1 3 5 2 2 6 6 ...
+##  $ Grade.Point                         : num  2.67 3 3.33 4 3 3.33 3.67 3.67 2.33 2.33 ...
+##  $ Remarks                             : Factor w/ 2 levels "","Abs (M), NS, Abs(F)": 1 1 1 1 1 1 1 1 1 1 ...
+```
+
+Bar graph showing total number of student on basics of grade 
+![](index_files/figure-html/Java web programming bargraph showing student on basics of grade-1.png)<!-- -->
+
+Top 5 student of java web programming
+<div data-pagedtable="false">
+  <script data-pagedtable-source type="application/json">
+{"columns":[{"label":["Name"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["Total"],"name":[2],"type":["int"],"align":["right"]},{"label":["Grade"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["Grade.Point"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"Amar Agarwal","2":"91","3":"A","4":"4"},{"1":"Faraz Ahmed Khan","2":"92","3":"A","4":"4"},{"1":"Khushi Shrestha","2":"82","3":"A","4":"4"},{"1":"Sanjiv Dangi","2":"91","3":"A","4":"4"},{"1":"Udaya Agrawal","2":"82","3":"A","4":"4"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+
+Total number of student, summary and standard deviation 
+
+```
+## [1] 34
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.00   61.25   70.50   64.71   74.75   92.00
+```
+
+```
+## [1] 22.2391
+```
+
+
+
+

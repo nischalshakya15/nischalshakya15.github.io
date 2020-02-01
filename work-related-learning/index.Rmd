@@ -142,6 +142,7 @@ javaTwoCountDf <- sortInAscendingOrder(javaTwoCountDf, javaTwoCountDf$NoOfStuden
 
 paged_table(javaTwoCountDf)
 ```
+
 Bar graph showing total number of student on basics of grade 
 ```{r Java two bargraph showing student on basics of grade, echo = FALSE} 
 plotBarGraph(df = javaTwoCountDf, x = javaTwoCountDf$NoOfStudent.Grade, 
@@ -149,12 +150,12 @@ plotBarGraph(df = javaTwoCountDf, x = javaTwoCountDf$NoOfStudent.Grade,
              title = 'No of student on basics of grade',
              xlab = 'Grade', ylab = 'Total No of Student')
 ```
+
 Top 5 student of java programming one 
 ```{r Java two top 5 student, echo = FALSE} 
 javaTwoTopFive <- findTopTen(javaTwoDf, javaTwoDf$Grade.Point, top = 5)
 javaTwoTopFive <- sortInAscendingOrder(javaTwoTopFive, javaTwoTopFive$Grade.Point)
 paged_table(javaTwoTopFive %>% select(Name, Total, Grade, Grade.Point))
-
 ```
 
 Total number of student, summary and standard deviation 
@@ -164,3 +165,70 @@ print(totalStudentInJavaTwo)
 summary(javaTwoDf$Total)
 sd(javaTwoDf$Total)
 ``` 
+
+## Java Web Programming 
+This section shows the information of java web programming 
+```{r Analysis of Java web programming, echo=FALSE}
+colnames(javaWebDf)
+
+javaWebDf <- javaWebDf %>% rename(
+             Mid.Term.Full.Marks = Full.Marks, Mid.Term.Marks.Obtained = Score, Mid.Term.Twenty.Percent.Marks = Marks.Obtained..20..,
+             Individual.Assignment.Full.Marks = Full.Marks.1, Individual.Assignment.Marks.Obtained = Assignment.Score..20.,  
+             Group.Assignment.Full.Marks = Full.Marks.2, Group.Assignment.Marks.Obtained = Group.Proj..Score..20.,
+             Internal.Marks = Internal.Marks..60..,
+             Final.Exam.Full.Marks = Full.Marks.3, Final.Exam.Marks.Obtained = Score.1, Final.Exam.FortyPercent.Marks=Marks.Obtained..40..,
+             Total = Total..100.., 
+             Grade = Grade.after.40..rule
+)
+
+colnames(javaWebDf)
+
+```
+
+Since, we are grouping student on basiscs of grade we have to filter unique grade.
+```{r Unique grades of Java web programming, echo=FALSE}
+uniqueGradeJavaWeb <- getUniqueAttribute(javaWebDf$Grade)
+print(uniqueGradeJavaWeb)
+```
+
+Total number of student on basics of grade. 
+``` {r Java web total number of student on basics of grade, echo = FALSE}
+javaWebCountDf <- data.frame()
+
+str(javaWebDf)
+
+for (u in uniqueGradeJavaWeb) {
+  javaWebCountDf <- rbind(javaWebCountDf, 
+                          data.frame(
+                            NoOfStudent = javaWebDf %>% filter(Grade == u) %>% count(Grade)
+                          ))
+}
+javaWebCountDf <- sortInAscendingOrder(javaWebCountDf, javaWebCountDf$NoOfStudent.n)
+```
+
+Bar graph showing total number of student on basics of grade 
+```{r Java web programming bargraph showing student on basics of grade, echo = FALSE} 
+plotBarGraph(df = javaWebCountDf, x = javaWebCountDf$NoOfStudent.Grade, 
+             y = javaWebCountDf$NoOfStudent.n, label = javaWebCountDf$NoOfStudent.n, 
+             title = 'No of student on basics of grade',
+             xlab = 'Grade', ylab = 'Total No of Student')
+```
+
+Top 5 student of java web programming
+```{r Java web programming top 5 student, echo = FALSE} 
+javaWebTopFive <- findTopTen(javaWebDf, javaWebDf$Grade.Point, top = 5)
+javaWebTopFive <- sortInAscendingOrder(javaWebTopFive, javaWebTopFive$Grade.Point)
+paged_table(javaWebTopFive %>% select(Name, Total, Grade, Grade.Point))
+```
+
+Total number of student, summary and standard deviation 
+```{r Java web programming summary, echo = FALSE} 
+totalStudentInJavaWeb <- javaWebCountDf %>% select(NoOfStudent.n) %>% sum()
+print(totalStudentInJavaWeb)
+summary(javaWebDf$Total)
+sd(javaWebDf$Total)
+``` 
+
+
+
+
