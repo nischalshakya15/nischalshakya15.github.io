@@ -19,7 +19,7 @@ javaOneDfCount <- data.frame()
 for (g in uniqueGrades) {
   javaOneDfCount = rbind(javaOneDfCount, 
                          data.frame(
-                           df %>% filter(Grade == g) %>% count(Grade)
+                          countGrade(df, g)
                          ))
 }
 

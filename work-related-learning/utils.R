@@ -2,6 +2,13 @@ getUnique <- function(columnName) {
   return (c(as.character(unique(columnName))))
 }
 
+countGrade <- function(df, value) {
+  return (
+    df %>% filter(Grade == value) %>% count(Grade)  
+  )
+  
+}
+
 sortInAscendingOrder <- function(df, columnName) {
   return (df %>% arrange(columnName))
 }
