@@ -1,4 +1,4 @@
-getUniqueAttribute <- function(columnName) {
+getUnique <- function(columnName) {
   return (c(as.character(unique(columnName))))
 }
 
@@ -6,7 +6,7 @@ sortInAscendingOrder <- function(df, columnName) {
   return (df %>% arrange(columnName))
 }
 
-findTopTen <- function (df, columnName, top = 10) {
+findTop <- function (df, columnName, top = 10) {
   return (df %>% top_n(top, columnName))
 }
 
@@ -19,6 +19,14 @@ plotBarGraph <- function(df, x, y, label, title, xlab, ylab) {
              labs(title = title) + 
              xlab(xlab) + 
              ylab(ylab)
+}
+
+mutateRange <- function(df, columnName) {
+  return (df %>% mutate(Range = case_when(columnName < 40 ~ 'Very Low',
+                                          columnName > 40 & columnName < 60 ~ 'Low',
+                                          columnName >= 60 & columnName < 80 ~ 'High',
+                                          columnName >= 80 & columnName< 95 ~ 'Very High'))
+          )
 }
 
 plotJitter <- function(df, x, y, pch){
