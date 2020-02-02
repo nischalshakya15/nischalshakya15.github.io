@@ -20,3 +20,9 @@ plotBarGraph <- function(df, x, y, label, title, xlab, ylab) {
              xlab(xlab) + 
              ylab(ylab)
 }
+
+plotJitter <- function(df, x, y, pch){
+  plot(jitter(x) ~ jitter(y),
+       data = df,
+       pch=as.character(pch))
+}
