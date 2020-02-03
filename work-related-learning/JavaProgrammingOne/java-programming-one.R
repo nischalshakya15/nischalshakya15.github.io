@@ -79,7 +79,7 @@ stackBar(javaOneRangeWiseBarChartDf, x = 'Range', y = 'NoOfStudent',
          label = 'NoOfStudent', xlab = 'Range', ylab = 'No of student')
 
 
-topFiveStudents <- findTop(df, df$Grade.Point, top = 5)
+topFiveStudents <- findTop(df, df$Grade.Point, top = 4)
 
 topFiveStudents <- sortInAscendingOrder(topFiveStudents, topFiveStudents$Grade.Point) 
 
@@ -87,6 +87,18 @@ topFiveStudents <- topFiveStudents %>% select(Name, Gender, Assignment.Marks.Obt
                                      Mid.Term.Fifteen.Percent.Marks.Obtained,
                                      Lab.Test.Fifteen.Percent.Marks.Obtained,
                                      Internal.Marks, Final.Exam.Forty.Percent.Marks, Total, Grade, Range)
+
+topFourVeryGoodStudent <- df %>% filter(Range == 'Very Good') %>% top_n(4, Total)
+print(topFourVeryGoodStudent)
+
+topFourGoodStudent <- df %>% filter(Range == 'Good') %>% top_n(4, Total)
+print(topFourGoodStudent)
+
+topFourStatisfactoryStudent <- df %>% filter(Range == 'Statisfactory') %>% top_n(4, Total)
+print(topFourStatisfactoryStudent)
+
+
+
 
 
 

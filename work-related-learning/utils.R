@@ -22,6 +22,10 @@ findTop <- function (df, columnName, top = 10) {
   return (df %>% top_n(top, columnName))
 }
 
+findTopStudent <- function(df, value, columnName){
+  return (df %>% filter(df$Range == as.character(value)) %>% top_n(4, columnName))
+}
+
 plotBarGraph <- function(df, x, y, label, title, xlab, ylab) {
   ggplot(df, 
          aes(x = x, 
