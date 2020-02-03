@@ -33,11 +33,18 @@ plotBarGraph <- function(df, x, y, label, title, xlab, ylab) {
              ylab(ylab)
 }
 
+ggBarGraph <- function(df, x, y, label, xlab, ylab) {
+  ggbarplot(df, x = x, y = y, label = label,
+            fill = x, color = x, palette = "jco") +
+            xlab(xlab) + 
+            ylab(ylab)
+}
+
 mutateRange <- function(df, columnName) {
-  return (df %>% mutate(Range = case_when(columnName < 40 ~ 'Very Low',
-                                          columnName > 40 & columnName < 60 ~ 'Low',
-                                          columnName >= 60 & columnName < 80 ~ 'High',
-                                          columnName >= 80 & columnName< 95 ~ 'Very High'))
+  return (df %>% mutate(Range = case_when(columnName < 40 ~ 'Statisfactory',
+                                          columnName > 40 & columnName < 60 ~ 'Good',
+                                          columnName >= 60 & columnName < 80 ~ 'Very Good',
+                                          columnName >= 80 & columnName< 95 ~ 'Excellent'))
           )
 }
 
