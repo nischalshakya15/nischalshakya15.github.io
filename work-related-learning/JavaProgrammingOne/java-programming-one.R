@@ -32,9 +32,11 @@ plotBarGraph(df = javaOneDfCount, x = javaOneDfCount$Grade,
              title = 'No of student on basics of grade',
              xlab = 'Grade', ylab = 'Total No of Student')
 
+ranges <- getUnique(df$Range)
+
 javaOneRangeWiseDf <- data.frame()
 
-for (r in getUnique(df$Range)) {
+for (r in ranges) {
   javaOneRangeWiseDf <- rbind(javaOneRangeWiseDf,
                               data.frame(
                                 getCountRange(df, r)
@@ -43,9 +45,13 @@ for (r in getUnique(df$Range)) {
 
 javaOneRangeWiseDf <- sortInAscendingOrder(javaOneRangeWiseDf, javaOneRangeWiseDf$n)
 
+ggBarGraph(df = javaOneRangeWiseDf, x = 'Range', y  = 'n', label = 'n', xlab = 'Range', ylab = 'Total no of student')
+
 javaOneRangeWiseGenderDf <- data.frame()
 
-for (r in getUnique(df$Range)) {
+javaOneRangeWiseBarChartDf <- data.frame()
+
+for (r in ranges) {
   filter <- df %>% filter(Range == r)
   javaOneRangeWiseGenderDf <- rbind(javaOneRangeWiseGenderDf,
                                     data.frame(
@@ -53,14 +59,29 @@ for (r in getUnique(df$Range)) {
                                       Male = filter %>% filter(Gender == 'M') %>% count(Gender),
                                       Female = filter %>% filter(Gender == 'F') %>% count(Gender)
                                     ))
-  
 }
 
 javaOneRangeWiseGenderDf <- javaOneRangeWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
 
-print(javaOneRangeWiseGenderDf)
+for (r in ranges) {
+  filter <- javaOneRangeWiseGenderDf %>% filter(Range == r) 
+  javaOneRangeWiseBarChartDf  <- rbind(javaOneRangeWiseBarChartDf,
+                                       data.frame(
+                                         Range = c(rep(r, 2)),
+                                         Gender = c(rep('Male', 1), rep('Female', 1)),
+                                         NoOfStudent = c(filter$Male.n, filter$Female.n)
+                                       ))
+}
 
-ggBarGraph(df = javaOneRangeWiseDf, x = 'Range', y  = 'n', label = 'n', xlab = 'Range', ylab = 'Total no of student')
+print(javaOneRangeWiseBarChartDf)
+
+ggbarplot(javaOneRangeWiseBarChartDf, x = "Range", y = "NoOfStudent",
+          fill = "Grade", color = "Grade", width = 0.3,
+          palette = 'jco',
+          label = TRUE, lab.col = "white", lab.pos = 'in')
+
+
+
 
 
 

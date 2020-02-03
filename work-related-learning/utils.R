@@ -34,10 +34,8 @@ plotBarGraph <- function(df, x, y, label, title, xlab, ylab) {
 }
 
 ggBarGraph <- function(df, x, y, label, xlab, ylab) {
-  ggbarplot(df, x = x, y = y, label = label,
-            fill = x, color = x, palette = "jco") +
-            xlab(xlab) + 
-            ylab(ylab)
+  ggbarplot(df, x = x, y = y, label = label, width = 0.3,
+            fill = x, color = x, palette = "jco", xlab = xlab, ylab = ylab)
 }
 
 mutateRange <- function(df, columnName) {
