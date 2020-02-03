@@ -45,7 +45,7 @@ for (r in ranges) {
 
 javaOneRangeWiseDf <- sortInAscendingOrder(javaOneRangeWiseDf, javaOneRangeWiseDf$n)
 
-ggBarGraph(df = javaOneRangeWiseDf, x = 'Range', y  = 'n', label = 'n', xlab = 'Range', ylab = 'Total no of student')
+ggBarGraph(df = javaOneRangeWiseDf, x = 'Range', y  = 'n', label = 'n', xlab = 'Range', ylab = 'Number of student')
 
 javaOneRangeWiseGenderDf <- data.frame()
 
@@ -75,13 +75,6 @@ for (r in ranges) {
 
 print(javaOneRangeWiseBarChartDf)
 
-ggbarplot(javaOneRangeWiseBarChartDf, x = "Range", y = "NoOfStudent",
-          fill = "Grade", color = "Grade", width = 0.3,
-          palette = 'jco',
-          label = TRUE, lab.col = "white", lab.pos = 'in')
-
-
-
-
-
-
+stackBar(javaOneRangeWiseBarChartDf, x = 'Range', y = 'NoOfStudent',
+         fill = 'Gender', color = 'Gender', palette = 'uchiago',
+         label = 'NoOfStudent', xlab = 'Range', ylab = 'No of student')

@@ -38,6 +38,16 @@ ggBarGraph <- function(df, x, y, label, xlab, ylab) {
             fill = x, color = x, palette = "jco", xlab = xlab, ylab = ylab)
 }
 
+stackBar <- function(df, x, y, fill, color, label, xlab, ylab, palette){
+  ggbarplot(df, x = x, y = y,
+            fill = fill, color = color, width = 0.6,
+            palette = palette,
+            label = label,
+            position = position_dodge(0.7),
+            xlab = xlab,
+            ylab = ylab)
+}
+
 mutateRange <- function(df, columnName) {
   return (df %>% mutate(Range = case_when(columnName < 40 ~ 'Statisfactory',
                                           columnName > 40 & columnName < 60 ~ 'Good',
