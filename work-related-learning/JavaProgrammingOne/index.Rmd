@@ -1,0 +1,181 @@
+---
+title: "java-programming-one"
+author: "Nischal Shakya"
+date: "2/3/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+remove(list = ls())
+
+getUnique <- function(columnName) {
+  return (c(as.character(unique(columnName))))
+}
+
+countGrade <- function(df, value) {
+  return (
+    df %>% filter(Grade == value) %>% count(Grade)  
+  )
+}
+
+getCountRank <- function(df, value){
+  return (
+    df %>% filter(Rank == value) %>% count(Rank)  
+  )
+}
+
+mutateRank <- function(df, columnName) {
+  return (df %>% mutate(Rank = case_when(columnName < 40 ~ 'Statisfactory',
+                                          columnName > 40 & columnName < 60 ~ 'Good',
+                                          columnName >= 60 & columnName < 80 ~ 'Very Good',
+                                          columnName >= 80 & columnName< 95 ~ 'Excellent'))
+  )
+}
+
+sortInAscendingOrder <- function(df, columnName) {
+  return (df %>% arrange(columnName))
+}
+
+findTop <- function (df, columnName, top = 10) {
+  return (df %>% top_n(top, columnName))
+}
+
+findTopStudent <- function(df, value, columnName){
+  return (df %>% filter(df$Rank == as.character(value)) %>% top_n(4, columnName))
+}
+
+plotBarGraph <- function(df, x, y, label, xlab, ylab) {
+  ggbarplot(df, x = x, y = y, label = label, width = 0.3,
+            fill = x, color = x, palette = "jco", xlab = xlab, ylab = ylab)
+}
+
+plotStackBar <- function(df, x, y, fill, color, label, xlab, ylab, palette){
+  ggbarplot(df, x = x, y = y,
+            fill = fill, color = color, width = 0.6,
+            palette = palette,
+            label = label,
+            position = position_dodge(0.7),
+            xlab = xlab,
+            ylab = ylab)
+}
+
+plotJitter <- function(df, x, y, pch){
+  plot(jitter(x) ~ jitter(y),
+       data = df,
+       pch=as.character(pch))
+}
+
+library('dplyr')
+library('ggplot2')
+library('ggpubr')
+library('rmarkdown')
+
+setwd('/home/nischal/nischalshakya15.github.io/work-related-learning')
+
+df <- read.csv('data-sets/re-modified/JavaProgrammingOne.csv')
+```
+
+## Data analysis of Java Programming One
+Let's know what kind of data we are dealing with before hand so that we can get insight of variables used in dataset.
+```{r General summary of data}
+str(df)
+```
+
+## Student on basics of Grade
+In dataframe, the variables Grade holds the chr of [A, A+, B+, B, B-, C+, C, C-, D, F]. So, i am certain that we can categorize the number of student on basis of grade. 
+
+```{r Student on basics of Grade, echo=FALSE}
+uniqueGrades <- getUnique(df$Grade)
+javaOneDfCount <- data.frame()
+
+for (g in uniqueGrades) {
+  javaOneDfCount = rbind(javaOneDfCount, 
+                         data.frame(
+                          countGrade(df, g)
+                         ))
+}
+
+javaOneDfCount <- sortInAscendingOrder(javaOneDfCount, javaOneDfCount$n)
+
+plotBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
+           label = 'n', xlab = 'Grade', ylab = 'Number of Student')
+```
+
+With reference to above bar chart we can see that Grade doesn't have much more difference between them. So, what we can do is to merge Grade into Excellent, Very Good, Good and Statisfactory. We can divide Grade A falls under Excellent category, B falls under Very Good category, C falls into Good category and D,F falls into statisfactory category. We can acheive that by adding the new column called Range in existing data frame.
+
+```{r Student on basics of rank, echo = FALSE}
+df <- mutateRank(df, df$Total)
+ranks <- getUnique(df$Rank)
+javaOneRankWiseDf <- data.frame()
+
+for (r in ranks) {
+  javaOneRankWiseDf <- rbind(javaOneRankWiseDf,
+                              data.frame(
+                                getCountRank(df, r)
+                              ))
+}
+
+javaOneRankWiseDf <- sortInAscendingOrder(javaOneRankWiseDf, javaOneRankWiseDf$n)
+
+plotBarGraph(df = javaOneRankWiseDf, x = 'Rank', y  = 'n', label = 'n', xlab = 'Rank', ylab = 'Number of student')
+```
+
+From above barchart, we can see with help of Rank we can generalize data for further analysis. 
+
+For further analysis, we can seperate the student on basics of gender with respect to Rank.
+```{r Student on basics of Gender with respect to Rank, echo = FALSE, warning = FALSE}
+javaOneRankWiseGenderDf <- data.frame()
+
+javaOneRankWiseBarChartDf <- data.frame()
+
+for (r in ranks) {
+  filter <- df %>% filter(Rank == r)
+  javaOneRankWiseGenderDf <- rbind(javaOneRankWiseGenderDf,
+                                    data.frame(
+                                      Rank = r,
+                                      Male = filter %>% filter(Gender == 'M') %>% count(Gender),
+                                      Female = filter %>% filter(Gender == 'F') %>% count(Gender)
+                                    ))
+}
+
+javaOneRankWiseGenderDf <- javaOneRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
+
+for (r in ranks) {
+  filter <- javaOneRankWiseGenderDf %>% filter(Rank == r) 
+  javaOneRankWiseBarChartDf  <- rbind(javaOneRankWiseBarChartDf,
+                                       data.frame(
+                                         Rank = c(rep(r, 2)),
+                                         Gender = c(rep('Male', 1), rep('Female', 1)),
+                                         NoOfStudent = c(filter$Male.n, filter$Female.n)
+                                       ))
+}
+
+plotStackBar(javaOneRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
+         fill = 'Gender', color = 'Gender', palette = 'uchiago',
+         label = 'NoOfStudent', xlab = 'Rank', ylab = 'No of student')
+```
+
+We further categorize the student on basics of grade with respect to rank. Since, we have Male as well as Female student in Rank we can take the top two student from each rank one from Male category and another is from Female category.
+
+``` {r Top two student on basics of Rank with respect to Gender, echo = FALSE}
+twoExcellentStudent <- df %>% filter(Rank == 'Excellent') %>% top_n(2, Total)
+
+twoVeryGoodStudent <- bind_rows(df %>% filter(Rank == 'Very Good' & Gender == 'M') %>% top_n(1, Total),
+                                df %>% filter(Rank == 'Very Good' & Gender == 'F') %>% top_n(1, Total)
+                                ) 
+
+twoGoodStudent <- bind_rows(df %>% filter(Rank == 'Good' & Gender == 'M') %>% top_n(1, Total),
+                            df %>% filter(Rank == 'Good' & Gender == 'F') %>% top_n(1, Total))
+
+twoStatisfactoryStudent <- bind_rows(df %>% filter(Rank == 'Statisfactory' & Gender == 'M') %>% top_n(1, Total),
+                                     df %>% filter(Rank == 'Statisfactory' & Gender == 'F') %>% top_n(1, Total))
+
+general <- bind_rows(twoExcellentStudent, twoVeryGoodStudent, twoGoodStudent, twoStatisfactoryStudent)
+
+general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Fifteen.Percent.Marks.Obtained, Lab.Test.Fifteen.Percent.Marks.Obtained, Final.Exam.Forty.Percent.Marks, Total)
+
+paged_table(general)
+
+```

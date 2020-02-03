@@ -21,84 +21,72 @@ javaOneDfCount <- data.frame()
 for (g in uniqueGrades) {
   javaOneDfCount = rbind(javaOneDfCount, 
                          data.frame(
-                          countGrade(df, g)
+                           countGrade(df, g)
                          ))
 }
 
-ggBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
-           label = 'n', xlab = 'Grade', ylab = 'Number of Student')
-
 javaOneDfCount <- sortInAscendingOrder(javaOneDfCount, javaOneDfCount$n)
 
-ggBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
-           label = 'n', xlab = 'Grade', ylab = 'Number of Student')
+plotBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
+             label = 'n', xlab = 'Grade', ylab = 'Number of Student')
 
-ranges <- getUnique(df$Range)
+df <- mutateRank(df, df$Total)
+ranks <- getUnique(df$Rank)
+javaOneRankWiseDf <- data.frame()
 
-javaOneRangeWiseDf <- data.frame()
-
-for (r in ranges) {
-  javaOneRangeWiseDf <- rbind(javaOneRangeWiseDf,
-                              data.frame(
-                                getCountRange(df, r)
-                              ))
+for (r in ranks) {
+  javaOneRankWiseDf <- rbind(javaOneRankWiseDf,
+                             data.frame(
+                               getCountRank(df, r)
+                             ))
 }
 
-javaOneRangeWiseDf <- sortInAscendingOrder(javaOneRangeWiseDf, javaOneRangeWiseDf$n)
+javaOneRankWiseDf <- sortInAscendingOrder(javaOneRankWiseDf, javaOneRankWiseDf$n)
 
-ggBarGraph(df = javaOneRangeWiseDf, x = 'Range', y  = 'n', label = 'n', xlab = 'Range', ylab = 'Number of student')
+plotBarGraph(df = javaOneRankWiseDf, x = 'Rank', y  = 'n', label = 'n', xlab = 'Rank', ylab = 'Number of student')
+javaOneRankWiseGenderDf <- data.frame()
 
-javaOneRangeWiseGenderDf <- data.frame()
+javaOneRankWiseBarChartDf <- data.frame()
 
-javaOneRangeWiseBarChartDf <- data.frame()
-
-for (r in ranges) {
-  filter <- df %>% filter(Range == r)
-  javaOneRangeWiseGenderDf <- rbind(javaOneRangeWiseGenderDf,
-                                    data.frame(
-                                      Range = r,
-                                      Male = filter %>% filter(Gender == 'M') %>% count(Gender),
-                                      Female = filter %>% filter(Gender == 'F') %>% count(Gender)
-                                    ))
+for (r in ranks) {
+  filter <- df %>% filter(Rank == r)
+  javaOneRankWiseGenderDf <- rbind(javaOneRankWiseGenderDf,
+                                   data.frame(
+                                     Rank = r,
+                                     Male = filter %>% filter(Gender == 'M') %>% count(Gender),
+                                     Female = filter %>% filter(Gender == 'F') %>% count(Gender)
+                                   ))
 }
 
-javaOneRangeWiseGenderDf <- javaOneRangeWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
+javaOneRankWiseGenderDf <- javaOneRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
 
-for (r in ranges) {
-  filter <- javaOneRangeWiseGenderDf %>% filter(Range == r) 
-  javaOneRangeWiseBarChartDf  <- rbind(javaOneRangeWiseBarChartDf,
-                                       data.frame(
-                                         Range = c(rep(r, 2)),
-                                         Gender = c(rep('Male', 1), rep('Female', 1)),
-                                         NoOfStudent = c(filter$Male.n, filter$Female.n)
-                                       ))
+for (r in ranks) {
+  filter <- javaOneRankWiseGenderDf %>% filter(Rank == r) 
+  javaOneRankWiseBarChartDf  <- rbind(javaOneRankWiseBarChartDf,
+                                      data.frame(
+                                        Rank = c(rep(r, 2)),
+                                        Gender = c(rep('Male', 1), rep('Female', 1)),
+                                        NoOfStudent = c(filter$Male.n, filter$Female.n)
+                                      ))
 }
 
-stackBar(javaOneRangeWiseBarChartDf, x = 'Range', y = 'NoOfStudent',
-         fill = 'Gender', color = 'Gender', palette = 'uchiago',
-         label = 'NoOfStudent', xlab = 'Range', ylab = 'No of student')
+plotStackBar(javaOneRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
+             fill = 'Gender', color = 'Gender', palette = 'uchiago',
+             label = 'NoOfStudent', xlab = 'Rank', ylab = 'No of student')
 
 
-topFiveStudents <- findTop(df, df$Grade.Point, top = 4)
+twoExcellentStudent <- df %>% filter(Rank == 'Excellent') %>% top_n(2, Total)
 
-topFiveStudents <- sortInAscendingOrder(topFiveStudents, topFiveStudents$Grade.Point) 
+twoVeryGoodStudent <- bind_rows(df %>% filter(Rank == 'Very Good' & Gender == 'M') %>% top_n(1, Total),
+                                df %>% filter(Rank == 'Very Good' & Gender == 'F') %>% top_n(1, Total)
+) 
 
-topFiveStudents <- topFiveStudents %>% select(Name, Gender, Assignment.Marks.Obtained, 
-                                     Mid.Term.Fifteen.Percent.Marks.Obtained,
-                                     Lab.Test.Fifteen.Percent.Marks.Obtained,
-                                     Internal.Marks, Final.Exam.Forty.Percent.Marks, Total, Grade, Range)
+twoGoodStudent <- bind_rows(df %>% filter(Rank == 'Good' & Gender == 'M') %>% top_n(1, Total),
+                            df %>% filter(Rank == 'Good' & Gender == 'F') %>% top_n(1, Total))
 
-topFourVeryGoodStudent <- df %>% filter(Range == 'Very Good') %>% top_n(4, Total)
-print(topFourVeryGoodStudent)
+twoStatisfactoryStudent <- bind_rows(df %>% filter(Rank == 'Statisfactory' & Gender == 'M') %>% top_n(1, Total),
+                                     df %>% filter(Rank == 'Statisfactory' & Gender == 'F') %>% top_n(1, Total))
 
-topFourGoodStudent <- df %>% filter(Range == 'Good') %>% top_n(4, Total)
-print(topFourGoodStudent)
+general <- bind_rows(twoExcellentStudent, twoVeryGoodStudent, twoGoodStudent, twoStatisfactoryStudent)
 
-topFourStatisfactoryStudent <- df %>% filter(Range == 'Statisfactory') %>% top_n(4, Total)
-print(topFourStatisfactoryStudent)
-
-
-
-
-
-
+general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Fifteen.Percent.Marks.Obtained, Lab.Test.Fifteen.Percent.Marks.Obtained, Final.Exam.Forty.Percent.Marks, Total)
