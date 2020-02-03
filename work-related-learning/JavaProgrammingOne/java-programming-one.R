@@ -30,3 +30,13 @@ plotBarGraph(df = javaOneDfCount, x = javaOneDfCount$Grade,
              title = 'No of student on basics of grade',
              xlab = 'Grade', ylab = 'Total No of Student')
 
+javaOneRangeWiseDf <- data.frame()
+
+for (r in getUnique(df$Range)) {
+  javaOneRangeWiseDf <- rbind(javaOneRangeWiseDf,
+                              data.frame(
+                                getCountRange(df, r)
+                              ))
+}
+
+javaOneRangeWiseDf <- sortInAscendingOrder(javaOneRangeWiseDf, javaOneRangeWiseDf$n)

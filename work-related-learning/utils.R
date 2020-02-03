@@ -6,7 +6,12 @@ countGrade <- function(df, value) {
   return (
     df %>% filter(Grade == value) %>% count(Grade)  
   )
-  
+}
+
+getCountRange <- function(df, value){
+  return (
+    df %>% filter(Range == value) %>% count(Range)  
+  )
 }
 
 sortInAscendingOrder <- function(df, columnName) {
