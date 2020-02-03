@@ -25,12 +25,13 @@ for (g in uniqueGrades) {
                          ))
 }
 
+ggBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
+           label = 'n', xlab = 'Grade', ylab = 'Number of Student')
+
 javaOneDfCount <- sortInAscendingOrder(javaOneDfCount, javaOneDfCount$n)
 
-plotBarGraph(df = javaOneDfCount, x = javaOneDfCount$Grade, 
-             y = javaOneDfCount$n, label = javaOneDfCount$n, 
-             title = 'No of student on basics of grade',
-             xlab = 'Grade', ylab = 'Total No of Student')
+ggBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
+           label = 'n', xlab = 'Grade', ylab = 'Number of Student')
 
 ranges <- getUnique(df$Range)
 
@@ -73,8 +74,19 @@ for (r in ranges) {
                                        ))
 }
 
-print(javaOneRangeWiseBarChartDf)
-
 stackBar(javaOneRangeWiseBarChartDf, x = 'Range', y = 'NoOfStudent',
          fill = 'Gender', color = 'Gender', palette = 'uchiago',
          label = 'NoOfStudent', xlab = 'Range', ylab = 'No of student')
+
+
+topFiveStudents <- findTop(df, df$Grade.Point, top = 5)
+
+topFiveStudents <- sortInAscendingOrder(topFiveStudents, topFiveStudents$Grade.Point) 
+
+topFiveStudents <- topFiveStudents %>% select(Name, Gender, Assignment.Marks.Obtained, 
+                                     Mid.Term.Fifteen.Percent.Marks.Obtained,
+                                     Lab.Test.Fifteen.Percent.Marks.Obtained,
+                                     Internal.Marks, Final.Exam.Forty.Percent.Marks, Total, Grade, Range)
+
+
+
