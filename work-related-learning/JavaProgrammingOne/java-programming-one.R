@@ -6,6 +6,12 @@ library('ggplot2')
 
 library('ggpubr')
 
+library('fpc')
+
+library('psych')
+
+library('cluster')
+
 source('./utils.R')
 
 setwd('/home/nischal/nischalshakya15.github.io/work-related-learning')
@@ -90,3 +96,41 @@ twoStatisfactoryStudent <- bind_rows(df %>% filter(Rank == 'Statisfactory' & Gen
 general <- bind_rows(twoExcellentStudent, twoVeryGoodStudent, twoGoodStudent, twoStatisfactoryStudent)
 
 general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Fifteen.Percent.Marks.Obtained, Lab.Test.Fifteen.Percent.Marks.Obtained, Final.Exam.Forty.Percent.Marks, Total, Rank)
+
+
+df.cluster <- df %>% select(Name,Total,Rank)
+
+df.cluster <- convertRankIntoNumber(df.cluster, df.cluster$Total)
+
+headTail(df.cluster)
+
+plotJitter(df = df.cluster, x = df.cluster$Total, y = df.cluster$Rank, pch = df.cluster$Name)
+
+dfCluser.num <- df.cluster[c('Total', 'Rank')]
+
+pamk <- pamk(dfCluser.num, krange = 2:5, metric = 'manhattan')
+plot(pamk$crit)
+lines(pamk$crit)
+
+pam <- pam(x = dfCluser.num, k = 6, metric = 'manhattan')
+
+pam.clust <- rep('NA', length(df.cluster$Total))
+
+pam.clust[pam$clustering == 1] = 'Cluster 1'
+pam.clust[pam$clustering == 2] = 'Cluster 2'
+pam.clust[pam$clustering == 3] = 'Cluster 3'
+pam.clust[pam$clustering == 4] = 'Cluster 4'
+pam.clust[pam$clustering == 5] = 'Cluster 5'
+pam.clust[pam$clustering == 6] = 'Cluster 6'
+
+df.cluster$Cluster <- pam.clust
+
+df.cluster$Cluster <- factor(df.cluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
+
+ggplot(df.cluster,
+       aes(x     = df.cluster$Rank,
+           y     = df.cluster$Total,
+           color = Cluster)) +
+  geom_point(size=3) +
+  geom_jitter(width = 0.4, height = 0.4) +
+  theme_bw()

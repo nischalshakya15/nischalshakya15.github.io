@@ -22,6 +22,14 @@ mutateRank <- function(df, columnName) {
   )
 }
 
+convertRankIntoNumber <- function(df, columnName) {
+  return (df %>% mutate(Rank = case_when(columnName < 40 ~ 4,
+                                         columnName > 40 & columnName < 60 ~ 3,
+                                         columnName >= 60 & columnName < 80 ~ 2,
+                                         columnName >= 80 & columnName< 95 ~ 1))
+  )
+}
+
 sortInAscendingOrder <- function(df, columnName) {
   return (df %>% arrange(columnName))
 }
