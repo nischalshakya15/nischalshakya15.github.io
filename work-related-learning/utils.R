@@ -8,9 +8,9 @@ countGrade <- function(df, value) {
   )
 }
 
-getCountRanK <- function(df, value){
+getCountRank <- function(df, value){
   return (
-    df %>% filter(RanK == value) %>% count(Range)  
+    df %>% filter(Rank == value) %>% count(Rank)  
   )
 }
 
