@@ -132,5 +132,7 @@ ggplot(df.cluster,
            y     = df.cluster$Total,
            color = Cluster)) +
   geom_point(size=3) +
+  xlab('Rank') + 
+  ylab('Total') +
   geom_jitter(width = 0.4, height = 0.4) +
   theme_bw()
