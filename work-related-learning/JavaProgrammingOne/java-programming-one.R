@@ -12,20 +12,20 @@ library('psych')
 
 library('cluster')
 
-source('./utils.R')
+source('utils.R')
 
-setwd('/home/nischal/nischalshakya15.github.io/work-related-learning')
+setwd('/home/nischal/repository/personal/R/nischalshakya15.github.io/work-related-learning')
 
 df <- read.csv('data-sets/re-modified/JavaProgrammingOne.csv')
 
-df <- mutateRange(df, df$Total)
+df <-mutateRank(df, df$Total)
 
 uniqueGrades <- getUnique(df$Grade)
 
 javaOneDfCount <- data.frame()
 
 for (g in uniqueGrades) {
-  javaOneDfCount = rbind(javaOneDfCount, 
+  javaOneDfCount <- rbind(javaOneDfCount,
                          data.frame(
                            countGrade(df, g)
                          ))
@@ -34,7 +34,7 @@ for (g in uniqueGrades) {
 javaOneDfCount <- sortInAscendingOrder(javaOneDfCount, javaOneDfCount$n)
 
 plotBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
-             label = 'n', xlab = 'Grade', ylab = 'Number of Student')
+             label = javaOneDfCount$n, xlab = 'Grade', ylab = 'Number of Student')
 
 df <- mutateRank(df, df$Total)
 ranks <- getUnique(df$Rank)
@@ -49,28 +49,29 @@ for (r in ranks) {
 
 javaOneRankWiseDf <- sortInAscendingOrder(javaOneRankWiseDf, javaOneRankWiseDf$n)
 
-plotBarGraph(df = javaOneRankWiseDf, x = 'Rank', y  = 'n', label = 'n', xlab = 'Rank', ylab = 'Number of student')
+plotBarGraph(df = javaOneRankWiseDf, x = 'Rank', y  = 'n', label = javaOneRankWiseDf$n, xlab = 'Rank', ylab = 'Number of student')
+
 javaOneRankWiseGenderDf <- data.frame()
 
 javaOneRankWiseBarChartDf <- data.frame()
 
 for (r in ranks) {
-  filter <- df %>% filter(Rank == r)
+  rankFilter <- df %>% filter(Rank == r)
+  print(rankFilter$Gender)
   javaOneRankWiseGenderDf <- rbind(javaOneRankWiseGenderDf,
                                    data.frame(
                                      Rank = r,
-                                     Male = filter %>% filter(Gender == 'M') %>% count(Gender),
-                                     Female = filter %>% filter(Gender == 'F') %>% count(Gender)
+                                     Male = rankFilter %>% filter(Gender == 'M') %>% count(Gender)
                                    ))
 }
 
 javaOneRankWiseGenderDf <- javaOneRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
 
 for (r in ranks) {
-  filter <- javaOneRankWiseGenderDf %>% filter(Rank == r) 
+  filter <- javaOneRankWiseGenderDf %>% filter(Rank == r)
   javaOneRankWiseBarChartDf  <- rbind(javaOneRankWiseBarChartDf,
                                       data.frame(
-                                        Rank = c(rep(r, 2)),
+                                        Rank = rep(r, 2),
                                         Gender = c(rep('Male', 1), rep('Female', 1)),
                                         NoOfStudent = c(filter$Male.n, filter$Female.n)
                                       ))
@@ -116,12 +117,12 @@ pam <- pam(x = dfCluser.num, k = 6, metric = 'manhattan')
 
 pam.clust <- rep('NA', length(df.cluster$Total))
 
-pam.clust[pam$clustering == 1] = 'Cluster 1'
-pam.clust[pam$clustering == 2] = 'Cluster 2'
-pam.clust[pam$clustering == 3] = 'Cluster 3'
-pam.clust[pam$clustering == 4] = 'Cluster 4'
-pam.clust[pam$clustering == 5] = 'Cluster 5'
-pam.clust[pam$clustering == 6] = 'Cluster 6'
+pam.clust[pam$clustering == 1] <- 'Cluster 1'
+pam.clust[pam$clustering == 2] <- 'Cluster 2'
+pam.clust[pam$clustering == 3] <- 'Cluster 3'
+pam.clust[pam$clustering == 4] <- 'Cluster 4'
+pam.clust[pam$clustering == 5] <- 'Cluster 5'
+pam.clust[pam$clustering == 6] <- 'Cluster 6'
 
 df.cluster$Cluster <- pam.clust
 

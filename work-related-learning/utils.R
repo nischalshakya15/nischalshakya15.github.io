@@ -1,5 +1,5 @@
 getUnique <- function(columnName) {
-  return (c(as.character(unique(columnName))))
+  return (as.character(unique(columnName)))
 }
 
 countGrade <- function(df, value) {
