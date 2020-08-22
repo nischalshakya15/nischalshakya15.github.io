@@ -151,8 +151,8 @@ df.cluster$Cluster <- pam.clust
 df.cluster$Cluster <- factor(df.cluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
 
 ggplot(df.cluster,
-       aes(x = df.cluster$Rank,
-           y = df.cluster$Total,
+       aes(x = Rank,
+           y = Total,
            color = Cluster)) +
   geom_point(size = 3) +
   xlab('Rank') +
