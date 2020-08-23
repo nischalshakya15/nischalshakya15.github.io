@@ -16,7 +16,7 @@ source('utils.R')
 
 setwd('/home/nischal/repository/personal/R/nischalshakya15.github.io/work-related-learning')
 
-df <- read.csv('data-sets/re-modified/JavaProgrammingTwo.csv')
+df <- read.csv('data-sets/re-modified/JavaWebProgramming.csv')
 
 df <- mutateRank(df, df$Total)
 
@@ -39,34 +39,34 @@ for (row in rownames(df)) {
 # End
 
 # Start Plot bargraph showing total no of students on basics of Grade
-javaTwoGradeWiseDf <- data.frame()
+javaWebGradeWiseDf <- data.frame()
 for (g in grades) {
-  javaTwoGradeWiseDf <- rbind(javaTwoGradeWiseDf,
+  javaWebGradeWiseDf <- rbind(javaWebGradeWiseDf,
                               data.frame(
                                 countGrade(df, g)
                               ))
 }
-javaTwoGradeWiseDf <- sortInAscendingOrder(javaTwoGradeWiseDf, javaTwoGradeWiseDf$n)
-plotBarGraph(df = javaTwoGradeWiseDf, x = 'Grade', y = 'n',
-             label = javaTwoGradeWiseDf$n, xlab = 'Grade', ylab = 'Number of Student')
+javaWebGradeWiseDf <- sortInAscendingOrder(javaWebGradeWiseDf, javaWebGradeWiseDf$n)
+plotBarGraph(df = javaWebGradeWiseDf, x = 'Grade', y = 'n',
+             label = javaWebGradeWiseDf$n, xlab = 'Grade', ylab = 'Number of Student')
 # End
 
 # # Start Plot bargraph showing total no of students on basics of rank
-javaTwoRankWiseDf <- data.frame()
+javaWebRankWiseDf <- data.frame()
 for (r in ranks) {
-  javaTwoRankWiseDf <- rbind(javaTwoRankWiseDf,
+  javaWebRankWiseDf <- rbind(javaWebRankWiseDf,
                              data.frame(
                                getCountRank(df, r)
                              ))
 }
-javaTwoRankWiseDf <- sortInAscendingOrder(javaTwoRankWiseDf, javaTwoRankWiseDf$n)
-plotBarGraph(df = javaTwoRankWiseDf, x = 'Rank', y = 'n', label = javaTwoRankWiseDf$n, xlab = 'Rank', ylab = 'Number of student')
+javaWebRankWiseDf <- sortInAscendingOrder(javaWebRankWiseDf, javaWebRankWiseDf$n)
+plotBarGraph(df = javaWebRankWiseDf, x = 'Rank', y = 'n', label = javaWebRankWiseDf$n, xlab = 'Rank', ylab = 'Number of student')
 #End
 
 # Start stack bar chart showing no of male and female on basics of Rank
-javaTwoRankWiseGenderDf <- data.frame()
+javaWebRankWiseGenderDf <- data.frame()
 
-javaTwoRankWiseBarChartDf <- data.frame()
+javaWebRankWiseBarChartDf <- data.frame()
 
 for (r in ranks) {
   rankFilter <- df %>% filter(Rank == r)
@@ -82,7 +82,7 @@ for (r in ranks) {
   if (length(maleRankFilter$n) == 0) {
     maleRankFilter <- data.frame(Gender = "M", n = 0)
   }
-  javaTwoRankWiseGenderDf <- rbind(javaTwoRankWiseGenderDf,
+  javaWebRankWiseGenderDf <- rbind(javaWebRankWiseGenderDf,
                                    data.frame(
                                      Rank = r,
                                      Male = maleRankFilter,
@@ -90,11 +90,11 @@ for (r in ranks) {
                                    ))
 }
 
-javaTwoRankWiseGenderDf <- javaTwoRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
+javaWebRankWiseGenderDf <- javaWebRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
 
 for (r in ranks) {
-  filter <- javaTwoRankWiseGenderDf %>% filter(Rank == r)
-  javaTwoRankWiseBarChartDf <- rbind(javaTwoRankWiseBarChartDf,
+  filter <- javaWebRankWiseGenderDf %>% filter(Rank == r)
+  javaWebRankWiseBarChartDf <- rbind(javaWebRankWiseBarChartDf,
                                      data.frame(
                                        Rank = rep(r, 2),
                                        Gender = c(rep('Male', 1), rep('Female', 1)),
@@ -102,9 +102,9 @@ for (r in ranks) {
                                      ))
 }
 
-plotStackBar(javaTwoRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
+plotStackBar(javaWebRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
              fill = 'Gender', color = 'Gender', palette = 'uchiago',
-             label = javaTwoRankWiseBarChartDf$NoOfStudent, xlab = 'Rank', ylab = 'No of student')
+             label = javaWebRankWiseBarChartDf$NoOfStudent, xlab = 'Rank', ylab = 'No of student')
 
 # End
 
@@ -138,7 +138,7 @@ twoStatisfactoryStudent <- bind_rows(df %>%
 
 # Start Gathering General Information
 general <- bind_rows(twoExcellentStudent, twoVeryGoodStudent, twoGoodStudent, twoStatisfactoryStudent)
-general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Fifteen.Percent.Marks, Lab.Test.Marks.Obtained, Final.Exam.FortyPercent.Marks, Total, Rank)
+general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Twenty.Percent.Marks, Lab.Test.Marks.Obtained, Final.Exam.Forty.Percent.Marks, Total, Rank)
 # End
 
 # K means Clustering Algorithm Start

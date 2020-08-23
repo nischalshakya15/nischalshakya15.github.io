@@ -1,4 +1,5 @@
-Student ID,Name,Gender,Mid Term Full Marks,Mid Term Marks Obtained,Mid Term Twenty Percent Marks,Lab Test Full Marks,Lab Test Marks Obtained,Assignment Full Marks,Assignment Marks Obtained,"Internal Marks",Final Exam Full Marks,Final Exam Marks Obtained,Final Exam Forty Percent Marks,"Total",Grade,Grade Point,Remarks
+Student ID,Name,Gender,Mid Term Full Marks,Mid Term Marks Obtained,Mid Term Twenty Percent Marks,Lab Test Full Marks,Lab Test Marks Obtained,Assignment Full Marks,Assignment Marks Obtained,"Internal Marks
+",Final Exam Full Marks,Final Exam Marks Obtained,Final Exam Forty Percent Marks,Total,Grade,Grade Point,Remarks
 1001749291,Aakash Maharjan,,50,6,2,20,12,20,16,30,100,76,30,60,B-,2.67,
 1001749046,Aakrista Palikhe,,50,13,5,20,14,20,16,35,100,81,32,67,B,3,
 1001749153,Aashish Thapa Magar,,50,17,7,20,17,20,17,41,100,76,30,71,B+,3.33,
@@ -9,10 +10,10 @@ Student ID,Name,Gender,Mid Term Full Marks,Mid Term Marks Obtained,Mid Term Twen
 1001749158,Arjun Saud,,50,37,15,20,14,20,19,48,100,71,28,76,A-,3.67,
 1001749159,Bhabish Dangal,,50,15,6,20,13,20,14,33,100,55,22,55,C+,2.33,
 1001749071,Bhusan Pudasaine,,50,11,4,20,11,20,14,29,100,66,26,55,C+,2.33,
-1001749176,Bijina Ranjit,F,50,36,14,20,16,20,19,49,100,61,24,73,B+,3.33,
+1001749176,Bijina Ranjit,Female,50,36,14,20,16,20,19,49,100,61,24,73,B+,3.33,
 1001749177,Dip Kumar Sah,,50,30,12,20,14,20,17,43,100,75,30,73,B+,3.33,
 1001749160,Faraz Ahmed Khan,,50,44,18,20,17,20,19,54,100,95,38,92,A,4,
-1001749161,Khushi Shrestha,F,50,40,16,20,16,20,18,50,100,81,32,82,A,4,
+1001749161,Khushi Shrestha,Female,50,40,16,20,16,20,18,50,100,81,32,82,A,4,
 1001749162,Kismat Giri,,50,17,7,20,15,20,14,36,100,70,28,64,B-,2.67,
 1001749163,Kundan Bhandari,,50,7,3,20,0,20,0,3,100,0,0,3,F,0,"Abs (M), NS, Abs(F)"
 1001749164,Monjish Shrestha,,50,0,0,20,0,20,0,0,100,0,0,0,F,0,"Abs (M), NS, Abs(F)"
@@ -26,10 +27,10 @@ Student ID,Name,Gender,Mid Term Full Marks,Mid Term Marks Obtained,Mid Term Twen
 1001749168,Sangam Thapa Magar,,50,19,8,20,14,20,17,39,100,62,25,64,B-,2.67,
 1001749169,Sanjiv Dangi,,50,38,15,20,19,20,20,54,100,92,37,91,A,4,
 1001749170,Santosh Khanal,,50,25,10,20,14,20,20,44,100,72,29,73,B+,3.33,
-1001749171,Sharon Maharjan,F,50,33,13,20,14,20,18,45,100,80,32,77,A-,3.67,
+1001749171,Sharon Maharjan,Female,50,33,13,20,14,20,18,45,100,80,32,77,A-,3.67,
 1001749172,Sunil Machhara Chaudhary,,50,0,0,20,0,20,0,0,100,0,0,0,F,0,"Abs (M), NS, Abs(F)"
-1001749173,Sunishma Pandey,F,50,23,9,20,11,20,20,40,100,41,16,56,C+,2.33,
+1001749173,Sunishma Pandey,Female,50,23,9,20,11,20,20,40,100,41,16,56,C+,2.33,
 1001749174,Sushant Dangol,,50,32,13,20,15,20,15,43,100,68,27,70,B+,3.33,
 1001749075,Sushil Achhami,,50,20,8,20,16,20,17,41,100,72,29,70,B+,3.33,
-1001749175,Sweta Tamrakar,F,50,28,11,20,15,20,18,44,100,69,28,72,B+,3.33,
+1001749175,Sweta Tamrakar,Female,50,28,11,20,15,20,18,44,100,69,28,72,B+,3.33,
 1001749076,Udaya Agrawal,,50,46,18,20,15,20,19,52,100,75,30,82,A,4,
