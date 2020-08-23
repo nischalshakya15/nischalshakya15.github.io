@@ -456,3 +456,114 @@ javaWebStudents <- javaWebStudents %>% select(Name, Gender, Assignment.Marks.Obt
 
 paged_table(javaWebStudents)
 ```
+# Cluster analysis
+## JavaProgrammingOne
+```{r JavaOne K means clustering, fig.cap='Fig 10:- JavaOne cluster analysis', fig.align='center', echo = FALSE}
+javaOneCluster <- javaOneDf %>% select(Name, Total, Rank)
+
+javaOneCluster <- convertRankIntoNumber(javaOneCluster, javaOneCluster$Total)
+
+javaOneClusterNum <- javaOneCluster[c('Total', 'Rank')]
+
+javaOnePamk <- pamk(javaOneClusterNum, krange = 2:5, metric = 'manhattan')
+
+javaOnePam <- pam(x = javaOneClusterNum, k = 6, metric = 'manhattan')
+
+javaOnePamCluster <- rep('NA', length(javaOneCluster$Total))
+
+javaOnePamCluster[javaOnePam$clustering == 1] <- 'Cluster 1'
+javaOnePamCluster[javaOnePam$clustering == 2] <- 'Cluster 2'
+javaOnePamCluster[javaOnePam$clustering == 3] <- 'Cluster 3'
+javaOnePamCluster[javaOnePam$clustering == 4] <- 'Cluster 4'
+javaOnePamCluster[javaOnePam$clustering == 5] <- 'Cluster 5'
+javaOnePamCluster[javaOnePam$clustering == 6] <- 'Cluster 6'
+
+javaOneCluster$Cluster <- javaOnePamCluster
+
+javaOneCluster$Cluster <- factor(javaOneCluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
+
+ggplot(javaOneCluster,
+       aes(x = Rank,
+           y = Total,
+           color = Cluster)) +
+  geom_point(size = 3) +
+  xlab('Rank') +
+  ylab('Total') +
+  geom_jitter(width = 0.4, height = 0.4) +
+  theme_bw()
+#End
+```
+
+## JavaProgrammingTwo
+```{r JavaTwo K means clustering, fig.cap='Fig 11:- JavaTwo cluster analysis', fig.align='center', echo = FALSE}
+javaTwoCluster <- javaTwoDf %>% select(Name, Total, Rank)
+
+javaTwoCluster <- convertRankIntoNumber(javaTwoCluster, javaTwoCluster$Total)
+
+javaOneClusterNum <- javaTwoCluster[c('Total', 'Rank')]
+
+javaOnePamk <- pamk(javaOneClusterNum, krange = 2:5, metric = 'manhattan')
+
+javaTwoPam <- pam(x = javaOneClusterNum, k = 6, metric = 'manhattan')
+
+javaTwoPamCluster <- rep('NA', length(javaTwoCluster$Total))
+
+javaTwoPamCluster[javaTwoPam$clustering == 1] <- 'Cluster 1'
+javaTwoPamCluster[javaTwoPam$clustering == 2] <- 'Cluster 2'
+javaTwoPamCluster[javaTwoPam$clustering == 3] <- 'Cluster 3'
+javaTwoPamCluster[javaTwoPam$clustering == 4] <- 'Cluster 4'
+javaTwoPamCluster[javaTwoPam$clustering == 5] <- 'Cluster 5'
+javaTwoPamCluster[javaTwoPam$clustering == 6] <- 'Cluster 6'
+
+javaTwoCluster$Cluster <- javaTwoPamCluster
+
+javaTwoCluster$Cluster <- factor(javaTwoCluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
+
+ggplot(javaTwoCluster,
+       aes(x = Rank,
+           y = Total,
+           color = Cluster)) +
+  geom_point(size = 3) +
+  xlab('Rank') +
+  ylab('Total') +
+  geom_jitter(width = 0.4, height = 0.4) +
+  theme_bw()
+```
+
+## JavaWebProgramming
+```{r JavaTwo cluster analysis,fig.cap='Fig 12:- JavaWeb cluster analysis', fig.align='center', echo=FALSE}
+# K means Clustering Algorithm Start
+javaWebCluster <- javaOneDf %>% select(Name, Total, Rank)
+
+javaWebCluster <- convertRankIntoNumber(javaWebCluster, javaWebCluster$Total)
+
+javaWebClusterNum <- javaWebCluster[c('Total', 'Rank')]
+
+javaWebPamk <- pamk(javaWebClusterNum, krange = 2:5, metric = 'manhattan')
+
+javaWebPam <- pam(x = javaWebClusterNum, k = 6, metric = 'manhattan')
+
+javaWebPamCluster <- rep('NA', length(javaWebCluster$Total))
+
+javaWebPamCluster[javaWebPam$clustering == 1] <- 'Cluster 1'
+javaWebPamCluster[javaWebPam$clustering == 2] <- 'Cluster 2'
+javaWebPamCluster[javaWebPam$clustering == 3] <- 'Cluster 3'
+javaWebPamCluster[javaWebPam$clustering == 4] <- 'Cluster 4'
+javaWebPamCluster[javaWebPam$clustering == 5] <- 'Cluster 5'
+javaWebPamCluster[javaWebPam$clustering == 6] <- 'Cluster 6'
+
+javaWebCluster$Cluster <- javaWebPamCluster
+
+javaWebCluster$Cluster <- factor(javaWebCluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
+
+ggplot(javaWebCluster,
+       aes(x = Rank,
+           y = Total,
+           color = Cluster)) +
+  geom_point(size = 3) +
+  xlab('Rank') +
+  ylab('Total') +
+  geom_jitter(width = 0.4, height = 0.4) +
+  theme_bw()
+# End
+```

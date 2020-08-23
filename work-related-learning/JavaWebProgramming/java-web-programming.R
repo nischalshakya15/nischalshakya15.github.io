@@ -142,37 +142,34 @@ javaWebStudents <- javaWebStudents %>% select(Name, Gender, Assignment.Marks.Obt
 # En# End
 
 # K means Clustering Algorithm Start
-df.cluster <- javaWebDf %>% select(Name, Total, Rank)
+javaWebCluster <- javaOneDf %>% select(Name, Total, Rank)
 
-df.cluster <- convertRankIntoNumber(df.cluster, df.cluster$Total)
+javaWebCluster <- convertRankIntoNumber(javaWebCluster, javaWebCluster$Total)
 
-headTail(df.cluster)
+plotJitter(df = javaWebCluster, x = javaWebCluster$Total, y = javaWebCluster$Rank, pch = javaWebCluster$Name)
 
-plotJitter(df = df.cluster, x = df.cluster$Total, y = df.cluster$Rank, pch = df.cluster$Name)
+javaWebClusterNum <- javaWebCluster[c('Total', 'Rank')]
 
-dfCluser.num <- df.cluster[c('Total', 'Rank')]
+javaWebPamk <- pamk(javaWebClusterNum, krange = 2:5, metric = 'manhattan')
+plot(javaWebPamk$crit)
+lines(javaWebPamk$crit)
 
-pamk <- pamk(dfCluser.num, krange = 2:5, metric = 'manhattan')
-plot(pamk$crit)
-lines(pamk$crit)
+javaWebPam <- pam(x = javaWebClusterNum, k = 6, metric = 'manhattan')
 
+javaWebPamCluster <- rep('NA', length(javaWebCluster$Total))
 
-pam <- pam(x = dfCluser.num, k = 6, metric = 'manhattan')
+javaWebPamCluster[javaWebPam$clustering == 1] <- 'Cluster 1'
+javaWebPamCluster[javaWebPam$clustering == 2] <- 'Cluster 2'
+javaWebPamCluster[javaWebPam$clustering == 3] <- 'Cluster 3'
+javaWebPamCluster[javaWebPam$clustering == 4] <- 'Cluster 4'
+javaWebPamCluster[javaWebPam$clustering == 5] <- 'Cluster 5'
+javaWebPamCluster[javaWebPam$clustering == 6] <- 'Cluster 6'
 
-pam.clust <- rep('NA', length(df.cluster$Total))
+javaWebCluster$Cluster <- javaWebPamCluster
 
-pam.clust[pam$clustering == 1] <- 'Cluster 1'
-pam.clust[pam$clustering == 2] <- 'Cluster 2'
-pam.clust[pam$clustering == 3] <- 'Cluster 3'
-pam.clust[pam$clustering == 4] <- 'Cluster 4'
-pam.clust[pam$clustering == 5] <- 'Cluster 5'
-pam.clust[pam$clustering == 6] <- 'Cluster 6'
+javaWebCluster$Cluster <- factor(javaWebCluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
 
-df.cluster$Cluster <- pam.clust
-
-df.cluster$Cluster <- factor(df.cluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
-
-ggplot(df.cluster,
+ggplot(javaWebCluster,
        aes(x = Rank,
            y = Total,
            color = Cluster)) +
@@ -181,5 +178,4 @@ ggplot(df.cluster,
   ylab('Total') +
   geom_jitter(width = 0.4, height = 0.4) +
   theme_bw()
-
 # End

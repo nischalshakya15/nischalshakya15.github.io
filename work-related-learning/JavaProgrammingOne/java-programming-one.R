@@ -42,7 +42,7 @@ plotBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
 
 # Start plot bargraph showing total no of students on basics of Rank
 javaOneRankWiseDf <- data.frame()
-for (r ale on basics of Rankin javaOneRanks) {
+for (r in javaOneRanks) {
   javaOneRankWiseDf <- rbind(javaOneRankWiseDf,
                              data.frame(
                                getCountRank(javaOneDf, r)
@@ -124,36 +124,36 @@ general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.
 # End
 
 # K means Clustering Algorithm Start
-df.cluster <- javaOneDf %>% select(Name, Total, Rank)
+javaOneCluster <- javaOneDf %>% select(Name, Total, Rank)
 
-df.cluster <- convertRankIntoNumber(df.cluster, df.cluster$Total)
+javaOneCluster <- convertRankIntoNumber(javaOneCluster, javaOneCluster$Total)
 
-headTail(df.cluster)
+headTail(javaOneCluster)
 
-plotJitter(df = df.cluster, x = df.cluster$Total, y = df.cluster$Rank, pch = df.cluster$Name)
+plotJitter(df = javaOneCluster, x = javaOneCluster$Total, y = javaOneCluster$Rank, pch = javaOneCluster$Name)
 
-dfCluser.num <- df.cluster[c('Total', 'Rank')]
+javaOneClusterNum <- javaOneCluster[c('Total', 'Rank')]
 
-pamk <- pamk(dfCluser.num, krange = 2:5, metric = 'manhattan')
-plot(pamk$crit)
-lines(pamk$crit)
+javaOnePamk <- pamk(javaOneClusterNum, krange = 2:5, metric = 'manhattan')
+plot(javaOnePamk$crit)
+lines(javaOnePamk$crit)
 
-pam <- pam(x = dfCluser.num, k = 6, metric = 'manhattan')
+javaOnePam <- pam(x = javaOneClusterNum, k = 6, metric = 'manhattan')
 
-pam.clust <- rep('NA', length(df.cluster$Total))
+javaOnePamCluster <- rep('NA', length(javaOneCluster$Total))
 
-pam.clust[pam$clustering == 1] <- 'Cluster 1'
-pam.clust[pam$clustering == 2] <- 'Cluster 2'
-pam.clust[pam$clustering == 3] <- 'Cluster 3'
-pam.clust[pam$clustering == 4] <- 'Cluster 4'
-pam.clust[pam$clustering == 5] <- 'Cluster 5'
-pam.clust[pam$clustering == 6] <- 'Cluster 6'
+javaOnePamCluster[javaOnePam$clustering == 1] <- 'Cluster 1'
+javaOnePamCluster[javaOnePam$clustering == 2] <- 'Cluster 2'
+javaOnePamCluster[javaOnePam$clustering == 3] <- 'Cluster 3'
+javaOnePamCluster[javaOnePam$clustering == 4] <- 'Cluster 4'
+javaOnePamCluster[javaOnePam$clustering == 5] <- 'Cluster 5'
+javaOnePamCluster[javaOnePam$clustering == 6] <- 'Cluster 6'
 
-df.cluster$Cluster <- pam.clust
+javaOneCluster$Cluster <- javaOnePamCluster
 
-df.cluster$Cluster <- factor(df.cluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
+javaOneCluster$Cluster <- factor(javaOneCluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
 
-ggplot(df.cluster,
+ggplot(javaOneCluster,
        aes(x = Rank,
            y = Total,
            color = Cluster)) +

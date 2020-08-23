@@ -142,37 +142,36 @@ javaTwoStudents <- javaTwoStudents %>% select(Name, Gender, Assignment.Marks.Obt
 # End
 
 # K means Clustering Algorithm Start
-df.cluster <- javaTwoDf %>% select(Name, Total, Rank)
+javaTwoCluster <- javaTwoDf %>% select(Name, Total, Rank)
 
-df.cluster <- convertRankIntoNumber(df.cluster, df.cluster$Total)
+javaTwoCluster <- convertRankIntoNumber(javaTwoCluster, javaTwoCluster$Total)
 
-headTail(df.cluster)
+headTail(javaTwoCluster)
 
-plotJitter(df = df.cluster, x = df.cluster$Total, y = df.cluster$Rank, pch = df.cluster$Name)
+plotJitter(df = javaTwoCluster, x = javaTwoCluster$Total, y = javaTwoCluster$Rank, pch = javaTwoCluster$Name)
 
-dfCluser.num <- df.cluster[c('Total', 'Rank')]
+javaOneClusterNum <- javaTwoCluster[c('Total', 'Rank')]
 
-pamk <- pamk(dfCluser.num, krange = 2:5, metric = 'manhattan')
-plot(pamk$crit)
-lines(pamk$crit)
+javaOnePamk <- pamk(javaOneClusterNum, krange = 2:5, metric = 'manhattan')
+plot(javaOnePamk$crit)
+lines(javaOnePamk$crit)
 
+javaTwoPam <- pam(x = javaOneClusterNum, k = 6, metric = 'manhattan')
 
-pam <- pam(x = dfCluser.num, k = 6, metric = 'manhattan')
+javaTwoPamCluster <- rep('NA', length(javaTwoCluster$Total))
 
-pam.clust <- rep('NA', length(df.cluster$Total))
+javaTwoPamCluster[javaTwoPam$clustering == 1] <- 'Cluster 1'
+javaTwoPamCluster[javaTwoPam$clustering == 2] <- 'Cluster 2'
+javaTwoPamCluster[javaTwoPam$clustering == 3] <- 'Cluster 3'
+javaTwoPamCluster[javaTwoPam$clustering == 4] <- 'Cluster 4'
+javaTwoPamCluster[javaTwoPam$clustering == 5] <- 'Cluster 5'
+javaTwoPamCluster[javaTwoPam$clustering == 6] <- 'Cluster 6'
 
-pam.clust[pam$clustering == 1] <- 'Cluster 1'
-pam.clust[pam$clustering == 2] <- 'Cluster 2'
-pam.clust[pam$clustering == 3] <- 'Cluster 3'
-pam.clust[pam$clustering == 4] <- 'Cluster 4'
-pam.clust[pam$clustering == 5] <- 'Cluster 5'
-pam.clust[pam$clustering == 6] <- 'Cluster 6'
+javaTwoCluster$Cluster <- javaTwoPamCluster
 
-df.cluster$Cluster <- pam.clust
+javaTwoCluster$Cluster <- factor(javaTwoCluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
 
-df.cluster$Cluster <- factor(df.cluster$Cluster, levels = c('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4', 'Cluster 5', 'Cluster 6'))
-
-ggplot(df.cluster,
+ggplot(javaTwoCluster,
        aes(x = Rank,
            y = Total,
            color = Cluster)) +
@@ -181,5 +180,4 @@ ggplot(df.cluster,
   ylab('Total') +
   geom_jitter(width = 0.4, height = 0.4) +
   theme_bw()
-
-# End
+#End
