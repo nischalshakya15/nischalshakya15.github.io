@@ -109,36 +109,36 @@ plotStackBar(javaTwoRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
 # End
 
 # Start Pick up two student from each Rank
-twoExcellentStudent <- javaTwoDf %>%
+javaTwoTwoExcellentStudent <- javaTwoDf %>%
   filter(Rank == 'Excellent') %>%
   top_n(2, Total)
 
-twoVeryGoodStudent <- bind_rows(javaTwoDf %>%
+javaTwoTwoVeryGoodStudent <- bind_rows(javaTwoDf %>%
                                   filter(Rank == 'Very Good' & Gender == 'M') %>%
                                   top_n(1, Total),
-                                javaTwoDf %>%
+                                       javaTwoDf %>%
                                   filter(Rank == 'Very Good' & Gender == 'F') %>%
                                   top_n(1, Total)
 )
 
-twoGoodStudent <- bind_rows(javaTwoDf %>%
+javaTwoTwoGoodStudent <- bind_rows(javaTwoDf %>%
                               filter(Rank == 'Good' & Gender == 'M') %>%
                               top_n(1, Total),
-                            javaTwoDf %>%
+                                   javaTwoDf %>%
                               filter(Rank == 'Good' & Gender == 'F') %>%
                               top_n(1, Total))
 
-twoStatisfactoryStudent <- bind_rows(javaTwoDf %>%
+javaTwoTwoStatisfactoryStudent <- bind_rows(javaTwoDf %>%
                                        filter(Rank == 'Statisfactory' & Gender == 'M') %>%
                                        top_n(1, Total),
-                                     javaTwoDf %>%
+                                            javaTwoDf %>%
                                        filter(Rank == 'Statisfactory' & Gender == 'F') %>%
                                        top_n(1, Total))
 # End
 
 # Start Gathering General Information
-general <- bind_rows(twoExcellentStudent, twoVeryGoodStudent, twoGoodStudent, twoStatisfactoryStudent)
-general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Fifteen.Percent.Marks, Lab.Test.Marks.Obtained, Final.Exam.FortyPercent.Marks, Total, Rank)
+javaTwoStudents <- bind_rows(javaTwoTwoExcellentStudent, javaTwoTwoVeryGoodStudent, javaTwoTwoGoodStudent, javaTwoTwoStatisfactoryStudent)
+javaTwoStudents <- javaTwoStudents %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Fifteen.Percent.Marks, Lab.Test.Marks.Obtained, Final.Exam.FortyPercent.Marks, Total, Rank)
 # End
 
 # K means Clustering Algorithm Start

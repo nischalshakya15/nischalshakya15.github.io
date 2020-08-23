@@ -109,37 +109,37 @@ plotStackBar(javaWebRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
 # End
 
 # Start Pick up two student from each Rank
-twoExcellentStudent <- javaWebDf %>%
+javaWebTwoExcellentStudent <- javaWebDf %>%
   filter(Rank == 'Excellent') %>%
   top_n(2, Total)
 
-twoVeryGoodStudent <- bind_rows(javaWebDf %>%
+javaWebTwoVeryGoodStudent <- bind_rows(javaWebDf %>%
                                   filter(Rank == 'Very Good' & Gender == 'M') %>%
                                   top_n(1, Total),
-                                javaWebDf %>%
+                                       javaWebDf %>%
                                   filter(Rank == 'Very Good' & Gender == 'F') %>%
                                   top_n(1, Total)
 )
 
-twoGoodStudent <- bind_rows(javaWebDf %>%
+javaWebTwoGoodStudent <- bind_rows(javaWebDf %>%
                               filter(Rank == 'Good' & Gender == 'M') %>%
                               top_n(1, Total),
-                            javaWebDf %>%
+                                   javaWebDf %>%
                               filter(Rank == 'Good' & Gender == 'F') %>%
                               top_n(1, Total))
 
-twoStatisfactoryStudent <- bind_rows(javaWebDf %>%
+javaWebTwoStatisfactoryStudent <- bind_rows(javaWebDf %>%
                                        filter(Rank == 'Statisfactory' & Gender == 'M') %>%
                                        top_n(1, Total),
-                                     javaWebDf %>%
+                                            javaWebDf %>%
                                        filter(Rank == 'Statisfactory' & Gender == 'F') %>%
                                        top_n(1, Total))
 # End
 
 # Start Gathering General Information
-general <- bind_rows(twoExcellentStudent, twoVeryGoodStudent, twoGoodStudent, twoStatisfactoryStudent)
-general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Twenty.Percent.Marks, Lab.Test.Marks.Obtained, Final.Exam.Forty.Percent.Marks, Total, Rank)
-# End
+javaWebStudents <- bind_rows(javaWebTwoExcellentStudent, javaWebTwoVeryGoodStudent, javaWebTwoGoodStudent, javaWebTwoStatisfactoryStudent)
+javaWebStudents <- javaWebStudents %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Twenty.Percent.Marks, Lab.Test.Marks.Obtained, Final.Exam.Forty.Percent.Marks, Total, Rank)
+# En# End
 
 # K means Clustering Algorithm Start
 df.cluster <- javaWebDf %>% select(Name, Total, Rank)
