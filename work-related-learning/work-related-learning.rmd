@@ -200,7 +200,7 @@ plotStackBar(javaOneRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
              label = javaOneRankWiseBarChartDf$NoOfStudent, xlab = 'Rank', ylab = 'No of student')
 ```
 ## Top 2 students from each Rank on basics of the Genders
-```{r Top 2 students from each rank on basics of the Genders, echo = TRUE}
+```{r Top 2 students from each rank on basics of the Genders}
 twoExcellentStudent <- df %>%
         filter(Rank == 'Excellent') %>%
         top_n(2, Total)

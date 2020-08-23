@@ -16,23 +16,23 @@ source('utils.R')
 
 setwd('/home/nischal/repository/personal/R/nischalshakya15.github.io/work-related-learning')
 
-df <- read.csv('data-sets/re-modified/JavaWebProgramming.csv')
+javaWebDf <- read.csv('data-sets/re-modified/JavaWebProgramming.csv')
 
-df <- mutateRank(df, df$Total)
+javaWebDf <- mutateRank(javaWebDf, javaWebDf$Total)
 
 # Start Get unique Grade and Rank
-grades <- getUnique(df$Grade)
-ranks <- getUnique(df$Rank)
+grades <- getUnique(javaWebDf$Grade)
+ranks <- getUnique(javaWebDf$Rank)
 # End
 
 # Start Replace empty value with M and Female with F
 i <- 1
-for (row in rownames(df)) {
-  isFemale <- df[row, "Gender"]
+for (row in rownames(javaWebDf)) {
+  isFemale <- javaWebDf[row, "Gender"]
   if (isFemale == "") {
-    df$Gender[i] <- "M"
+    javaWebDf$Gender[i] <- "M"
   } else {
-    df$Gender[i] <- "F"
+    javaWebDf$Gender[i] <- "F"
   }
   i <- i + 1
 }
@@ -43,7 +43,7 @@ javaWebGradeWiseDf <- data.frame()
 for (g in grades) {
   javaWebGradeWiseDf <- rbind(javaWebGradeWiseDf,
                               data.frame(
-                                countGrade(df, g)
+                                countGrade(javaWebDf, g)
                               ))
 }
 javaWebGradeWiseDf <- sortInAscendingOrder(javaWebGradeWiseDf, javaWebGradeWiseDf$n)
@@ -56,7 +56,7 @@ javaWebRankWiseDf <- data.frame()
 for (r in ranks) {
   javaWebRankWiseDf <- rbind(javaWebRankWiseDf,
                              data.frame(
-                               getCountRank(df, r)
+                               getCountRank(javaWebDf, r)
                              ))
 }
 javaWebRankWiseDf <- sortInAscendingOrder(javaWebRankWiseDf, javaWebRankWiseDf$n)
@@ -69,7 +69,7 @@ javaWebRankWiseGenderDf <- data.frame()
 javaWebRankWiseBarChartDf <- data.frame()
 
 for (r in ranks) {
-  rankFilter <- df %>% filter(Rank == r)
+  rankFilter <- javaWebDf %>% filter(Rank == r)
   maleRankFilter <- rankFilter %>%
     filter(Gender == "M") %>%
     count(Gender)
@@ -109,29 +109,29 @@ plotStackBar(javaWebRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
 # End
 
 # Start Pick up two student from each Rank
-twoExcellentStudent <- df %>%
+twoExcellentStudent <- javaWebDf %>%
   filter(Rank == 'Excellent') %>%
   top_n(2, Total)
 
-twoVeryGoodStudent <- bind_rows(df %>%
+twoVeryGoodStudent <- bind_rows(javaWebDf %>%
                                   filter(Rank == 'Very Good' & Gender == 'M') %>%
                                   top_n(1, Total),
-                                df %>%
+                                javaWebDf %>%
                                   filter(Rank == 'Very Good' & Gender == 'F') %>%
                                   top_n(1, Total)
 )
 
-twoGoodStudent <- bind_rows(df %>%
+twoGoodStudent <- bind_rows(javaWebDf %>%
                               filter(Rank == 'Good' & Gender == 'M') %>%
                               top_n(1, Total),
-                            df %>%
+                            javaWebDf %>%
                               filter(Rank == 'Good' & Gender == 'F') %>%
                               top_n(1, Total))
 
-twoStatisfactoryStudent <- bind_rows(df %>%
+twoStatisfactoryStudent <- bind_rows(javaWebDf %>%
                                        filter(Rank == 'Statisfactory' & Gender == 'M') %>%
                                        top_n(1, Total),
-                                     df %>%
+                                     javaWebDf %>%
                                        filter(Rank == 'Statisfactory' & Gender == 'F') %>%
                                        top_n(1, Total))
 # End
@@ -142,7 +142,7 @@ general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.
 # End
 
 # K means Clustering Algorithm Start
-df.cluster <- df %>% select(Name, Total, Rank)
+df.cluster <- javaWebDf %>% select(Name, Total, Rank)
 
 df.cluster <- convertRankIntoNumber(df.cluster, df.cluster$Total)
 

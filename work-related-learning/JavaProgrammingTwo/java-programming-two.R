@@ -16,23 +16,23 @@ source('utils.R')
 
 setwd('/home/nischal/repository/personal/R/nischalshakya15.github.io/work-related-learning')
 
-df <- read.csv('data-sets/re-modified/JavaProgrammingTwo.csv')
+javaTwoDf <- read.csv('data-sets/re-modified/JavaProgrammingTwo.csv')
 
-df <- mutateRank(df, df$Total)
+javaTwoDf <- mutateRank(javaTwoDf, javaTwoDf$Total)
 
 # Start Get unique Grade and Rank
-grades <- getUnique(df$Grade)
-ranks <- getUnique(df$Rank)
+grades <- getUnique(javaTwoDf$Grade)
+ranks <- getUnique(javaTwoDf$Rank)
 # End
 
 # Start Replace empty value with M and Female with F
 i <- 1
-for (row in rownames(df)) {
-  isFemale <- df[row, "Gender"]
+for (row in rownames(javaTwoDf)) {
+  isFemale <- javaTwoDf[row, "Gender"]
   if (isFemale == "") {
-    df$Gender[i] <- "M"
+    javaTwoDf$Gender[i] <- "M"
   } else {
-    df$Gender[i] <- "F"
+    javaTwoDf$Gender[i] <- "F"
   }
   i <- i + 1
 }
@@ -43,7 +43,7 @@ javaTwoGradeWiseDf <- data.frame()
 for (g in grades) {
   javaTwoGradeWiseDf <- rbind(javaTwoGradeWiseDf,
                               data.frame(
-                                countGrade(df, g)
+                                countGrade(javaTwoDf, g)
                               ))
 }
 javaTwoGradeWiseDf <- sortInAscendingOrder(javaTwoGradeWiseDf, javaTwoGradeWiseDf$n)
@@ -51,12 +51,12 @@ plotBarGraph(df = javaTwoGradeWiseDf, x = 'Grade', y = 'n',
              label = javaTwoGradeWiseDf$n, xlab = 'Grade', ylab = 'Number of Student')
 # End
 
-# # Start Plot bargraph showing total no of students on basics of rank
+# Start Plot bargraph showing total no of students on basics of Rank
 javaTwoRankWiseDf <- data.frame()
 for (r in ranks) {
   javaTwoRankWiseDf <- rbind(javaTwoRankWiseDf,
                              data.frame(
-                               getCountRank(df, r)
+                               getCountRank(javaTwoDf, r)
                              ))
 }
 javaTwoRankWiseDf <- sortInAscendingOrder(javaTwoRankWiseDf, javaTwoRankWiseDf$n)
@@ -69,7 +69,7 @@ javaTwoRankWiseGenderDf <- data.frame()
 javaTwoRankWiseBarChartDf <- data.frame()
 
 for (r in ranks) {
-  rankFilter <- df %>% filter(Rank == r)
+  rankFilter <- javaTwoDf %>% filter(Rank == r)
   maleRankFilter <- rankFilter %>%
     filter(Gender == "M") %>%
     count(Gender)
@@ -109,29 +109,29 @@ plotStackBar(javaTwoRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
 # End
 
 # Start Pick up two student from each Rank
-twoExcellentStudent <- df %>%
+twoExcellentStudent <- javaTwoDf %>%
   filter(Rank == 'Excellent') %>%
   top_n(2, Total)
 
-twoVeryGoodStudent <- bind_rows(df %>%
+twoVeryGoodStudent <- bind_rows(javaTwoDf %>%
                                   filter(Rank == 'Very Good' & Gender == 'M') %>%
                                   top_n(1, Total),
-                                df %>%
+                                javaTwoDf %>%
                                   filter(Rank == 'Very Good' & Gender == 'F') %>%
                                   top_n(1, Total)
 )
 
-twoGoodStudent <- bind_rows(df %>%
+twoGoodStudent <- bind_rows(javaTwoDf %>%
                               filter(Rank == 'Good' & Gender == 'M') %>%
                               top_n(1, Total),
-                            df %>%
+                            javaTwoDf %>%
                               filter(Rank == 'Good' & Gender == 'F') %>%
                               top_n(1, Total))
 
-twoStatisfactoryStudent <- bind_rows(df %>%
+twoStatisfactoryStudent <- bind_rows(javaTwoDf %>%
                                        filter(Rank == 'Statisfactory' & Gender == 'M') %>%
                                        top_n(1, Total),
-                                     df %>%
+                                     javaTwoDf %>%
                                        filter(Rank == 'Statisfactory' & Gender == 'F') %>%
                                        top_n(1, Total))
 # End
@@ -142,7 +142,7 @@ general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.
 # End
 
 # K means Clustering Algorithm Start
-df.cluster <- df %>% select(Name, Total, Rank)
+df.cluster <- javaTwoDf %>% select(Name, Total, Rank)
 
 df.cluster <- convertRankIntoNumber(df.cluster, df.cluster$Total)
 
