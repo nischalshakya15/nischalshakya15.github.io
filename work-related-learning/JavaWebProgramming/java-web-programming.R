@@ -21,8 +21,8 @@ javaWebDf <- read.csv('data-sets/re-modified/JavaWebProgramming.csv')
 javaWebDf <- mutateRank(javaWebDf, javaWebDf$Total)
 
 # Start Get unique Grade and Rank
-grades <- getUnique(javaWebDf$Grade)
-ranks <- getUnique(javaWebDf$Rank)
+javaWebGrades <- getUnique(javaWebDf$Grade)
+javaWebRanks <- getUnique(javaWebDf$Rank)
 # End
 
 # Start Replace empty value with M and Female with F
@@ -40,7 +40,7 @@ for (row in rownames(javaWebDf)) {
 
 # Start Plot bargraph showing total no of students on basics of Grade
 javaWebGradeWiseDf <- data.frame()
-for (g in grades) {
+for (g in javaWebGrades) {
   javaWebGradeWiseDf <- rbind(javaWebGradeWiseDf,
                               data.frame(
                                 countGrade(javaWebDf, g)
@@ -53,7 +53,7 @@ plotBarGraph(df = javaWebGradeWiseDf, x = 'Grade', y = 'n',
 
 # # Start Plot bargraph showing total no of students on basics of rank
 javaWebRankWiseDf <- data.frame()
-for (r in ranks) {
+for (r in javaWebRanks) {
   javaWebRankWiseDf <- rbind(javaWebRankWiseDf,
                              data.frame(
                                getCountRank(javaWebDf, r)
@@ -68,7 +68,7 @@ javaWebRankWiseGenderDf <- data.frame()
 
 javaWebRankWiseBarChartDf <- data.frame()
 
-for (r in ranks) {
+for (r in javaWebRanks) {
   rankFilter <- javaWebDf %>% filter(Rank == r)
   maleRankFilter <- rankFilter %>%
     filter(Gender == "M") %>%
@@ -92,7 +92,7 @@ for (r in ranks) {
 
 javaWebRankWiseGenderDf <- javaWebRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
 
-for (r in ranks) {
+for (r in javaWebRanks) {
   filter <- javaWebRankWiseGenderDf %>% filter(Rank == r)
   javaWebRankWiseBarChartDf <- rbind(javaWebRankWiseBarChartDf,
                                      data.frame(

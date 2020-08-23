@@ -21,8 +21,8 @@ javaTwoDf <- read.csv('data-sets/re-modified/JavaProgrammingTwo.csv')
 javaTwoDf <- mutateRank(javaTwoDf, javaTwoDf$Total)
 
 # Start Get unique Grade and Rank
-grades <- getUnique(javaTwoDf$Grade)
-ranks <- getUnique(javaTwoDf$Rank)
+javaTwoGrades <- getUnique(javaTwoDf$Grade)
+javaTwoRanks <- getUnique(javaTwoDf$Rank)
 # End
 
 # Start Replace empty value with M and Female with F
@@ -40,7 +40,7 @@ for (row in rownames(javaTwoDf)) {
 
 # Start Plot bargraph showing total no of students on basics of Grade
 javaTwoGradeWiseDf <- data.frame()
-for (g in grades) {
+for (g in javaTwoGrades) {
   javaTwoGradeWiseDf <- rbind(javaTwoGradeWiseDf,
                               data.frame(
                                 countGrade(javaTwoDf, g)
@@ -53,7 +53,7 @@ plotBarGraph(df = javaTwoGradeWiseDf, x = 'Grade', y = 'n',
 
 # Start Plot bargraph showing total no of students on basics of Rank
 javaTwoRankWiseDf <- data.frame()
-for (r in ranks) {
+for (r in javaTwoRanks) {
   javaTwoRankWiseDf <- rbind(javaTwoRankWiseDf,
                              data.frame(
                                getCountRank(javaTwoDf, r)
@@ -68,7 +68,7 @@ javaTwoRankWiseGenderDf <- data.frame()
 
 javaTwoRankWiseBarChartDf <- data.frame()
 
-for (r in ranks) {
+for (r in javaTwoRanks) {
   rankFilter <- javaTwoDf %>% filter(Rank == r)
   maleRankFilter <- rankFilter %>%
     filter(Gender == "M") %>%
@@ -92,7 +92,7 @@ for (r in ranks) {
 
 javaTwoRankWiseGenderDf <- javaTwoRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
 
-for (r in ranks) {
+for (r in javaTwoRanks) {
   filter <- javaTwoRankWiseGenderDf %>% filter(Rank == r)
   javaTwoRankWiseBarChartDf <- rbind(javaTwoRankWiseBarChartDf,
                                      data.frame(
