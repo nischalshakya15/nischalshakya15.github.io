@@ -111,11 +111,11 @@ for (g in uniqueGrades) {
 javaOneDfCount <- sortInAscendingOrder(javaOneDfCount, javaOneDfCount$n)
 
 plotBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
-           label = 'n', xlab = 'Grade', ylab = 'Number of Student')
+           label = javaOneDfCount$n, xlab = 'Grade', ylab = 'Number of Student')
 ```
 
 With reference to above bar chart we can see that Grade doesn't have much more difference between them. So, what we can do is to merge Grade into Excellent, Very Good, Good and Statisfactory. We can divide Grade A falls under Excellent category, B falls under Very Good category, C falls into Good category and D,F falls into statisfactory category. We can acheive that by adding the new column called Range in existing data frame.
-
+before
 ```{r Student on basics of rank, echo = FALSE}
 df <- mutateRank(df, df$Total)
 ranks <- getUnique(df$Rank)
@@ -130,7 +130,7 @@ for (r in ranks) {
 
 javaOneRankWiseDf <- sortInAscendingOrder(javaOneRankWiseDf, javaOneRankWiseDf$n)
 
-plotBarGraph(df = javaOneRankWiseDf, x = 'Rank', y  = 'n', label = 'n', xlab = 'Rank', ylab = 'Number of student')
+plotBarGraph(df = javaOneRankWiseDf, x = 'Rank', y  = 'n', label = javaOneRankWiseDf$n, xlab = 'Rank', ylab = 'Number of student')
 ```
 
 From above barchart, we can see with help of Rank we can generalize data for further analysis. 
@@ -199,7 +199,7 @@ general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.
 paged_table(general)
 ```
 
-Clustering is a technique of data segmentation that partitions the data into several groups based on their similarity. Now, I want to group the studnet on basics of Rank with repsect to their total marks obtained in final exam. Here, we group the data through statiscal operation and those smaller groups formed the bigger data which are known as clusters. 
+Clustering is a technique of data segmentation that partitions the data into several groups based on their similarity. Now, I want to group the student on basics of Rank with respect to their total marks obtained in the final. Here, we group the data through statistical operation, and those smaller groups formed the bigger data which are known as clusters.
 ``` {r Partioning around medoids (PAM) method of clustering, echo = FALSE}
 df.cluster <- df %>% select(Name,Total,Rank)
 
