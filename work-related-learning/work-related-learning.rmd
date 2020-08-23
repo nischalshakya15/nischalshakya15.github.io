@@ -5,104 +5,23 @@ date: 8/23/20
 output: html_notebook
 ---
 
+<style type="text/css">
+body {
+    font-size: 13px;
+}
+
+h1 {
+  font-size: 28px;
+  color: DarkBlue;
+}
+
+h2 {
+  font-size: 22px;
+  color: DarkBlue;
+}
+</style>
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-getUnique <- function(columnName) {
-  return(as.character(unique(columnName)))
-}
-
-countGrade <- function(df, value) {
-  return(
-    df %>% filter(Grade == value) %>% count(Grade)
-  )
-}
-
-getCountRank <- function(df, value) {
-  return(
-    df %>% filter(Rank == value) %>% count(Rank)
-  )
-}
-
-mutateRank <- function(df, columnName) {
-  return(df %>% mutate(Rank = case_when(columnName < 40 ~ 'Statisfactory',
-                                        columnName >= 40 & columnName < 60 ~ 'Good',
-                                        columnName >= 60 & columnName < 80 ~ 'Very Good',
-                                        columnName >= 80 & columnName < 95 ~ 'Excellent'))
-  )
-}
-
-convertRankIntoNumber <- function(df, columnName) {
-  return(df %>% mutate(Rank = case_when(columnName < 40 ~ 4,
-                                        columnName > 40 & columnName < 60 ~ 3,
-                                        columnName >= 60 & columnName < 80 ~ 2,
-                                        columnName >= 80 & columnName < 95 ~ 1))
-  )
-}
-
-sortInAscendingOrder <- function(df, columnName) {
-  return(df %>% arrange(columnName))
-}
-
-findTop <- function(df, columnName, top = 10) {
-  return(df %>% top_n(top, columnName))
-}
-
-findTopStudent <- function(df, value, columnName) {
-  return(df %>%twoExcellentStudent <- df %>%
-  filter(Rank == 'Excellent') %>%
-  top_n(2, Total)
-
-twoVeryGoodStudent <- bind_rows(df %>%
-                                  filter(Rank == 'Very Good' & Gender == 'M') %>%
-                                  top_n(1, Total),
-                                df %>%
-                                  filter(Rank == 'Very Good' & Gender == 'F') %>%
-                                  top_n(1, Total)
-)
-
-twoGoodStudent <- bind_rows(df %>%
-                              filter(Rank == 'Good' & Gender == 'M') %>%
-                              top_n(1, Total),
-                            df %>%
-                              filter(Rank == 'Good' & Gender == 'F') %>%
-                              top_n(1, Total))
-
-twoStatisfactoryStudent <- bind_rows(df %>%
-                                       filter(Rank == 'Statisfactory' & Gender == 'M') %>%
-                                       top_n(1, Total),
-                                     df %>%
-                                       filter(Rank == 'Statisfactory' & Gender == 'F') %>%
-                                       top_n(1, Total))
-
-general <- bind_rows(twoExcellentStudent, twoVeryGoodStudent, twoGoodStudent, twoStatisfactoryStudent)
-
-general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Fifteen.Percent.Marks.Obtained, Lab.Test.Fifteen.Percent.Marks.Obtained, Final.Exam.Forty.Percent.Marks, Total, Rank)
-
-           filter(df$Range == as.character(value)) %>%
-           top_n(4, columnName))
-}
-
-plotBarGraph <- function(df, x, y, label, xlab, ylab) {
-  ggbarplot(df, x = x, y = y, label = label, width = 0.3,
-            fill = x, color = x, palette = "jco", xlab = xlab, ylab = ylab)
-}
-
-plotStackBar <- function(df, x, y, fill, color, label, xlab, ylab, palette) {
-  ggbarplot(df, x = x, y = y,
-            fill = fill, color = color, width = 0.6,
-            palette = palette,
-            label = label,
-            position = position_dodge(0.7),
-            xlab = xlab,
-            ylab = ylab)
-}
-
-plotJitter <- function(df, x, y, pch) {
-  plot(jitter(x) ~ jitter(y),
-       data = df,
-       pch = as.character(pch))
-}
-
 remove(list = ls())
 
 library('dplyr')
@@ -121,113 +40,335 @@ source('utils.R')
 
 setwd('/home/nischal/repository/personal/R/nischalshakya15.github.io/work-related-learning')
 
-# Initialized data frame and varibales related to JavaProgrammingOne
-df <- read.csv('data-sets/re-modified/JavaProgrammingOne.csv')
-df <- mutateRank(df, df$Total)
-uniqueGrades <- getUnique(df$Grade)
-ranks <- getUnique(df$Rank)
-javaOneDfCount <- data.frame()
+## Java One
+
+# Start read
+javaOneDf <- read.csv('data-sets/re-modified/JavaProgrammingOne.csv')
+# End
+
+javaOneDf <- mutateRank(javaOneDf, javaOneDf$Total)
+
+# Start Get unique Grade and Rank
+javaOneUniqueGrades <- getUnique(javaOneDf$Grade)
+javaOneRanks <- getUnique(javaOneDf$Rank)
+# End
+
+## End
+
+## Java Two
+javaTwoDf <- read.csv('data-sets/re-modified/JavaProgrammingTwo.csv')
+
+javaTwoDf <- mutateRank(javaTwoDf, javaTwoDf$Total)
+
+# Start Get unique Grade and Rank
+javaTwoGrades <- getUnique(javaTwoDf$Grade)
+javaTwoRanks <- getUnique(javaTwoDf$Rank)
+# End
+
+# Start Replace empty value with M and Female with F
+i <- 1
+for (row in rownames(javaTwoDf)) {
+  isFemale <- javaTwoDf[row, "Gender"]
+  if (isFemale == "") {
+    javaTwoDf$Gender[i] <- "M"
+  } else {
+    javaTwoDf$Gender[i] <- "F"
+  }
+  i <- i + 1
+}
+# End
+
+## End
+
+## Start Java Web Programming
+javaWebDf <- read.csv('data-sets/re-modified/JavaWebProgramming.csv')
+
+javaWebDf <- mutateRank(javaWebDf, javaWebDf$Total)
+
+# Start Get unique Grade and Rank
+javaWebGrades <- getUnique(javaWebDf$Grade)
+javaWebRanks <- getUnique(javaWebDf$Rank)
+# End
+
+# Start Replace empty value with M and Female with F
+i <- 1
+for (row in rownames(javaWebDf)) {
+  isFemale <- javaWebDf[row, "Gender"]
+  if (isFemale == "") {
+    javaWebDf$Gender[i] <- "M"
+  } else {
+    javaWebDf$Gender[i] <- "F"
+  }
+  i <- i + 1
+}
+## End
 ```
-# Java Programming One
-## Students on basics of Grade
-```{r Student on basics of Grade, echo = FALSE }
-for (g in uniqueGrades) {
+
+# Java Programming Student Result Analysis and Visualization
+This section describes the data analysis of the student of same batch who have given the exam. Referring to the Malaysian Standard, Java divided into 3 modules i.e. Java One, Java Two and JavaWeb.
+
+
+# Barchart showing total number of students on basics of Grade
+## JavaProgramming One
+```{r JavaOne showing total number of student on basics of Grade, fig.cap='Fig 1:- JavaProgramming One Student on basics of Grade', fig.align='center', echo = FALSE}
+# Start plot bargraph showing total no of student on basics of Grade
+javaOneDfCount <- data.frame()
+for (g in javaOneUniqueGrades) {
   javaOneDfCount <- rbind(javaOneDfCount,
                           data.frame(
-                                  countGrade(df, g)
+                            countGrade(javaOneDf, g)
                           ))
 }
-
 javaOneDfCount <- sortInAscendingOrder(javaOneDfCount, javaOneDfCount$n)
-
 plotBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
              label = javaOneDfCount$n, xlab = 'Grade', ylab = 'Number of Student')
+# End
 ```
-## Student on basics of Rank
-```{r, Student on basics of Rank, echo = FALSE}
-javaOneRankWiseDf <- data.frame()
 
-for (r in ranks) {
+## JavaProgrammingTwo
+```{r JavaTwo showing total number of student on basics of Grader, fig.cap='Fig 2:- Java Two Student on basics of Grade', fig.align='center', echo = FALSE}
+# Start Plot bargraph showing total no of students on basics of Grade
+javaTwoGradeWiseDf <- data.frame()
+for (g in javaTwoGrades) {
+  javaTwoGradeWiseDf <- rbind(javaTwoGradeWiseDf,
+                              data.frame(
+                                countGrade(javaTwoDf, g)
+                              ))
+}
+javaTwoGradeWiseDf <- sortInAscendingOrder(javaTwoGradeWiseDf, javaTwoGradeWiseDf$n)
+plotBarGraph(df = javaTwoGradeWiseDf, x = 'Grade', y = 'n',
+             label = javaTwoGradeWiseDf$n, xlab = 'Grade', ylab = 'Number of Student')
+# End
+```
+
+## JavaWebProgramming
+```{r JavaWeb showing total number of student on basics of Rank, fig.cap='Fig 3:- Java Web Student on basics of Grade', fig.align='center', echo = FALSE}
+# Start Plot bargraph showing total no of students on basics of Grade
+javaWebGradeWiseDf <- data.frame()
+for (g in javaWebGrades) {
+  javaWebGradeWiseDf <- rbind(javaWebGradeWiseDf,
+                              data.frame(
+                                countGrade(javaWebDf, g)
+                              ))
+}
+javaWebGradeWiseDf <- sortInAscendingOrder(javaWebGradeWiseDf, javaWebGradeWiseDf$n)
+plotBarGraph(df = javaWebGradeWiseDf, x = 'Grade', y = 'n',
+             label = javaWebGradeWiseDf$n, xlab = 'Grade', ylab = 'Number of Student')
+# End
+```
+
+
+# Barchart showing total number of student on basics of Rank
+## JavaProgrammingOne
+```{r JavaProgrammingOne showing total number of student on basics of Rank, fig.cap='Fig 4:- JavaProgramming One Student on basics of Rank', fig.align='center', echo = FALSE}
+# Start plot bargraph showing total no of students on basics of Rank
+javaOneRankWiseDf <- data.frame()
+for (r in javaOneRanks) {
   javaOneRankWiseDf <- rbind(javaOneRankWiseDf,
                              data.frame(
-                                     getCountRank(df, r)
+                               getCountRank(javaOneDf, r)
                              ))
 }
-
 javaOneRankWiseDf <- sortInAscendingOrder(javaOneRankWiseDf, javaOneRankWiseDf$n)
-
 plotBarGraph(df = javaOneRankWiseDf, x = 'Rank', y = 'n', label = javaOneRankWiseDf$n, xlab = 'Rank', ylab = 'Number of student')
-
+# End
 ```
-## Student on basics of Gender Rank Wise
-```{r Student on basics of Gender Rank Wise, echo = FALSE}
+
+## JavaProgramingTwo
+```{r JavaProgrammingTwo showing total number of student on basics of Rank, fig.cap='Fig 5:- JavaProgrammingTwo Student on basics of Rank', fig.align='center', echo = FALSE}
+# Start Plot bargraph showing total no of students on basics of Rank
+javaTwoRankWiseDf <- data.frame()
+for (r in javaTwoRanks) {
+  javaTwoRankWiseDf <- rbind(javaTwoRankWiseDf,
+                             data.frame(
+                               getCountRank(javaTwoDf, r)
+                             ))
+}
+javaTwoRankWiseDf <- sortInAscendingOrder(javaTwoRankWiseDf, javaTwoRankWiseDf$n)
+plotBarGraph(df = javaTwoRankWiseDf, x = 'Rank', y = 'n', label = javaTwoRankWiseDf$n, xlab = 'Rank', ylab = 'Number of student')
+#End
+```
+
+## JavaWebProgramming
+```{r JavaWebProgramming showing total number of student on basics of Rank, fig.cap='Fig 6:- JavaWebProgramming Student on basics of Rank', fig.align='center', echo = FALSE}
+# Start Plot bargraph showing total no of students on basics of rank
+javaWebRankWiseDf <- data.frame()
+for (r in javaWebRanks) {
+  javaWebRankWiseDf <- rbind(javaWebRankWiseDf,
+                             data.frame(
+                               getCountRank(javaWebDf, r)
+                             ))
+}
+javaWebRankWiseDf <- sortInAscendingOrder(javaWebRankWiseDf, javaWebRankWiseDf$n)
+plotBarGraph(df = javaWebRankWiseDf, x = 'Rank', y = 'n', label = javaWebRankWiseDf$n, xlab = 'Rank', ylab = 'Number of student')
+# End
+```
+
+
+# Stacked barchart showing male and female on basics of Rank
+## Java Programming One
+```{r JavaProgrammingOne showing total number of male and female on basics of Rank, fig.cap='Fig 7:- JavaProgrammingOne Student on basics of Rank', fig.align='center', echo = FALSE}
+# Start plot stackbar chart showing no of males and female on basics of Rank
 javaOneRankWiseGenderDf <- data.frame()
-
 javaOneRankWiseBarChartDf <- data.frame()
-
-for (r in ranks) {
-  rankFilter <- df %>% filter(Rank == r)
+for (r in javaOneRanks) {
+  rankFilter <- javaOneDf %>% filter(Rank == r)
   femaleRankFilter <- rankFilter %>%
-          filter(Gender == "F") %>%
-          count(Gender)
+    filter(Gender == "F") %>%
+    count(Gender)
   if (length(femaleRankFilter$n) == 0) {
     femaleRankFilter <- data.frame(Gender = "F", n = 0)
   }
   javaOneRankWiseGenderDf <- rbind(javaOneRankWiseGenderDf,
                                    data.frame(
-                                           Rank = r,
-                                           Male = rankFilter %>%
-                                                   filter(Gender == "M") %>%
-                                                   count(Gender),
-                                           Female = femaleRankFilter
+                                     Rank = r,
+                                     Male = rankFilter %>%
+                                       filter(Gender == "M") %>%
+                                       count(Gender),
+                                     Female = femaleRankFilter
                                    ))
 }
 
 javaOneRankWiseGenderDf <- javaOneRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
 
-for (r in ranks) {
+for (r in javaOneRanks) {
   filter <- javaOneRankWiseGenderDf %>% filter(Rank == r)
   javaOneRankWiseBarChartDf <- rbind(javaOneRankWiseBarChartDf,
                                      data.frame(
-                                             Rank = rep(r, 2),
-                                             Gender = c(rep('Male', 1), rep('Female', 1)),
-                                             NoOfStudent = c(filter$Male.n, filter$Female.n)
+                                       Rank = rep(r, 2),
+                                       Gender = c(rep('Male', 1), rep('Female', 1)),
+                                       NoOfStudent = c(filter$Male.n, filter$Female.n)
                                      ))
 }
 
 plotStackBar(javaOneRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
              fill = 'Gender', color = 'Gender', palette = 'uchiago',
              label = javaOneRankWiseBarChartDf$NoOfStudent, xlab = 'Rank', ylab = 'No of student')
+# End
 ```
-## Top 2 students from each Rank on basics of the Genders
-```{r Top 2 students from each rank on basics of the Genders}
-twoExcellentStudent <- df %>%
-        filter(Rank == 'Excellent') %>%
-        top_n(2, Total)
 
-twoVeryGoodStudent <- bind_rows(df %>%
-                                        filter(Rank == 'Very Good' & Gender == 'M') %>%
-                                        top_n(1, Total),
-                                df %>%
-                                        filter(Rank == 'Very Good' & Gender == 'F') %>%
-                                        top_n(1, Total)
+## JavaProgrammingTwo
+```{r JavaProgrammingTwo showing total number of male and female on basics of Rank, fig.cap='Fig 8:- JavaProgrammingOne Student on basics of Rank', fig.align='center', echo = FALSE}
+# Start plot stackbar chart showing no of males and female on basics of Rank
+javaOneRankWiseGenderDf <- data.frame()
+javaOneRankWiseBarChartDf <- data.frame()
+for (r in javaOneRanks) {
+  rankFilter <- javaOneDf %>% filter(Rank == r)
+  femaleRankFilter <- rankFilter %>%
+    filter(Gender == "F") %>%
+    count(Gender)
+  if (length(femaleRankFilter$n) == 0) {
+    femaleRankFilter <- data.frame(Gender = "F", n = 0)
+  }
+  javaOneRankWiseGenderDf <- rbind(javaOneRankWiseGenderDf,
+                                   data.frame(
+                                     Rank = r,
+                                     Male = rankFilter %>%
+                                       filter(Gender == "M") %>%
+                                       count(Gender),
+                                     Female = femaleRankFilter
+                                   ))
+}
+
+javaOneRankWiseGenderDf <- javaOneRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
+
+for (r in javaOneRanks) {
+  filter <- javaOneRankWiseGenderDf %>% filter(Rank == r)
+  javaOneRankWiseBarChartDf <- rbind(javaOneRankWiseBarChartDf,
+                                     data.frame(
+                                       Rank = rep(r, 2),
+                                       Gender = c(rep('Male', 1), rep('Female', 1)),
+                                       NoOfStudent = c(filter$Male.n, filter$Female.n)
+                                     ))
+}
+
+plotStackBar(javaOneRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
+             fill = 'Gender', color = 'Gender', palette = 'uchiago',
+             label = javaOneRankWiseBarChartDf$NoOfStudent, xlab = 'Rank', ylab = 'No of student')
+# End
+```
+
+## JavaWebProgramming
+```{r JavaWebProgramming showing total number of male and female on basics of Rank, fig.cap='Fig 9:- JavaProgrammingOne Student on basics of Rank', fig.align='center', echo = FALSE}
+# Start stack bar chart showing no of male and female on basics of Rank
+javaWebRankWiseGenderDf <- data.frame()
+
+javaWebRankWiseBarChartDf <- data.frame()
+
+for (r in javaWebRanks) {
+  rankFilter <- javaWebDf %>% filter(Rank == r)
+  maleRankFilter <- rankFilter %>%
+    filter(Gender == "M") %>%
+    count(Gender)
+  femaleRankFilter <- rankFilter %>%
+    filter(Gender == "F") %>%
+    count(Gender)
+  if (length(femaleRankFilter$n) == 0) {
+    femaleRankFilter <- data.frame(Gender = "F", n = 0)
+  }
+  if (length(maleRankFilter$n) == 0) {
+    maleRankFilter <- data.frame(Gender = "M", n = 0)
+  }
+  javaWebRankWiseGenderDf <- rbind(javaWebRankWiseGenderDf,
+                                   data.frame(
+                                     Rank = r,
+                                     Male = maleRankFilter,
+                                     Female = femaleRankFilter
+                                   ))
+}
+
+javaWebRankWiseGenderDf <- javaWebRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
+
+for (r in javaWebRanks) {
+  filter <- javaWebRankWiseGenderDf %>% filter(Rank == r)
+  javaWebRankWiseBarChartDf <- rbind(javaWebRankWiseBarChartDf,
+                                     data.frame(
+                                       Rank = rep(r, 2),
+                                       Gender = c(rep('Male', 1), rep('Female', 1)),
+                                       NoOfStudent = c(filter$Male.n, filter$Female.n)
+                                     ))
+}
+
+plotStackBar(javaWebRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
+             fill = 'Gender', color = 'Gender', palette = 'uchiago',
+             label = javaWebRankWiseBarChartDf$NoOfStudent, xlab = 'Rank', ylab = 'No of student')
+
+# End
+```
+
+# Top 2 students from each Rank including one Male and Female.
+## JavaProgrammingOne
+```{r echo = TRUE}
+javaOneTwoExcellentStudent <- javaOneDf %>%
+  filter(Rank == 'Excellent') %>%
+  top_n(2, Total)
+
+javaOneTwoVeryGoodStudent <- bind_rows(javaOneDf %>%
+                                  filter(Rank == 'Very Good' & Gender == 'M') %>%
+                                  top_n(1, Total),
+                                       javaOneDf %>%
+                                  filter(Rank == 'Very Good' & Gender == 'F') %>%
+                                  top_n(1, Total)
 )
 
-twoGoodStudent <- bind_rows(df %>%
-                                    filter(Rank == 'Good' & Gender == 'M') %>%
-                                    top_n(1, Total),
-                            df %>%
-                                    filter(Rank == 'Good' & Gender == 'F') %>%
-                                    top_n(1, Total))
+javaOneTwoGoodStudent <- bind_rows(javaOneDf %>%
+                              filter(Rank == 'Good' & Gender == 'M') %>%
+                              top_n(1, Total),
+                                   javaOneDf %>%
+                              filter(Rank == 'Good' & Gender == 'F') %>%
+                              top_n(1, Total))
 
-twoStatisfactoryStudent <- bind_rows(df %>%
-                                             filter(Rank == 'Statisfactory' & Gender == 'M') %>%
-                                             top_n(1, Total),
-                                     df %>%
-                                             filter(Rank == 'Statisfactory' & Gender == 'F') %>%
-                                             top_n(1, Total))
+javaOneTwoStatisfactoryStudent <- bind_rows(javaOneDf %>%
+                                       filter(Rank == 'Statisfactory' & Gender == 'M') %>%
+                                       top_n(1, Total),
+                                            javaOneDf %>%
+                                       filter(Rank == 'Statisfactory' & Gender == 'F') %>%
+                                       top_n(1, Total))
+# End
 
-general <- bind_rows(twoExcellentStudent, twoVeryGoodStudent, twoGoodStudent, twoStatisfactoryStudent)
+# Start Gathering General Information
+javaOneTopTwoStudent <- bind_rows(javaOneTwoExcellentStudent, javaOneTwoVeryGoodStudent, javaOneTwoGoodStudent, javaOneTwoStatisfactoryStudent)
 
-general <- general %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Fifteen.Percent.Marks.Obtained, Lab.Test.Fifteen.Percent.Marks.Obtained, Final.Exam.Forty.Percent.Marks, Total, Rank)
+javaOneTopTwoStudent <- javaOneTopTwoStudent %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Fifteen.Percent.Marks.Obtained, Lab.Test.Fifteen.Percent.Marks.Obtained, Final.Exam.Forty.Percent.Marks, Total, Rank)
+# End
 ```

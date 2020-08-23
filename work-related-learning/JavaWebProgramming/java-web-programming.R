@@ -51,7 +51,7 @@ plotBarGraph(df = javaWebGradeWiseDf, x = 'Grade', y = 'n',
              label = javaWebGradeWiseDf$n, xlab = 'Grade', ylab = 'Number of Student')
 # End
 
-# # Start Plot bargraph showing total no of students on basics of rank
+# Start Plot bargraph showing total no of students on basics of rank
 javaWebRankWiseDf <- data.frame()
 for (r in javaWebRanks) {
   javaWebRankWiseDf <- rbind(javaWebRankWiseDf,

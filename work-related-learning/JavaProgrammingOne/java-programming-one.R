@@ -42,7 +42,7 @@ plotBarGraph(df = javaOneDfCount, x = 'Grade', y = 'n',
 
 # Start plot bargraph showing total no of students on basics of Rank
 javaOneRankWiseDf <- data.frame()
-for (r in javaOneRanks) {
+for (r ale on basics of Rankin javaOneRanks) {
   javaOneRankWiseDf <- rbind(javaOneRankWiseDf,
                              data.frame(
                                getCountRank(javaOneDf, r)
@@ -85,7 +85,7 @@ for (r in javaOneRanks) {
                                      ))
 }
 
-plotStackBar(javaOneRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
+plotStackBar(javaJavaProgrammingTwo showing total number of male and female on basics of Rank, fig.cap='Fig 7:- JavaProgrammingOne Student on basics of Rank', fig.align='center', echo = FALSEOneRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
              fill = 'Gender', color = 'Gender', palette = 'uchiago',
              label = javaOneRankWiseBarChartDf$NoOfStudent, xlab = 'Rank', ylab = 'No of student')
 # End
