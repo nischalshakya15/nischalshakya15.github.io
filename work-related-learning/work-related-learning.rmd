@@ -2,7 +2,7 @@
 title: "Student Data analysis of Java Programming"
 author: Nischal Shakya
 date: 8/23/20
-output: html_notebook
+output: html_document
 ---
 
 <style type="text/css">
@@ -22,7 +22,11 @@ h2 {
 </style>
 
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
 remove(list = ls())
+
+library('knitr')
 
 library('dplyr')
 
@@ -35,6 +39,8 @@ library('fpc')
 library('psych')
 
 library('cluster')
+
+library('rmarkdown')
 
 source('utils.R')
 
@@ -142,6 +148,9 @@ plotBarGraph(df = javaTwoGradeWiseDf, x = 'Grade', y = 'n',
 ```
 
 ## JavaWebProgramming
+```{r}
+
+```
 ```{r JavaWeb showing total number of student on basics of Rank, fig.cap='Fig 3:- Java Web Student on basics of Grade', fig.align='center', echo = FALSE}
 # Start Plot bargraph showing total no of students on basics of Grade
 javaWebGradeWiseDf <- data.frame()
@@ -371,6 +380,7 @@ javaOneTopTwoStudents <- bind_rows(javaOneTwoExcellentStudent, javaOneTwoVeryGoo
 
 javaOneTopTwoStudents <- javaOneTopTwoStudents %>% select(Name, Gender, Assignment.Marks.Obtained, Mid.Term.Fifteen.Percent.Marks.Obtained, Lab.Test.Fifteen.Percent.Marks.Obtained, Final.Exam.Forty.Percent.Marks, Total, Rank)
 # End
+
 paged_table(javaOneTopTwoStudents)
 ```
 
