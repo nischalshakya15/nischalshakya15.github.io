@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 remove(list = ls())
 
 getUnique <- function(columnName) {
-  return (c(as.character(unique(columnName))))
+  return (as.character(unique(columnName)))
 }
 
 countGrade <- function(df, value) {
@@ -83,13 +83,13 @@ library('psych')
 library('cluster')
 library('rmarkdown')
 
-setwd('/home/nischal/nischalshakya15.github.io/work-related-learning')
+setwd('/home/nischal/repository/personal/R/nischalshakya15.github.io/work-related-learning')
 
 df <- read.csv('data-sets/re-modified/JavaProgrammingOne.csv')
 ```
 
 ## Data analysis of Java Programming One
-Let's know what kind of data we are dealing with before hand so that we can get insight of variables used in dataset.
+Let's know what kind of data we are dealing with so that we can get insight of variables used in the dataset.
 ```{r General summary of data}
 str(df)
 ```
@@ -142,30 +142,39 @@ javaOneRankWiseGenderDf <- data.frame()
 javaOneRankWiseBarChartDf <- data.frame()
 
 for (r in ranks) {
-  filter <- df %>% filter(Rank == r)
+  rankFilter <- df %>% filter(Rank == r)
+  femaleRankFilter <- rankFilter %>%
+          filter(Gender == "F") %>%
+          count(Gender)
+  if (length(femaleRankFilter$n) == 0) {
+    femaleRankFilter <- data.frame(Gender = "F", n = 0)
+  }
   javaOneRankWiseGenderDf <- rbind(javaOneRankWiseGenderDf,
-                                    data.frame(
-                                      Rank = r,
-                                      Male = filter %>% filter(Gender == 'M') %>% count(Gender),
-                                      Female = filter %>% filter(Gender == 'F') %>% count(Gender)
-                                    ))
+                                   data.frame(
+                                           Rank = r,
+                                           Male = rankFilter %>%
+                                                   filter(Gender == "M") %>%
+                                                   count(Gender),
+                                           Female = femaleRankFilter
+                                   ))
 }
 
 javaOneRankWiseGenderDf <- javaOneRankWiseGenderDf %>% select(-c(Male.Gender, Female.Gender))
 
 for (r in ranks) {
-  filter <- javaOneRankWiseGenderDf %>% filter(Rank == r) 
-  javaOneRankWiseBarChartDf  <- rbind(javaOneRankWiseBarChartDf,
-                                       data.frame(
-                                         Rank = c(rep(r, 2)),
-                                         Gender = c(rep('Male', 1), rep('Female', 1)),
-                                         NoOfStudent = c(filter$Male.n, filter$Female.n)
-                                       ))
+  filter <- javaOneRankWiseGenderDf %>% filter(Rank == r)
+  javaOneRankWiseBarChartDf <- rbind(javaOneRankWiseBarChartDf,
+                                     data.frame(
+                                             Rank = rep(r, 2),
+                                             Gender = c(rep('Male', 1), rep('Female', 1)),
+                                             NoOfStudent = c(filter$Male.n, filter$Female.n)
+                                     ))
 }
 
 plotStackBar(javaOneRankWiseBarChartDf, x = 'Rank', y = 'NoOfStudent',
-         fill = 'Gender', color = 'Gender', palette = 'uchiago',
-         label = 'NoOfStudent', xlab = 'Rank', ylab = 'No of student')
+             fill = 'Gender', color = 'Gender', palette = 'uchiago',
+             label = javaOneRankWiseBarChartDf$NoOfStudent, xlab = 'Rank', ylab = 'No of student')
+
 ```
 
 We further categorize the student on basics of grade with respect to rank. Since, we have Male as well as Female student in Rank we can take the top two student from each rank one from Male category and another is from Female category.
