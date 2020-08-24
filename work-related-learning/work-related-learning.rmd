@@ -19,6 +19,10 @@ h2 {
   font-size: 22px;
   color: DarkBlue;
 }
+
+th .pagedtable-header-type {
+  display: none;
+}
 </style>
 
 ```{r setup, include=FALSE}
