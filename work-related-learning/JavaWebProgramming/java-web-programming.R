@@ -60,7 +60,8 @@ for (r in javaWebRanks) {
                              ))
 }
 javaWebRankWiseDf <- sortInAscendingOrder(javaWebRankWiseDf, javaWebRankWiseDf$n)
-plotBarGraph(df = javaWebRankWiseDf, x = 'Rank', y = 'n', label = javaWebRankWiseDf$n, xlab = 'Rank', ylab = 'Number of student')
+plotBarGraph(df = javaWebRankWiseDf, x = 'Rank', y = 'n', label = javaWebRankWiseDf$n, 
+            xlab = 'Rank', ylab = 'Number of student')
 #End
 
 # Start stack bar chart showing no of male and female on basics of Rank
