@@ -34,8 +34,8 @@ df_2015_to_2018 <- df %>%
 ui <- fluidPage(theme = shinytheme('lumen'),
                 titlePanel('Predictive Model using R'),
                 fluidRow(
-                  column(3, selectInput(inputId = 'type', label = strong('Select Year'),
-                                        choices = unique(df$Year), selected = '2012')
+                  column(3, align = 'left', offset = 1, selectInput(inputId = 'type', label = strong('Select Year'),
+                                                                    choices = unique(df$Year), selected = '2009')
                   ),
                   column(3, selectInput(inputId = 'genre', label = strong('Select Genre'),
                                         choices = unique(df$Genre), selected = 'Action')
@@ -43,15 +43,17 @@ ui <- fluidPage(theme = shinytheme('lumen'),
                   column(3, selectInput(inputId = 'platform', label = strong('Select Platform'),
                                         choices = unique(df$Platform), selected = 'PC')
                   )
+
                 ),
-                fluidRow(column(5, dataTableOutput(outputId = "table")))
+                fluidRow(column(8, align = 'center', offset = 0, dataTableOutput(outputId = "table")))
 )
 
 # Define Server
 server <- function(input, output) {
   output$table <- renderDataTable(df %>% filter(df$Year == input$type &
                                                   df$Genre == input$genre &
-                                                  df$Platform == input$platform))
+                                                  df$Platform == input$platform),
+                                  options = list(pageLength = 10, autoWidth = TRUE))
 }
 
 # Create Shiny object
