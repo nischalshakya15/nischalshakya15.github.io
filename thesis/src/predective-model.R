@@ -33,22 +33,18 @@ df_2015_to_2018 <- df %>%
 # Define UI
 ui <- fluidPage(theme = shinytheme('lumen'),
                 titlePanel('Predictive Model using R'),
-                sidebarLayout(
-                  sidebarPanel(
-                    selectInput(inputId = 'type', label = strong('Select Year'),
-                                choices = unique(df$Year),
-                                selected = '2012'),
-                    selectInput(inputId = 'genre', label = strong('Select Genre'),
-                                choices = unique(df$Genre), selected = 'Action'
-                    ),
-                    selectInput(inputId = 'platform', label = strong('Select Platform'),
-                                choices = unique(df$Platform), selected = 'PC'
-                    )
+                fluidRow(
+                  column(3, selectInput(inputId = 'type', label = strong('Select Year'),
+                                        choices = unique(df$Year), selected = '2012')
                   ),
-                  mainPanel(
-                    dataTableOutput(outputId = "table")
+                  column(3, selectInput(inputId = 'genre', label = strong('Select Genre'),
+                                        choices = unique(df$Genre), selected = 'Action')
+                  ),
+                  column(3, selectInput(inputId = 'platform', label = strong('Select Platform'),
+                                        choices = unique(df$Platform), selected = 'PC')
                   )
-                )
+                ),
+                fluidRow(column(5, dataTableOutput(outputId = "table")))
 )
 
 # Define Server
