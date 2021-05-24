@@ -5,6 +5,7 @@ library('dplyr')
 library('shiny')
 library('shinythemes')
 library('reader')
+library('tidyr')
 
 setwd('/home/nischal/repository/personal/nischalshakya15.github.io/thesis')
 
@@ -31,39 +32,40 @@ df <- data %>%
   dplyr::mutate(NA_Sales = replace_na(NA_Sales, 0)) %>%
   dplyr::mutate(Other_Sales = replace_na(Other_Sales, 0)) %>%
   dplyr::mutate(JP_Sales = replace_na(JP_Sales, 0)) %>%
+  dplyr::mutate(Total_Sales = PAL_Sales + NA_Sales + JP_Sales + Other_Sales) %>%
+  dplyr::mutate(across(is.numeric, ~round(., 2))) %>%
   arrange(Year)
 
-df <- df %>% mutate(across(is.numeric, ~round(., 2)))
-
 df_where_global_sales_not_equal_to_all_sales <- df %>%
-  filter(df$Global_Sales != (df$PAL_Sales +
-    df$NA_Sales +
-    df$JP_Sales +
-    df$Other_Sales))
+  filter(Global_Sales != Total_Sales)
+
+df_where_global_sales_equal_to_all_sales <- df %>%
+  filter(Global_Sales == Total_Sales)
 
 df_where_global_sales_greater_than_all_sales <- df_where_global_sales_not_equal_to_all_sales %>%
-  filter(Global_Sales > (PAL_Sales + NA_Sales + JP_Sales + Other_Sales))
+  filter(Global_Sales > Total_Sales) %>%
+  dplyr::mutate(JP_Sales = replace(JP_Sales, Global_Sales > Total_Sales, Global_Sales - Total_Sales))
 
 df_where_global_sales_less_than_all_sales <- df_where_global_sales_not_equal_to_all_sales %>%
-  filter(Global_Sales < (PAL_Sales + NA_Sales + JP_Sales + Other_Sales))
+  filter(Global_Sales < Total_Sales) %>%
+  dplyr::mutate(JP_Sales = replace(JP_Sales, Global_Sales < Total_Sales, Total_Sales - Global_Sales))
 
-df_two <- df_where_global_sales_greater_than_all_sales %>%
-  filter(Global_Sales > (PAL_Sales + NA_Sales + JP_Sales + Other_Sales)) %>%
-  dplyr::mutate(JP_Sales = replace(0, Global_Sales > (PAL_Sales + NA_Sales + JP_Sales + Other_Sales), Global_Sales - (PAL_Sales + NA_Sales + Other_Sales)))
-
+processed_df <- do.call("rbind", list(df_where_global_sales_less_than_all_sales,
+                                      df_where_global_sales_equal_to_all_sales,
+                                      df_where_global_sales_greater_than_all_sales))
 
 # Define UI
 ui <- fluidPage(theme = shinytheme('lumen'),
                 titlePanel('Predictive Model using R'),
                 fluidRow(
                   column(3, align = 'left', offset = 1, selectInput(inputId = 'type', label = strong('Select Year'),
-                                                                    choices = unique(df$Year), selected = '2001')
+                                                                    choices = unique(processed_df$Year), selected = '2001')
                   ),
                   column(3, selectInput(inputId = 'genre', label = strong('Select Genre'),
-                                        choices = unique(df$Genre), selected = 'Action')
+                                        choices = unique(processed_df$Genre), selected = 'Action')
                   ),
                   column(3, selectInput(inputId = 'platform', label = strong('Select Platform'),
-                                        choices = unique(df$Platform), selected = 'PC')
+                                        choices = unique(processed_df$Platform), selected = 'PC')
                   )
 
                 ),
@@ -72,9 +74,9 @@ ui <- fluidPage(theme = shinytheme('lumen'),
 
 # Define Server
 server <- function(input, output) {
-  output$table <- renderDataTable(df %>% filter(df$Year == input$type &
-                                                  df$Genre == input$genre &
-                                                  df$Platform == input$platform),
+  output$table <- renderDataTable(processed_df %>% filter(Year == input$type &
+                                                            Genre == input$genre &
+                                                            Platform == input$platform),
                                   options = list(pageLength = 10, autoWidth = TRUE))
 }
 
