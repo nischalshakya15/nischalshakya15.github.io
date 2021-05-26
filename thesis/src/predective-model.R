@@ -54,6 +54,14 @@ processed_df <- do.call("rbind", list(df_where_global_sales_less_than_all_sales,
                                       df_where_global_sales_equal_to_all_sales,
                                       df_where_global_sales_greater_than_all_sales))
 
+df_pc <- processed_df %>%
+  filter(Platform == 'PC') %>%
+  group_by(Name)
+
+df_pc_groupby <- df_pc %>% inner_join(
+  (processed_df %>% filter(Platform == 'PS2')), by = 'Name'
+) %>% group_by(Name)
+
 # Define UI
 ui <- fluidPage(theme = shinytheme('lumen'),
                 titlePanel('Predictive Model using R'),
@@ -61,23 +69,44 @@ ui <- fluidPage(theme = shinytheme('lumen'),
                   column(3, align = 'left', offset = 1, selectInput(inputId = 'type', label = strong('Select Year'),
                                                                     choices = unique(processed_df$Year), selected = '2001')
                   ),
-                  column(3, selectInput(inputId = 'genre', label = strong('Select Genre'),
-                                        choices = unique(processed_df$Genre), selected = 'Action')
-                  ),
+                  # column(3, selectInput(inputId = 'genre', label = strong('Select Genre'),
+                  #                       choices = unique(processed_df$Genre), selected = 'Action')
+                  # ),
                   column(3, selectInput(inputId = 'platform', label = strong('Select Platform'),
                                         choices = unique(processed_df$Platform), selected = 'PC')
                   )
 
                 ),
-                fluidRow(column(8, align = 'center', offset = 0, dataTableOutput(outputId = "table")))
+                fluidRow(column(8, align = 'center', offset = 0, dataTableOutput(outputId = "table"))),
+
+                fluidRow(
+                  column(3, selectInput(inputId = 'platform_pc', label = strong('Select Platform'),
+                                        choices = unique(processed_df$Platform), selected = 'PC')
+                  ),
+                  column(3, selectInput(inputId = 'platform_microsoft', label = strong('Select Platform'),
+                                        choices = unique(processed_df$Platform), selected = 'XOne')
+                  ),
+                  column(3, selectInput(inputId = 'platform_sony', label = strong('Select Platform'),
+                                        choices = unique(processed_df$Platform), selected = 'PS2')
+                  )
+                ),
+                fluidRow(column(12, dataTableOutput(outputId = "common_observation_table")))
 )
 
 # Define Server
 server <- function(input, output) {
   output$table <- renderDataTable(processed_df %>% filter(Year == input$type &
-                                                            Genre == input$genre &
+                                                            # Genre == input$genre &
                                                             Platform == input$platform),
                                   options = list(pageLength = 10, autoWidth = TRUE))
+
+  output$common_observation_table <- renderDataTable(df_pc %>%
+                                                       inner_join((processed_df %>% filter(Platform == input$platform_microsoft)), by = 'Name') %>%
+                                                       inner_join((processed_df %>% filter(Platform == input$platform_sony)), by = 'Name') %>%
+                                                       group_by(Name) %>%
+                                                       arrange(Year),
+                                                     options = list(pageLength = 10, autoWidth = TRUE))
+
 }
 
 # Create Shiny object
