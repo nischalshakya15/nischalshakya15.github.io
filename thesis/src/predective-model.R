@@ -10,57 +10,54 @@ library('tidyr')
 setwd('/home/nischal/repository/personal/nischalshakya15.github.io/thesis')
 
 # Read data from csv file
-data <- read.csv(file = 'data-sets/vgsales-12-4-2019.csv', sep = ',', dec = '.', stringsAsFactors = FALSE)
+data <- read.csv(file = '../data-sets/vgsales-processed.csv', sep = ',', dec = '.', stringsAsFactors = FALSE)
 
-df <- data %>%
-  select(Name, Genre, Platform, Publisher, Developer,
-         Global_Sales, NA_Sales, JP_Sales, PAL_Sales, Other_Sales, Year) %>%
-  filter(
-    data$Year %in% (2000:2020) &
-      !is.na(data$Global_Sales) &
-      data$Global_Sales != 0.00 &
-      (
-        data$Platform == 'PC' |
-          data$Platform == 'PS2' |
-          data$Platform == 'PS3' |
-          data$Platform == 'PS4' |
-          data$Platform == 'XOne' |
-          data$Platform == 'XB'
-      )
-  ) %>%
-  dplyr::mutate(PAL_Sales = replace_na(PAL_Sales, 0)) %>%
-  dplyr::mutate(NA_Sales = replace_na(NA_Sales, 0)) %>%
-  dplyr::mutate(Other_Sales = replace_na(Other_Sales, 0)) %>%
-  dplyr::mutate(JP_Sales = replace_na(JP_Sales, 0)) %>%
-  dplyr::mutate(Total_Sales = PAL_Sales + NA_Sales + JP_Sales + Other_Sales) %>%
-  dplyr::mutate(across(is.numeric, ~round(., 2))) %>%
-  arrange(Year)
+find_by_platform <- function(df, platform) {
+  return(
+    df %>%
+      filter(df$Platform == platform)
+  )
+}
 
-df_where_global_sales_not_equal_to_all_sales <- df %>%
-  filter(Global_Sales != Total_Sales)
+df_pc <- find_by_platform(processed_df, 'PC')
 
-df_where_global_sales_equal_to_all_sales <- df %>%
-  filter(Global_Sales == Total_Sales)
-
-df_where_global_sales_greater_than_all_sales <- df_where_global_sales_not_equal_to_all_sales %>%
-  filter(Global_Sales > Total_Sales) %>%
-  dplyr::mutate(JP_Sales = replace(JP_Sales, Global_Sales > Total_Sales, Global_Sales - Total_Sales))
-
-df_where_global_sales_less_than_all_sales <- df_where_global_sales_not_equal_to_all_sales %>%
-  filter(Global_Sales < Total_Sales) %>%
-  dplyr::mutate(JP_Sales = replace(JP_Sales, Global_Sales < Total_Sales, Total_Sales - Global_Sales))
-
-processed_df <- do.call("rbind", list(df_where_global_sales_less_than_all_sales,
-                                      df_where_global_sales_equal_to_all_sales,
-                                      df_where_global_sales_greater_than_all_sales))
-
-df_pc <- processed_df %>%
-  filter(Platform == 'PC') %>%
+df_xbox <- processed_df %>%
+  filter(Platform == 'XB') %>%
   group_by(Name)
 
-df_pc_groupby <- df_pc %>% inner_join(
-  (processed_df %>% filter(Platform == 'PS2')), by = 'Name'
-) %>% group_by(Name)
+df_ps2 <- processed_df %>%
+  filter(Platform == 'PS2') %>%
+  group_by(Name)
+
+df_pc_semi_join <- df_pc %>%
+  semi_join(
+    df_ps2, by = 'Name'
+  ) %>%
+  semi_join(
+    df_xbox, by = 'Name'
+  )
+
+df_ps2_semi_join <- df_ps2 %>%
+  semi_join(
+    df_pc, by = 'Name'
+  ) %>%
+  semi_join(
+    df_xbox, by = 'Name'
+  )
+
+df_xbox_semi_join <- df_xbox %>%
+  semi_join(
+    df_pc, by = 'Name'
+  ) %>%
+  semi_join(
+    df_ps2, by = 'Name'
+  )
+
+df_merged <- do.call("rbind", list(df_pc_semi_join,
+                                   df_xbox_semi_join,
+                                   df_ps2_semi_join))
+
+df_new <- df_merged %>% arrange(Name)
 
 # Define UI
 ui <- fluidPage(theme = shinytheme('lumen'),
@@ -83,10 +80,10 @@ ui <- fluidPage(theme = shinytheme('lumen'),
                   column(3, selectInput(inputId = 'platform_pc', label = strong('Select Platform'),
                                         choices = unique(processed_df$Platform), selected = 'PC')
                   ),
-                  column(3, selectInput(inputId = 'platform_microsoft', label = strong('Select Platform'),
+                  column(3, selectInput(inputId = 'platform_microsoft', label = strong('Select Microsoft Platform'),
                                         choices = unique(processed_df$Platform), selected = 'XOne')
                   ),
-                  column(3, selectInput(inputId = 'platform_sony', label = strong('Select Platform'),
+                  column(3, selectInput(inputId = 'platform_sony', label = strong('Select Sony Platform'),
                                         choices = unique(processed_df$Platform), selected = 'PS2')
                   )
                 ),
@@ -95,14 +92,20 @@ ui <- fluidPage(theme = shinytheme('lumen'),
 
 # Define Server
 server <- function(input, output) {
-  output$table <- renderDataTable(processed_df %>% filter(Year == input$type &
-                                                            # Genre == input$genre &
-                                                            Platform == input$platform),
+  output$table <- renderDataTable(find_by_platform(processed_df, input$platform),
                                   options = list(pageLength = 10, autoWidth = TRUE))
 
   output$common_observation_table <- renderDataTable(df_pc %>%
-                                                       inner_join((processed_df %>% filter(Platform == input$platform_microsoft)), by = 'Name') %>%
-                                                       inner_join((processed_df %>% filter(Platform == input$platform_sony)), by = 'Name') %>%
+                                                       inner_join(
+                                                         (
+                                                           find_by_platform(processed_df, input$platform_microsoft)
+                                                         ), by = 'Name'
+                                                       ) %>%
+                                                       inner_join(
+                                                         (
+                                                           find_by_platform(processed_df, input$platform_sony)
+                                                         ), by = 'Name'
+                                                       ) %>%
                                                        group_by(Name) %>%
                                                        arrange(Year),
                                                      options = list(pageLength = 10, autoWidth = TRUE))
