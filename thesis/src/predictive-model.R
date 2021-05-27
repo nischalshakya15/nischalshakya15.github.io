@@ -16,9 +16,14 @@ source('utils/utils.R')
 # Read data from csv file
 data <- read.csv(file = 'data-sets/vgsales-processed.csv', sep = ',', dec = '.', stringsAsFactors = FALSE)
 
-find_by_column_name <- function(df, col_name, col_value) {
+find_by_column_name <- function(df, col_name, col_value, arrange_col_name) {
   return(
-    df %>%
+    df
+      %>%
       filter(df[col_name] == col_value)
+      %>%
+      arrange(arrange_col_name)
   )
 }
+
+df <- find_by_column_name(data, 'Platform', 'PS2', 'Year')
