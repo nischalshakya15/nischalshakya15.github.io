@@ -50,15 +50,15 @@ processed_df <- do.call("rbind", list(df_where_global_sales_less_than_all_sales,
                                       df_where_global_sales_equal_to_all_sales,
                                       df_where_global_sales_greater_than_all_sales))
 
-write.csv(processed_df, "/data-sets/vgsales-processed.csv")
+write.csv(processed_df, "data-sets/vgsales-processed.csv")
 
 # Set the working directory
 setwd('/home/nischal/repository/personal/nischalshakya15.github.io/thesis')
 
-source('../utils/utils.R')
+source('src/utils/utils.R')
 
 # Read data from csv file
-data <- read.csv(file = '/data-sets/vgsales-processed.csv', sep = ',', dec = '..', stringsAsFactors = FALSE)
+data <- read.csv(file = 'data-sets/vgsales-processed.csv', sep = ',', dec = '.', stringsAsFactors = FALSE)
 
 df_pc <- find_by_column_name(data, col_name = 'Platform', col_value = 'PC', arrange_col_name = 'Year')
 
@@ -76,7 +76,7 @@ df_pc_ps2_xbox_semi_join <- do.call('rbind', list(df_pc_semi_join, df_ps2_semi_j
 
 df_pc_ps2_xbox <- df_pc_ps2_xbox_semi_join %>% arrange(Name)
 
-write.csv(file = '/data-sets/vgsales-pc-ps2-xbox.csv', df_pc_ps2_xbox)
+write.csv(file = 'data-sets/vgsales-pc-ps2-xbox.csv', df_pc_ps2_xbox)
 
 df_ps3 <- find_by_column_name(data, col_name = 'Platform', col_value = 'PS3', arrange_col_name = 'Year')
 
@@ -90,7 +90,7 @@ df_pc_ps3_xbox_semi_join <- do.call('rbind', list(df_pc_one_semi_join, df_ps3_se
 
 df_pc_ps3_xbox <- df_pc_ps3_xbox_semi_join %>% arrange(Name)
 
-write_to_csv(df = df_pc_ps3_xbox, file = '/data-sets/vgsales-pc-ps3-xbox.csv')
+write_to_csv(df = df_pc_ps3_xbox, file = 'data-sets/vgsales-pc-ps3-xbox.csv')
 
 df_xbox_one <- find_by_column_name(data, col_name = 'Platform', col_value = 'XOne', arrange_col_name = 'Year')
 
@@ -106,4 +106,4 @@ df_pc_ps3_xbox_semi_join <- do.call('rbind', list(df_pc_two_semi_join, df_ps4_se
 
 df_pc_ps4_xbox_one <- df_pc_ps3_xbox_semi_join %>% arrange(Name)
 
-write_to_csv(df = df_pc_ps4_xbox_one, file = '/data-sets/vgsales-pc-ps4-xbox-one.csv')
+write_to_csv(df = df_pc_ps4_xbox_one, file = 'data-sets/vgsales-pc-ps4-xbox-one.csv')
