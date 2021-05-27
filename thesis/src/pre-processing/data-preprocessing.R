@@ -40,17 +40,20 @@ df_where_global_sales_equal_to_all_sales <- df %>%
 
 df_where_global_sales_greater_than_all_sales <- df_where_global_sales_not_equal_to_all_sales %>%
   filter(Global_Sales > Total_Sales) %>%
-  dplyr::mutate(JP_Sales = replace(JP_Sales, Global_Sales > Total_Sales, Global_Sales - Total_Sales))
+  dplyr::mutate(JP_Sales = replace(JP_Sales, Global_Sales > Total_Sales, JP_Sales + (Global_Sales - Total_Sales))) %>%
+  dplyr::mutate(Total_Sales = replace(Total_Sales, Global_Sales > Total_Sales, PAL_Sales + JP_Sales + NA_Sales + Other_Sales))
 
 df_where_global_sales_less_than_all_sales <- df_where_global_sales_not_equal_to_all_sales %>%
   filter(Global_Sales < Total_Sales) %>%
-  dplyr::mutate(JP_Sales = replace(JP_Sales, Global_Sales < Total_Sales, Total_Sales - Global_Sales))
+  dplyr::mutate(JP_Sales = replace(JP_Sales, Global_Sales < Total_Sales, JP_Sales + (Total_Sales - Global_Sales))) %>%
+  dplyr::mutate(Total_Sales = replace(Total_Sales, Global_Sales < Total_Sales, PAL_Sales + JP_Sales + NA_Sales + Other_Sales))
 
 processed_df <- do.call("rbind", list(df_where_global_sales_less_than_all_sales,
                                       df_where_global_sales_equal_to_all_sales,
                                       df_where_global_sales_greater_than_all_sales))
 
-write.csv(processed_df, "data-sets/vgsales-processed.csv")
+write.csv(processed_df %>% select(Name, Genre, Platform, Total_Sales, NA_Sales, JP_Sales, PAL_Sales, Other_Sales, Year),
+          "data-sets/vgsales-processed.csv")
 
 # Set the working directory
 setwd('/home/nischal/repository/personal/nischalshakya15.github.io/thesis')
