@@ -1,18 +1,18 @@
-"","Sales","Genre"
-"1",619.24,"Action"
-"2",108.12,"Action-Adventure"
-"3",104.03,"Adventure"
-"4",159.95,"Fighting"
-"5",190.86,"Misc"
-"6",10.23,"MMO"
-"7",14.61,"Music"
-"8",0.99,"Party"
-"9",136.93,"Platform"
-"10",10.23,"Puzzle"
-"11",264.21,"Racing"
-"12",218.77,"Role-Playing"
-"13",631.03,"Shooter"
-"14",118.87,"Simulation"
-"15",657.42,"Sports"
-"16",44.52,"Strategy"
-"17",1.29,"Visual Novel"
+Sales,Genre
+619.24,Action
+108.12,Action-Adventure
+104.03,Adventure
+159.95,Fighting
+190.86,Misc
+10.23,MMO
+14.61,Music
+0.99,Party
+136.93,Platform
+10.23,Puzzle
+264.21,Racing
+218.77,Role-Playing
+631.03,Shooter
+118.87,Simulation
+657.42,Sports
+44.52,Strategy
+1.29,Visual Novel
