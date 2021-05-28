@@ -37,34 +37,92 @@ ggplot(df_vg_sales, aes(x = Platform, y = Total_Sales)) +
   stat_smooth(method = 'lm', col = '#C42126', se = FALSE, size = 1) +
   labs(title = 'Platform vs Sales', x = 'Genre', y = 'Sales In Millions')
 
-
+# Research QUestion 1 : Do the sales vary in different regions ?
 unique_year <- unique(df_vg_sales$Year)
-
-test_df <- data.frame()
+df_sales_region <- data.frame()
 
 for (y in unique_year) {
-  selected_data <- find_by_column_name(df = df_vg_sales, col_name = 'Year', col_value = y, arrange_col_name = 'Year')
-  test_df <- rbind(test_df, data.frame(
+  selected_sales_region <- find_by_column_name(df = df_vg_sales, col_name = 'Year', col_value = y, arrange_col_name = 'Year')
+  df_sales_region <- rbind(df_sales_region, data.frame(
     Year = rep(y, 4),
     Region = c('Japan', 'North America', 'Europe', 'Other Sales'),
-    Sales = c(selected_data %>%
-                select(JP_Sales) %>%
-                colSums(),
-              selected_data %>%
-                select(NA_Sales) %>%
-                colSums(),
-              selected_data %>%
-                select(PAL_Sales) %>%
-                colSums(),
-              selected_data %>%
-                select(Other_Sales) %>%
-                colSums()
+    Sales = c(get_col_sums(df = selected_sales_region, col_name = 'JP_Sales'),
+              get_col_sums(df = selected_sales_region, col_name = 'NA_Sales'),
+              get_col_sums(df = selected_sales_region, col_name = 'PAL_Sales'),
+              get_col_sums(df = selected_sales_region, col_name = 'Other_Sales')
     )
   ))
-
 }
 
 # Line graph showing sales may vary in different region
-ggplot(test_df, aes(x = Year, y = Sales, group = Region, color = Region)) +
+ggplot(df_sales_region, aes(x = Year, y = Sales, group = Region, color = Region)) +
   geom_line() +
+  geom_point() +
   scale_color_viridis(discrete = TRUE)
+
+# End of Research Question 1 : Do the sales vary in different region
+
+# Research Question 2 : Why the cross platform release matter when it comes to the sales of video games?
+unique_platform <- unique(df_vg_sales$Platform)
+df_cross_platform_release_generic <- data.frame()
+
+for (p in unique_platform) {
+  df_cross_platform <- find_by_column_name(df = df_vg_sales, col_name = 'Platform', col_value = p, arrange_col_name = 'Year')
+  df_sales_platform <- df_cross_platform %>%
+    group_by(Year) %>%
+    summarize(Total_Sales = sum(Total_Sales))
+  df_cross_platform_release_generic <- rbind(df_cross_platform_release_generic, data.frame(
+    Year = df_sales_platform$Year,
+    Sales = df_sales_platform$Total_Sales,
+    Platform = p
+  ))
+}
+
+ggplot(df_cross_platform_release_generic, aes(x = Year, y = Sales, group = Platform, color = Platform)) +
+  geom_line() +
+  geom_point() +
+  scale_color_viridis(discrete = TRUE)
+
+unique_genre <- unique(df_vg_sales$Genre)
+df_sales_genre <- data.frame()
+
+for (g in unique_genre) {
+  df_genre <- find_by_column_name(df_vg_sales, col_name = 'Genre', col_value = g, arrange_col_name = 'Year')
+
+  df_genre_sales <- df_genre %>%
+    group_by(Genre) %>%
+    summarize(Total_Sales = sum(Total_Sales))
+
+  df_sales_genre <- rbind(df_sales_genre, data.frame(
+    Sales = df_genre_sales$Total_Sales,
+    Genre = g)
+  )
+}
+
+plotBarGraph(df_sales_genre %>% arrange(Genre),
+             x = 'Genre', y = 'Sales',
+             xlab = 'Genre', ylab = 'Sales in Millions',
+             label = df_sales_genre$Sales)
+
+df_sales_platform <- data.frame()
+
+for (p in unique_platform) {
+  df_platform <- find_by_column_name(df_vg_sales, col_name = 'Platform', col_value = p, arrange_col_name = 'Year')
+
+  df_platform_sales <- df_platform %>%
+    group_by(Platform) %>%
+    summarize(Total_Sales = sum(Total_Sales))
+
+  df_sales_platform <- rbind(df_sales_platform, data.frame(
+    Sales = df_platform_sales$Total_Sales,
+    Platform = p)
+  )
+}
+
+plotBarGraph(df_sales_platform %>%
+               arrange(Sales),
+             x = 'Platform', y = 'Sales',
+             xlab = 'Platform', ylab = 'Sales in Millions',
+             label = df_sales_platform$Sales)
+
+# End of research question 2 : Whay the cross platform release matter when it comes to the sales of video games ?
