@@ -8,6 +8,7 @@ library('reader')
 library('tidyr')
 library('ggplot2')
 library('viridis')
+library('RColorBrewer')
 
 setwd('/home/nischal/repository/personal/nischalshakya15.github.io/thesis')
 
@@ -85,6 +86,7 @@ ggplot(df_cross_platform_release_generic, aes(x = Year, y = Sales, group = Platf
 
 unique_genre <- unique(df_vg_sales$Genre)
 df_sales_genre <- data.frame()
+df_sales_genre_year <- data.frame()
 
 for (g in unique_genre) {
   df_genre <- find_by_column_name(df_vg_sales, col_name = 'Genre', col_value = g, arrange_col_name = 'Year')
@@ -97,7 +99,25 @@ for (g in unique_genre) {
     Sales = df_genre_sales$Total_Sales,
     Genre = g)
   )
+
+  df_genre_year <- df_genre %>%
+    group_by(Year) %>%
+    summarize(Total_Sales = sum(Total_Sales))
+
+  df_sales_genre_year <- rbind(df_sales_genre_year, data.frame(
+    Year = df_genre_year$Year,
+    Genre = g,
+    Sales = df_genre_year$Total_Sales
+  ))
 }
+c25 <- colorRampPalette(c("dodgerblue2", "#E31A1C", "green4", "#6A3D9A", "#FF7F00", "black", "gold1", "skyblue2", "palegreen2",
+                          "#FDBF6F", "gray70", "maroon", "orchid1", "darkturquoise", "darkorange4", "brown"))
+
+ggplot(df_sales_genre_year, aes(x = Year, y = Sales, group = Genre, color = Genre)) +
+  geom_line() +
+  geom_point(shape = 21, color = 'black', fill = "#69b3a2", size = 2) +
+  scale_fill_manual(values = c25)
+
 
 plotBarGraph(df_sales_genre %>% arrange(Genre),
              x = 'Genre', y = 'Sales',
