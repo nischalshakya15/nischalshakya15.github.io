@@ -102,7 +102,7 @@ for (g in unique_genre) {
 plotBarGraph(df_sales_genre %>% arrange(Genre),
              x = 'Genre', y = 'Sales',
              xlab = 'Genre', ylab = 'Sales in Millions',
-             label = df_sales_genre$Sales)
+             label = df_sales_genre$Sales, x_text_rotate = 45)
 
 df_sales_platform <- data.frame()
 
@@ -124,5 +124,18 @@ plotBarGraph(df_sales_platform %>%
              x = 'Platform', y = 'Sales',
              xlab = 'Platform', ylab = 'Sales in Millions',
              label = df_sales_platform$Sales)
+
+df_pc_ps2_xbox <- read.csv('data-sets/vgsales-pc-ps4-xbox-one.csv', sep = ',', dec = '.')
+
+df_genres <- unique(df_pc_ps2_xbox$Genre)
+
+df_action <- find_by_column_name(df_pc_ps2_xbox, col_name = 'Genre', col_value = 'Action', arrange_col_name = 'Year')
+
+ggplot(df_action, aes(fill = Platform, y = Total_Sales, x = Platform)) +
+  geom_bar(position = "dodge", stat = "identity") +
+  theme(legend.position = "none") +
+  facet_wrap(~Name) +
+  geom_text(aes(label=Total_Sales), position=position_dodge(width=0.9), vjust=-0.25) +
+  ylab("Sales In Millions")
 
 # End of research question 2 : Whay the cross platform release matter when it comes to the sales of video games ?

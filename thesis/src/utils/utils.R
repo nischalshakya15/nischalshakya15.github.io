@@ -24,10 +24,11 @@ get_col_sums <- function(df, col_name) {
   )
 }
 
-plotBarGraph <- function(df, x, y, label = '', xlab, ylab) {
+plotBarGraph <- function(df, x, y, label = '', xlab, ylab, x_text_rotate = 0) {
   mycolors <- colorRampPalette(brewer.pal(8, 'Set2'))(20)
-  ggbarplot(df, x = x, y = y, label = label, width = 0.5, palette = mycolors,
-            fill = x, color = x, xlab = xlab, ylab = ylab)
+  barplot <- ggbarplot(df, x = x, y = y, label = label, width = 0.5, palette = mycolors,
+                       fill = x, color = x, xlab = xlab, ylab = ylab)
+  barplot + rotate_x_text(x_text_rotate)
 }
 
 write_to_csv <- function(df, file) {
