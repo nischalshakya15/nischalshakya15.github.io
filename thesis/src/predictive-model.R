@@ -57,8 +57,8 @@ for (y in unique_year) {
 # Line graph showing sales may vary in different region
 ggplot(df_sales_region, aes(x = Year, y = Sales, group = Region, color = Region)) +
   geom_line() +
-  geom_point() +
-  scale_color_viridis(discrete = TRUE)
+  geom_point(shape = 21, color = 'black', fill = "#69b3a2", size = 2) +
+  scale_color_brewer(palette = 'Dark2')
 
 # End of Research Question 1 : Do the sales vary in different region
 
@@ -80,8 +80,8 @@ for (p in unique_platform) {
 
 ggplot(df_cross_platform_release_generic, aes(x = Year, y = Sales, group = Platform, color = Platform)) +
   geom_line() +
-  geom_point() +
-  scale_color_viridis(discrete = TRUE)
+  geom_point(shape = 21, color = 'black', fill = "#69b3a2", size = 2) +
+  scale_color_brewer(palette = 'Dark2')
 
 unique_genre <- unique(df_vg_sales$Genre)
 df_sales_genre <- data.frame()
