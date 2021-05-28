@@ -39,21 +39,7 @@ ggplot(df_vg_sales, aes(x = Platform, y = Total_Sales)) +
   labs(title = 'Platform vs Sales', x = 'Genre', y = 'Sales In Millions')
 
 # Research QUestion 1 : Do the sales vary in different regions ?
-unique_year <- unique(df_vg_sales$Year)
-df_sales_region <- data.frame()
-
-for (y in unique_year) {
-  selected_sales_region <- find_by_column_name(df = df_vg_sales, col_name = 'Year', col_value = y, arrange_col_name = 'Year')
-  df_sales_region <- rbind(df_sales_region, data.frame(
-    Year = rep(y, 4),
-    Region = c('Japan', 'North America', 'Europe', 'Other Sales'),
-    Sales = c(get_col_sums(df = selected_sales_region, col_name = 'JP_Sales'),
-              get_col_sums(df = selected_sales_region, col_name = 'NA_Sales'),
-              get_col_sums(df = selected_sales_region, col_name = 'PAL_Sales'),
-              get_col_sums(df = selected_sales_region, col_name = 'Other_Sales')
-    )
-  ))
-}
+df_sales_region <- read.csv(file = '../data-sets/vg_sales_region_year_wise.csv', sep = ',', dec = '.')
 
 # Line graph showing sales may vary in different region
 ggplot(df_sales_region, aes(x = Year, y = Sales, group = Region, color = Region)) +
@@ -64,80 +50,32 @@ ggplot(df_sales_region, aes(x = Year, y = Sales, group = Region, color = Region)
 # End of Research Question 1 : Do the sales vary in different region
 
 # Research Question 2 : Why the cross platform release matter when it comes to the sales of video games?
-unique_platform <- unique(df_vg_sales$Platform)
-df_cross_platform_release_generic <- data.frame()
-
-for (p in unique_platform) {
-  df_cross_platform <- find_by_column_name(df = df_vg_sales, col_name = 'Platform', col_value = p, arrange_col_name = 'Year')
-  df_sales_platform <- df_cross_platform %>%
-    group_by(Year) %>%
-    summarize(Total_Sales = sum(Total_Sales))
-  df_cross_platform_release_generic <- rbind(df_cross_platform_release_generic, data.frame(
-    Year = df_sales_platform$Year,
-    Sales = df_sales_platform$Total_Sales,
-    Platform = p
-  ))
-}
+df_cross_platform_release_generic <- read.csv(file = '../data-sets/vg_sales_platform_year_wise.csv', sep = ',', dec = '.')
 
 ggplot(df_cross_platform_release_generic, aes(x = Year, y = Sales, group = Platform, color = Platform)) +
   geom_line() +
   geom_point(shape = 21, color = 'black', fill = "#69b3a2", size = 2) +
   scale_color_brewer(palette = 'Dark2')
 
-unique_genre <- unique(df_vg_sales$Genre)
-df_sales_genre <- data.frame()
-df_sales_genre_year <- data.frame()
-
-for (g in unique_genre) {
-  df_genre <- find_by_column_name(df_vg_sales, col_name = 'Genre', col_value = g, arrange_col_name = 'Year')
-
-  df_genre_sales <- df_genre %>%
-    group_by(Genre) %>%
-    summarize(Total_Sales = sum(Total_Sales))
-
-  df_sales_genre <- rbind(df_sales_genre, data.frame(
-    Sales = df_genre_sales$Total_Sales,
-    Genre = g)
-  )
-
-  df_genre_year <- df_genre %>%
-    group_by(Year) %>%
-    summarize(Total_Sales = sum(Total_Sales))
-
-  df_sales_genre_year <- rbind(df_sales_genre_year, data.frame(
-    Year = df_genre_year$Year,
-    Genre = g,
-    Sales = df_genre_year$Total_Sales
-  ))
-}
 c25 <- colorRampPalette(c("dodgerblue2", "#E31A1C", "green4", "#6A3D9A", "#FF7F00", "black", "gold1", "skyblue2", "palegreen2",
                           "#FDBF6F", "gray70", "maroon", "orchid1", "darkturquoise", "darkorange4", "brown"))
+
+df_sales_genre_year <- read.csv(file = 'data-sets/vg_sales_genre_year_wise.csv', sep = ',', dec = '.')
 
 ggplot(df_sales_genre_year, aes(x = Year, y = Sales, group = Genre, color = Genre)) +
   geom_line() +
   geom_point(shape = 21, color = 'black', fill = "#69b3a2", size = 2) +
   scale_fill_manual(values = c25)
 
+df_sales_genre <- read.csv(file = 'data-sets/vg_sales_genre_wise.csv', sep = ',', dec = '.')
 
 plotBarGraph(df_sales_genre %>% arrange(Genre),
              x = 'Genre', y = 'Sales',
              xlab = 'Genre', ylab = 'Sales in Millions',
              label = df_sales_genre$Sales, x_text_rotate = 45)
 
-df_sales_platform <- data.frame()
 
-for (p in unique_platform) {
-  df_platform <- find_by_column_name(df_vg_sales, col_name = 'Platform', col_value = p, arrange_col_name = 'Year')
-
-  df_platform_sales <- df_platform %>%
-    group_by(Platform) %>%
-    summarize(Total_Sales = sum(Total_Sales))
-
-  df_sales_platform <- rbind(df_sales_platform, data.frame(
-    Sales = df_platform_sales$Total_Sales,
-    Platform = p)
-  )
-}
+df_sales_platform <- read.csv(file = 'data-sets/vg_sales_platform_wise.csv', sep = ',', dec = '.')
 
 plotBarGraph(df_sales_platform %>%
                arrange(Sales),
