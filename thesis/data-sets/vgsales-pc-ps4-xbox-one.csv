@@ -1,328 +1,328 @@
-"","X","Name","Genre","Platform","Total_Sales","NA_Sales","JP_Sales","PAL_Sales","Other_Sales","Year"
-"1",718,"Alien: Isolation","Adventure","PC",0.16,0,0.00999999999999998,0.14,0.01,2014
-"2",4336,"Alien: Isolation","Adventure","PS4",1.09,0.29,0.05,0.59,0.16,2014
-"3",4373,"Alien: Isolation","Adventure","XOne",0.52,0.23,0,0.25,0.04,2014
-"4",4221,"Assassin's Creed IV: Black Flag","Action-Adventure","PC",0.63,0.24,0,0.34,0.05,2013
-"5",4191,"Assassin's Creed IV: Black Flag","Action-Adventure","PS4",3.19,1.07,0.06,1.55,0.51,2013
-"6",4196,"Assassin's Creed IV: Black Flag","Action","XOne",2.32,1.51,0,0.59,0.22,2013
-"7",5494,"Assassin's Creed Odyssey","Action-Adventure","PC",0.06,0,0,0.06,0,2018
-"8",5366,"Assassin's Creed Odyssey","Action-Adventure","PS4",3.18,1.18,0.09,1.4,0.51,2018
-"9",5375,"Assassin's Creed Odyssey","Action-Adventure","XOne",1.39,0.91,0,0.35,0.13,2018
-"10",4600,"Assassin's Creed Syndicate","Action","PC",0.26,0.15,0,0.09,0.02,2015
-"11",6511,"Assassin's Creed Syndicate","Action","PS4",3.6,0.9,0.0900000000000002,2.06,0.55,2015
-"12",4538,"Assassin's Creed Syndicate","Action","XOne",1.44,0.71,0,0.61,0.12,2015
-"13",6488,"Assassin's Creed: Unity","Action","PC",0.56,0.2,0.01,0.31,0.04,2014
-"14",689,"Assassin's Creed: Unity","Action","PS4",4.16,1.25,0.100000000000001,2.16,0.65,2014
-"15",4315,"Assassin's Creed: Unity","Action","XOne",3.58,2.34,0,0.9,0.34,2014
-"16",4298,"Battle Worlds: Kronos","Strategy","PC",0.01,0,0,0.01,0,2013
-"17",5027,"Battle Worlds: Kronos","Strategy","PS4",0.01,0.01,0,0,0,2016
-"18",5041,"Battle Worlds: Kronos","Strategy","XOne",0.01,0.01,0,0,0,2016
-"19",4847,"Battleborn","Shooter","PC",0.2,0.12,0,0.06,0.02,2016
-"20",4807,"Battleborn","Shooter","PS4",0.48,0.25,0.03,0.12,0.08,2016
-"21",4833,"Battleborn","Shooter","XOne",0.28,0.2,0,0.05,0.03,2016
-"22",4795,"Battlefield 1","Shooter","PC",0.77,0.3,0,0.41,0.06,2016
-"23",4768,"Battlefield 1","Shooter","PS4",7.26,2.2,0.29,3.65,1.12,2016
-"24",4769,"Battlefield 1","Shooter","XOne",5.13,3.37,0.02,1.26,0.48,2016
-"25",4203,"Battlefield 4","Shooter","PC",1.39,0.44,0,0.85,0.1,2013
-"26",662,"Battlefield 4","Shooter","PS4",3.96,1.4,0.2,1.74,0.62,2013
-"27",664,"Battlefield 4","Shooter","XOne",2.11,1.26,0.0100000000000002,0.65,0.19,2013
-"28",5466,"Battlefield V","Shooter","PC",0.1,0,0,0.09,0.01,2018
-"29",878,"Battlefield V","Shooter","PS4",2.24,0.8,0.17,0.93,0.34,2018
-"30",5373,"Battlefield V","Shooter","XOne",1.55,1.05,0,0.35,0.15,2018
-"31",4631,"Battlefield: Hardline","Shooter","PC",0.14,0,0,0.13,0.01,2015
-"32",729,"Battlefield: Hardline","Shooter","PS4",2.17,0.72,0.15,0.97,0.33,2015
-"33",4545,"Battlefield: Hardline","Shooter","XOne",1.24,0.73,0.01,0.39,0.11,2015
-"34",4383,"Call of Duty: Advanced Warfare","Shooter","PC",0.42,0.17,0,0.22,0.03,2014
-"35",686,"Call of Duty: Advanced Warfare","Shooter","PS4",7.55,2.84,0.15,3.34,1.22,2014
-"36",688,"Call of Duty: Advanced Warfare","Shooter","XOne",5.24,3.25,0.0200000000000007,1.49,0.48,2014
-"37",4597,"Call of Duty: Black Ops 3","Shooter","PC",0.3,0,0,0.28,0.02,2015
-"38",6508,"Call of Duty: Black Ops 3","Shooter","PS4",15.09,6.18,0.42,6.05,2.44,2015
-"39",4519,"Call of Duty: Black Ops 3","Shooter","XOne",7.37,4.63,0.02,2.04,0.68,2015
-"40",5441,"Call of Duty: Black Ops IIII","Shooter","PC",0.13,0.05,0,0.07,0.01,2018
-"41",5361,"Call of Duty: Black Ops IIII","Shooter","PS4",9.32,4.05,0.5,3.28,1.49,2018
-"42",5365,"Call of Duty: Black Ops IIII","Shooter","XOne",4.85,3.27,0,1.12,0.46,2018
-"43",4219,"Call of Duty: Ghosts","Shooter","PC",0.67,0.26,0,0.36,0.05,2013
-"44",4189,"Call of Duty: Ghosts","Shooter","PS4",4.17,1.79,0.05,1.64,0.69,2013
-"45",6445,"Call of Duty: Ghosts","Shooter","XOne",3.07,1.92,0.00999999999999979,0.86,0.28,2013
-"46",794,"Call of Duty: Infinite Warfare","Shooter","PC",0.35,0.12,0.01,0.19,0.03,2016
-"47",770,"Call of Duty: Infinite Warfare","Shooter","PS4",8.5,3.11,0.2,3.83,1.36,2016
-"48",4771,"Call of Duty: Infinite Warfare","Shooter","XOne",4.79,2.91,0,1.44,0.44,2016
-"49",5128,"Call of Duty: WWII","Shooter","PC",0.19,0.07,0,0.11,0.01,2017
-"50",5050,"Call of Duty: WWII","Shooter","PS4",13.4,4.67,0.4,6.21,2.12,2017
-"51",5051,"Call of Duty: WWII","Shooter","XOne",6.23,3.75,0,1.91,0.57,2017
-"52",5641,"Darksiders III","Action","PC",0.01,0,0,0.01,0,2018
-"53",6687,"Darksiders III","Action","PS4",0.25,0.13,0.01,0.07,0.04,2018
-"54",5447,"Darksiders III","Action","XOne",0.12,0.11,0,0,0.01,2018
-"55",5343,"Deformers","Action","PC",0.01,0.01,0,0,0,2017
-"56",5215,"Deformers","Action","PS4",0.06,0.05,0,0,0.01,2017
-"57",5238,"Deformers","Action","XOne",0.05,0.04,0,0,0.01,2017
-"58",6629,"Destiny 2","Shooter","PC",0.16,0.09,0.01,0.05,0.01,2017
-"59",824,"Destiny 2","Shooter","PS4",4.16,1.92,0.110000000000001,1.44,0.69,2017
-"60",827,"Destiny 2","Shooter","XOne",2.37,1.66,0.00999999999999979,0.47,0.23,2017
-"61",5607,"Destiny 2: Forsaken","Shooter","PC",0.02,0,0,0.02,0,2018
-"62",5399,"Destiny 2: Forsaken","Shooter","PS4",0.36,0.19,0,0.11,0.06,2018
-"63",5439,"Destiny 2: Forsaken","Shooter","XOne",0.13,0.08,0,0.04,0.01,2018
-"64",6590,"Deus Ex: Mankind Divided","Role-Playing","PC",0.07,0,0.01,0.06,0,2016
-"65",4797,"Deus Ex: Mankind Divided","Role-Playing","PS4",0.72,0.25,0.01,0.34,0.12,2016
-"66",792,"Deus Ex: Mankind Divided","Role-Playing","XOne",0.41,0.25,0.01,0.11,0.04,2016
-"67",5331,"DiRT 4","Racing","PC",0.01,0,0,0.01,0,2017
-"68",5088,"DiRT 4","Racing","PS4",0.49,0.1,0.02,0.3,0.07,2017
-"69",5120,"DiRT 4","Racing","XOne",0.23,0.11,0,0.1,0.02,2017
-"70",6547,"DiRT Rally","Racing","PC",0.04,0,0.01,0.03,0,2015
-"71",4804,"DiRT Rally","Racing","PS4",0.51,0.13,0,0.3,0.08,2016
-"72",798,"DiRT Rally","Racing","XOne",0.23,0.12,0.01,0.08,0.02,2016
-"73",796,"Dishonored 2","Action","PC",0.28,0.08,0.01,0.17,0.02,2016
-"74",6559,"Dishonored 2","Action","PS4",1.97,0.62,0.02,1.02,0.31,2016
-"75",4792,"Dishonored 2","Action","XOne",0.86,0.47,0,0.31,0.08,2016
-"76",4819,"Doom (2016)","Shooter","PC",0.38,0.11,0,0.24,0.03,2016
-"77",6555,"Doom (2016)","Shooter","PS4",2.92,0.93,0.0499999999999998,1.48,0.46,2016
-"78",778,"Doom (2016)","Shooter","XOne",1.47,0.76,0.01,0.57,0.13,2016
-"79",4344,"Dragon Age: Inquisition","Role-Playing","PC",0.78,0.38,0,0.33,0.07,2014
-"80",6474,"Dragon Age: Inquisition","Role-Playing","PS4",2.34,1.07,0.0899999999999998,0.8,0.38,2014
-"81",4339,"Dragon Age: Inquisition","Role-Playing","XOne",0.99,0.63,0,0.27,0.09,2014
-"82",4613,"Evolve","Misc","PC",0.22,0.1,0,0.1,0.02,2015
-"83",6516,"Evolve","Shooter","PS4",1.01,0.38,0.06,0.41,0.16,2015
-"84",6520,"Evolve","Shooter","XOne",0.67,0.4,0.01,0.2,0.06,2015
-"85",4680,"F1 2015","Racing","PC",0.06,0,0,0.06,0,2015
-"86",739,"F1 2015","Racing","PS4",0.7,0.1,0.0499999999999999,0.45,0.1,2015
-"87",751,"F1 2015","Racing","XOne",0.27,0.09,0.01,0.15,0.02,2015
-"88",5287,"F1 2017","Racing","PC",0.02,0,0,0.02,0,2017
-"89",5074,"F1 2017","Racing","PS4",0.62,0.04,0.02,0.47,0.09,2017
-"90",6628,"F1 2017","Racing","XOne",0.19,0.04,0.01,0.13,0.01,2017
-"91",5629,"F1 2018","Racing","PC",0.01,0,0,0.01,0,2018
-"92",5388,"F1 2018","Racing","PS4",0.53,0.05,0.01,0.39,0.08,2018
-"93",6690,"F1 2018","Racing","XOne",0.17,0.05,0.01,0.1,0.01,2018
-"94",4539,"Fallout 4","Role-Playing","PC",1.4,0.57,0,0.72,0.11,2015
-"95",726,"Fallout 4","Role-Playing","PS4",8.5,2.91,0.28,3.97,1.34,2015
-"96",4522,"Fallout 4","Role-Playing","XOne",5.03,2.94,0.02,1.62,0.45,2015
-"97",5423,"Fallout 76","Role-Playing","PC",0.21,0.12,0,0.07,0.02,2018
-"98",6674,"Fallout 76","Role-Playing","PS4",1.32,0.52,0.11,0.49,0.2,2018
-"99",883,"Fallout 76","Role-Playing","XOne",0.95,0.59,0.0099999999999999,0.26,0.09,2018
-"100",4360,"Far Cry 4","Shooter","PC",0.65,0.19,0,0.41,0.05,2014
-"101",4314,"Far Cry 4","Shooter","PS4",4.06,1.18,0.11,2.14,0.63,2014
-"102",692,"Far Cry 4","Shooter","XOne",1.7,0.85,0.03,0.68,0.14,2014
-"103",5478,"Far Cry 5","Action","PC",0.07,0,0,0.07,0,2018
-"104",6672,"Far Cry 5","Action","PS4",3.95,1.44,0.16,1.73,0.62,2018
-"105",5371,"Far Cry 5","Action","XOne",1.78,1.14,0,0.47,0.17,2018
-"106",4838,"Far Cry: Primal","Action-Adventure","PC",0.25,0.07,0,0.16,0.02,2016
-"107",6556,"Far Cry: Primal","Action-Adventure","PS4",2.73,0.63,0.0799999999999998,1.61,0.41,2016
-"108",783,"Far Cry: Primal","Action-Adventure","XOne",1.02,0.51,0.01,0.41,0.09,2016
-"109",4785,"Farming Simulator 17","Simulation","PC",1.12,0.11,0,0.94,0.07,2016
-"110",4793,"Farming Simulator 17","Simulation","PS4",0.85,0.19,0.01,0.52,0.13,2016
-"111",4827,"Farming Simulator 17","Simulation","XOne",0.33,0.19,0,0.11,0.03,2016
-"112",5386,"Farming Simulator 19","Simulation","PC",0.58,0,0,0.55,0.03,2018
-"113",6679,"Farming Simulator 19","Simulation","PS4",0.47,0.13,0.00999999999999995,0.26,0.07,2018
-"114",6685,"Farming Simulator 19","Simulation","XOne",0.32,0.19,0.01,0.09,0.03,2018
-"115",4334,"Farming Simulator 2015","Simulation","PC",1.1,0.09,0,0.94,0.07,2014
-"116",746,"Farming Simulator 2015","Simulation","PS4",0.43,0.13,0.01,0.22,0.07,2015
-"117",4604,"Farming Simulator 2015","Simulation","XOne",0.24,0.13,0,0.09,0.02,2015
-"118",4234,"FIFA 14","Sports","PC",0.38,0.01,0,0.35,0.02,2013
-"119",4190,"FIFA 14","Sports","PS4",3.43,0.62,0.12,2.18,0.51,2013
-"120",666,"FIFA 14","Sports","XOne",1.33,0.44,0.01,0.78,0.1,2013
-"121",4397,"FIFA 15","Sports","PC",0.3,0,0,0.28,0.02,2014
-"122",6473,"FIFA 15","Sports","PS4",6.32,0.83,0.0600000000000007,4.49,0.94,2014
-"123",4321,"FIFA 15","Sports","XOne",2.19,0.64,0,1.39,0.16,2014
-"124",753,"FIFA 16","Sports","PC",0.23,0.07,0.01,0.13,0.02,2015
-"125",4517,"FIFA 16","Sports","PS4",8.22,1.15,0.07,5.77,1.23,2015
-"126",728,"FIFA 16","Sports","XOne",3.27,0.92,0.00999999999999979,2.1,0.24,2015
-"127",4849,"FIFA 17","Sports","PC",0.19,0,0,0.18,0.01,2016
-"128",4767,"FIFA 17","Sports","PS4",10.94,1.26,0.12,7.95,1.61,2016
-"129",4773,"FIFA 17","Sports","XOne",3.71,1.04,0,2.4,0.27,2016
-"130",5188,"FIFA 18","Sports","PC",0.08,0,0,0.08,0,2017
-"131",6602,"FIFA 18","Sports","PS4",11.8,1.27,0.160000000000002,8.64,1.73,2017
-"132",6606,"FIFA 18","Sports","XOne",3.14,0.98,0.0100000000000002,1.92,0.23,2017
-"133",5246,"For Honor","Action","PC",0.04,0.02,0,0.02,0,2017
-"134",6611,"For Honor","Action","PS4",1.75,0.73,0.08,0.66,0.28,2017
-"135",6614,"For Honor","Action","XOne",0.87,0.57,0.01,0.21,0.08,2017
-"136",5318,"Fortnite","Action","PC",0.02,0,0,0.02,0,2017
-"137",5065,"Fortnite","Action","PS4",0.89,0.42,0,0.32,0.15,2017
-"138",5066,"Fortnite","Action","XOne",0.77,0.6,0,0.09,0.08,2017
-"139",5336,"Has-Been Heroes","Action","PC",0.01,0.01,0,0,0,2017
-"140",5198,"Has-Been Heroes","Action","PS4",0.07,0.06,0,0,0.01,2017
-"141",5237,"Has-Been Heroes","Action","XOne",0.05,0.04,0,0,0.01,2017
-"142",4905,"Homefront: The Revolution","Shooter","PC",0.08,0.04,0,0.03,0.01,2016
-"143",791,"Homefront: The Revolution","Shooter","PS4",0.52,0.11,0.05,0.29,0.07,2016
-"144",4845,"Homefront: The Revolution","Shooter","XOne",0.21,0.1,0,0.09,0.02,2016
-"145",4622,"Just Cause 3","Action-Adventure","PC",0.16,0.03,0,0.12,0.01,2015
-"146",730,"Just Cause 3","Action-Adventure","PS4",2,0.53,0.1,1.07,0.3,2015
-"147",734,"Just Cause 3","Action-Adventure","XOne",1.03,0.52,0.01,0.41,0.09,2015
-"148",5339,"Le Tour de France 2017","Simulation","PC",0.01,0,0,0.01,0,2017
-"149",5206,"Le Tour de France 2017","Simulation","PS4",0.07,0,0,0.06,0.01,2017
-"150",6666,"Le Tour de France 2017","Simulation","XOne",0.02,0,0.01,0.01,0,2017
-"151",4465,"LEGO The Hobbit","Action-Adventure","PC",0.05,0,0,0.05,0,2014
-"152",700,"LEGO The Hobbit","Action-Adventure","PS4",0.64,0.14,0.01,0.39,0.1,2014
-"153",710,"LEGO The Hobbit","Action-Adventure","XOne",0.29,0.13,0.01,0.13,0.02,2014
-"154",4934,"Life is Strange","Adventure","PC",0.05,0.01,0,0.04,0,2016
-"155",4820,"Life is Strange","Adventure","PS4",0.37,0.11,0.05,0.16,0.05,2016
-"156",4875,"Life is Strange","Adventure","XOne",0.12,0.08,0,0.03,0.01,2016
-"157",5152,"Mass Effect: Andromeda","Role-Playing","PC",0.13,0.04,0,0.08,0.01,2017
-"158",830,"Mass Effect: Andromeda","Role-Playing","PS4",1.51,0.58,0.01,0.67,0.25,2017
-"159",6616,"Mass Effect: Andromeda","Role-Playing","XOne",0.78,0.5,0.01,0.2,0.07,2017
-"160",4388,"Middle-Earth: Shadow of Mordor","Action","PC",0.37,0.14,0,0.2,0.03,2014
-"161",4318,"Middle-Earth: Shadow of Mordor","Action","PS4",3.19,1.03,0.05,1.6,0.51,2014
-"162",4326,"Middle-Earth: Shadow of Mordor","Action","XOne",1.42,0.77,0.01,0.52,0.12,2014
-"163",862,"Middle-Earth: Shadow of War","Action","PC",0.09,0.03,0.01,0.04,0.01,2017
-"164",829,"Middle-Earth: Shadow of War","Action","PS4",2.06,0.82,0.0699999999999998,0.84,0.33,2017
-"165",5062,"Middle-Earth: Shadow of War","Action","XOne",1.15,0.75,0,0.29,0.11,2017
-"166",5298,"Minecraft: Story Mode - Season Two","Adventure","PC",0.02,0,0,0.02,0,2017
-"167",5168,"Minecraft: Story Mode - Season Two","Adventure","PS4",0.11,0.09,0,0,0.02,2017
-"168",5111,"Minecraft: Story Mode - Season Two","Adventure","XOne",0.27,0.17,0,0.08,0.02,2017
-"169",4902,"Mirror's Edge Catalyst","Platform","PC",0.08,0.01,0,0.06,0.01,2016
-"170",6569,"Mirror's Edge Catalyst","Platform","PS4",0.42,0.13,0.04,0.19,0.06,2016
-"171",4851,"Mirror's Edge Catalyst","Platform","XOne",0.19,0.11,0,0.06,0.02,2016
-"172",4688,"Mortal Kombat X","Fighting","PC",0.05,0.01,0,0.04,0,2015
-"173",4526,"Mortal Kombat X","Fighting","PS4",3.49,1.94,0,0.94,0.61,2015
-"174",731,"Mortal Kombat X","Fighting","XOne",1.76,1.34,0.01,0.23,0.18,2015
-"175",4758,"MX vs. ATV Supercross Encore","Sports","PC",0.01,0,0,0.01,0,2015
-"176",4676,"MX vs. ATV Supercross Encore","Sports","PS4",0.06,0,0,0.05,0.01,2015
-"177",4678,"MX vs. ATV Supercross Encore","Sports","XOne",0.06,0.05,0,0,0.01,2015
-"178",5025,"MXGP 2","Racing","PC",0.01,0,0,0.01,0,2016
-"179",6582,"MXGP 2","Racing","PS4",0.14,0.05,0.01,0.06,0.02,2016
-"180",4889,"MXGP 2","Racing","XOne",0.1,0.07,0,0.02,0.01,2016
-"181",760,"NBA 2K16","Sports","PC",0.14,0.05,0.01,0.07,0.01,2015
-"182",4524,"NBA 2K16","Sports","PS4",3.98,2.56,0.05,0.66,0.71,2015
-"183",4532,"NBA 2K16","Sports","XOne",2.41,2.01,0,0.15,0.25,2015
-"184",4974,"NBA 2K17","Sports","PC",0.03,0,0,0.03,0,2016
-"185",772,"NBA 2K17","Sports","PS4",3.54,2.28,0.0399999999999998,0.59,0.63,2016
-"186",6558,"NBA 2K17","Sports","XOne",2.04,1.7,0.0100000000000002,0.12,0.21,2016
-"187",4942,"Need for Speed (2015)","Racing","PC",0.05,0,0,0.05,0,2016
-"188",4528,"Need for Speed (2015)","Racing","PS4",2.72,0.59,0.06,1.66,0.41,2015
-"189",4559,"Need for Speed (2015)","Racing","XOne",0.74,0.35,0,0.33,0.06,2015
-"190",4244,"Need for Speed Rivals","Racing","PC",0.25,0.04,0,0.19,0.02,2013
-"191",4198,"Need for Speed Rivals","Racing","PS4",2.17,0.75,0.03,1.04,0.35,2013
-"192",671,"Need for Speed Rivals","Racing","XOne",0.72,0.45,0.01,0.19,0.07,2013
-"193",5297,"Need for Speed: Payback","Racing","PC",0.02,0,0,0.02,0,2017
-"194",5053,"Need for Speed: Payback","Racing","PS4",2.18,0.62,0.04,1.18,0.34,2017
-"195",5068,"Need for Speed: Payback","Racing","XOne",0.73,0.42,0,0.24,0.07,2017
-"196",4789,"Overwatch","Shooter","PC",0.92,0.37,0,0.48,0.07,2016
-"197",4772,"Overwatch","Shooter","PS4",4.54,1.84,0.17,1.8,0.73,2016
-"198",4777,"Overwatch","Shooter","XOne",2.72,1.63,0,0.84,0.25,2016
-"199",4279,"Payday 2","Shooter","PC",0.05,0.04,0,0,0.01,2013
-"200",6526,"Payday 2","Shooter","PS4",0.32,0.12,0.01,0.14,0.05,2015
-"201",4607,"Payday 2","Shooter","XOne",0.23,0.14,0,0.07,0.02,2015
-"202",4482,"Plants vs Zombies: Garden Warfare","Shooter","PC",0.02,0,0,0.02,0,2014
-"203",4356,"Plants vs Zombies: Garden Warfare","Shooter","PS4",0.66,0.24,0.01,0.3,0.11,2014
-"204",6485,"Plants vs Zombies: Garden Warfare","Shooter","XOne",0.71,0.39,0.01,0.25,0.06,2014
-"205",4936,"Plants vs. Zombies: Garden Warfare 2","Shooter","PC",0.05,0.01,0,0.04,0,2016
-"206",4800,"Plants vs. Zombies: Garden Warfare 2","Shooter","PS4",0.63,0.22,0,0.31,0.1,2016
-"207",784,"Plants vs. Zombies: Garden Warfare 2","Shooter","XOne",0.88,0.47,0.01,0.32,0.08,2016
-"208",4460,"Pro Evolution Soccer 2015","Sports","PC",0.06,0,0,0.06,0,2014
-"209",4345,"Pro Evolution Soccer 2015","Sports","PS4",0.76,0.09,0.12,0.45,0.1,2014
-"210",4427,"Pro Evolution Soccer 2015","Sports","XOne",0.15,0.04,0,0.1,0.01,2014
-"211",6545,"Pro Evolution Soccer 2016","Sports","PC",0.05,0,0.01,0.04,0,2015
-"212",6517,"Pro Evolution Soccer 2016","Sports","PS4",0.82,0.14,0.15,0.43,0.1,2015
-"213",4643,"Pro Evolution Soccer 2016","Sports","XOne",0.12,0.05,0,0.06,0.01,2015
-"214",4972,"Pro Evolution Soccer 2017","Sports","PC",0.03,0,0,0.03,0,2016
-"215",787,"Pro Evolution Soccer 2017","Sports","PS4",0.77,0.08,0.19,0.41,0.09,2016
-"216",6588,"Pro Evolution Soccer 2017","Sports","XOne",0.1,0.05,0.01,0.03,0.01,2016
-"217",5334,"Pro Evolution Soccer 2018","Sports","PC",0.01,0,0,0.01,0,2017
-"218",837,"Pro Evolution Soccer 2018","Sports","PS4",0.77,0.12,0.2,0.36,0.09,2017
-"219",5164,"Pro Evolution Soccer 2018","Sports","XOne",0.12,0.06,0,0.05,0.01,2017
-"220",4636,"Project CARS","Racing","PC",0.13,0,0,0.12,0.01,2015
-"221",4544,"Project CARS","Racing","PS4",1.28,0.29,0.04,0.76,0.19,2015
-"222",4581,"Project CARS","Racing","XOne",0.41,0.21,0,0.16,0.04,2015
-"223",4720,"Ride","Racing","PC",0.03,0,0,0.03,0,2015
-"224",6532,"Ride","Racing","PS4",0.24,0.04,0.04,0.13,0.03,2015
-"225",4645,"Ride","Racing","XOne",0.11,0.05,0,0.05,0.01,2015
-"226",5005,"Ride 2","Racing","PC",0.02,0,0,0.02,0,2016
-"227",853,"Ride 2","Racing","PS4",0.18,0.07,0.02,0.06,0.03,2017
-"228",5189,"Ride 2","Racing","XOne",0.08,0.06,0,0.01,0.01,2017
-"229",4641,"Rocket League","Sports","PC",0.12,0.03,0,0.08,0.01,2015
-"230",4779,"Rocket League","Sports","PS4",2.02,0.37,0,1.34,0.31,2016
-"231",4782,"Rocket League","Sports","XOne",1.38,0.52,0,0.75,0.11,2016
-"232",6565,"Rocksmith 2014","Music","PC",0.7,0.39,0.01,0.24,0.06,2016
-"233",4798,"Rocksmith 2014","Music","PS4",0.67,0.38,0,0.17,0.12,2016
-"234",4814,"Rocksmith 2014","Music","XOne",0.43,0.31,0,0.08,0.04,2016
-"235",4753,"Rugby World Cup 2015","Sports","PC",0.01,0,0,0.01,0,2015
-"236",4683,"Rugby World Cup 2015","Sports","PS4",0.06,0,0,0.05,0.01,2015
-"237",4729,"Rugby World Cup 2015","Sports","XOne",0.02,0,0,0.02,0,2015
-"238",5042,"Sebastien Loeb Rally EVO","Racing","PC",0.01,0,0,0.01,0,2016
-"239",4946,"Sebastien Loeb Rally EVO","Racing","PS4",0.05,0,0,0.04,0.01,2016
-"240",5034,"Sebastien Loeb Rally EVO","Racing","XOne",0.01,0,0,0.01,0,2016
-"241",4507,"Sniper Elite III","Shooter","PC",0.01,0,0,0.01,0,2014
-"242",4348,"Sniper Elite III","Shooter","PS4",0.74,0.25,0,0.37,0.12,2014
-"243",4380,"Sniper Elite III","Shooter","XOne",0.43,0.27,0,0.12,0.04,2014
-"244",4910,"Song of the Deep","Action","PC",0.07,0.06,0,0,0.01,2016
-"245",4861,"Song of the Deep","Action","PS4",0.15,0.12,0,0,0.03,2016
-"246",4873,"Song of the Deep","Action","XOne",0.13,0.12,0,0,0.01,2016
-"247",4415,"South Park: The Stick of Truth","Role-Playing","PC",0.19,0.07,0,0.1,0.02,2014
-"248",919,"South Park: The Stick of Truth","Role-Playing","PS4",0.05,0.03,0.01,0,0.01,2018
-"249",5590,"South Park: The Stick of Truth","Role-Playing","XOne",0.02,0.02,0,0,0,2018
-"250",744,"Star Wars Battlefront (2015)","Shooter","PC",0.51,0.13,0.01,0.33,0.04,2015
-"251",4518,"Star Wars Battlefront (2015)","Shooter","PS4",8.03,3.31,0.23,3.19,1.3,2015
-"252",4523,"Star Wars Battlefront (2015)","Shooter","XOne",4.15,2.49,0.02,1.26,0.38,2015
-"253",6644,"Star Wars Battlefront II (2017)","Shooter","PC",0.05,0.02,0.01,0.02,0,2017
-"254",823,"Star Wars Battlefront II (2017)","Shooter","PS4",4.55,1.7,0.13,1.99,0.73,2017
-"255",6609,"Star Wars Battlefront II (2017)","Shooter","XOne",1.92,1.15,0.01,0.59,0.17,2017
-"256",5252,"Syberia III","Role-Playing","PC",0.04,0.02,0,0.02,0,2017
-"257",4944,"Syberia III","Adventure","PS4",0.05,0.04,0,0,0.01,2016
-"258",5290,"Syberia III","Adventure","XOne",0.02,0.02,0,0,0,2017
-"259",4501,"The Amazing Spider-Man 2 (2014)","Action-Adventure","PC",0.01,0,0,0.01,0,2014
-"260",702,"The Amazing Spider-Man 2 (2014)","Action-Adventure","PS4",0.58,0.2,0.0299999999999999,0.26,0.09,2014
-"261",4409,"The Amazing Spider-Man 2 (2014)","Action-Adventure","XOne",0.22,0.12,0,0.08,0.02,2014
-"262",4428,"The Crew","Racing","PC",0.15,0,0,0.14,0.01,2014
-"263",6477,"The Crew","Racing","PS4",1.79,0.44,0.04,1.04,0.27,2014
-"264",699,"The Crew","Racing","XOne",0.73,0.32,0.01,0.34,0.06,2014
-"265",4735,"The Crew: Wild Run","Racing","PC",0.02,0,0,0.02,0,2015
-"266",4633,"The Crew: Wild Run","Racing","PS4",0.14,0,0,0.12,0.02,2015
-"267",4730,"The Crew: Wild Run","Racing","XOne",0.02,0,0,0.02,0,2015
-"268",5023,"The Dwarves","Role-Playing","PC",0.01,0,0,0.01,0,2016
-"269",821,"The Dwarves","Role-Playing","PS4",0.05,0.03,0.01,0,0.01,2016
-"270",5004,"The Dwarves","Role-Playing","XOne",0.02,0.02,0,0,0,2016
-"271",5234,"The Elder Scrolls Online: Morrowind","MMO","PC",0.05,0.02,0,0.03,0,2017
-"272",5117,"The Elder Scrolls Online: Morrowind","MMO","PS4",0.24,0.11,0,0.09,0.04,2017
-"273",6634,"The Elder Scrolls Online: Morrowind","MMO","XOne",0.14,0.09,0.01,0.03,0.01,2017
-"274",5620,"The Elder Scrolls Online: Summerset","MMO","PC",0.01,0,0,0.01,0,2018
-"275",5458,"The Elder Scrolls Online: Summerset","MMO","PS4",0.1,0.08,0,0,0.02,2018
-"276",5452,"The Elder Scrolls Online: Summerset","MMO","XOne",0.11,0.09,0,0.01,0.01,2018
-"277",4313,"The Sims 4","Simulation","PC",4.1,1.2,0,2.6,0.3,2014
-"278",5059,"The Sims 4","Simulation","PS4",1.39,0.44,0.01,0.72,0.22,2017
-"279",5067,"The Sims 4","Simulation","XOne",0.73,0.42,0,0.24,0.07,2017
-"280",6579,"Titanfall 2","Shooter","PC",0.2,0.06,0.01,0.12,0.01,2016
-"281",6560,"Titanfall 2","Shooter","PS4",1.72,0.75,0.07,0.62,0.28,2016
-"282",780,"Titanfall 2","Shooter","XOne",1.39,0.88,0.00999999999999979,0.37,0.13,2016
-"283",5256,"Tom Clancy's Ghost Recon Wildlands","Shooter","PC",0.04,0,0,0.04,0,2017
-"284",6607,"Tom Clancy's Ghost Recon Wildlands","Shooter","PS4",3.12,1.07,0.23,1.35,0.47,2017
-"285",5056,"Tom Clancy's Ghost Recon Wildlands","Shooter","XOne",1.61,0.98,0,0.48,0.15,2017
-"286",4594,"Tom Clancy's Rainbow Six: Siege","Shooter","PC",0.3,0.18,0,0.09,0.03,2015
-"287",6509,"Tom Clancy's Rainbow Six: Siege","Shooter","PS4",4.36,1.29,0.370000000000001,2.06,0.64,2015
-"288",4529,"Tom Clancy's Rainbow Six: Siege","Shooter","XOne",2.71,1.62,0,0.84,0.25,2015
-"289",4809,"Tom Clancy's The Division","Shooter","PC",0.48,0.26,0,0.18,0.04,2016
-"290",771,"Tom Clancy's The Division","Shooter","PS4",4.39,1.49,0.17,2.04,0.69,2016
-"291",774,"Tom Clancy's The Division","Shooter","XOne",2.61,1.54,0.0100000000000002,0.82,0.24,2016
-"292",5319,"Torment: Tides of Numenera","Role-Playing","PC",0.02,0,0,0.02,0,2017
-"293",5322,"Torment: Tides of Numenera","Role-Playing","PS4",0.01,0.01,0,0,0,2017
-"294",5346,"Torment: Tides of Numenera","Role-Playing","XOne",0.01,0.01,0,0,0,2017
-"295",5024,"TrackMania Turbo","Racing","PC",0.01,0,0,0.01,0,2016
-"296",6567,"TrackMania Turbo","Racing","PS4",0.47,0.04,0.00999999999999995,0.35,0.07,2016
-"297",4892,"TrackMania Turbo","Racing","XOne",0.1,0.05,0,0.04,0.01,2016
-"298",4711,"Transformers: Devastation","Action","PC",0.03,0,0,0.03,0,2015
-"299",4605,"Transformers: Devastation","Action","PS4",0.24,0.11,0,0.09,0.04,2015
-"300",4629,"Transformers: Devastation","Action","XOne",0.15,0.1,0,0.04,0.01,2015
-"301",4712,"Trials Fusion","Misc","PC",0.03,0,0,0.03,0,2015
-"302",706,"Trials Fusion","Misc","PS4",0.45,0.13,0.02,0.23,0.07,2014
-"303",6531,"Trials Fusion","Racing","XOne",0.25,0.12,0.01,0.1,0.02,2015
-"304",4634,"Tropico 5","Simulation","PC",0.14,0.04,0,0.09,0.01,2015
-"305",4585,"Tropico 5","Simulation","PS4",0.38,0.07,0.08,0.18,0.05,2015
-"306",5016,"Tropico 5","Simulation","XOne",0.02,0.02,0,0,0,2016
-"307",5021,"Valentino Rossi: The Game","Racing","PC",0.02,0,0,0.02,0,2016
-"308",6584,"Valentino Rossi: The Game","Racing","PS4",0.13,0.05,0.01,0.05,0.02,2016
-"309",815,"Valentino Rossi: The Game","Racing","XOne",0.09,0.05,0.01,0.02,0.01,2016
-"310",6660,"Vikings: Wolves of Midgard","Action","PC",0.02,0.01,0.01,0,0,2017
-"311",874,"Vikings: Wolves of Midgard","Action","PS4",0.06,0.03,0.01,0.01,0.01,2017
-"312",6662,"Vikings: Wolves of Midgard","Action","XOne",0.02,0.01,0.01,0,0,2017
-"313",5670,"Wasteland 2","Misc","PC",0.13,0.06,0,0.06,0.01,2020
-"314",4628,"Wasteland 2","Role-Playing","PS4",0.15,0.1,0.03,0,0.02,2015
-"315",765,"Wasteland 2","Role-Playing","XOne",0.08,0.05,0.01,0.01,0.01,2015
-"316",703,"Watch Dogs","Action-Adventure","PC",0.51,0.19,0.01,0.27,0.04,2014
-"317",4311,"Watch Dogs","Action-Adventure","PS4",4.32,1.4,0.11,2.13,0.68,2014
-"318",693,"Watch Dogs","Action-Adventure","XOne",1.66,0.91,0.01,0.59,0.15,2014
-"319",4762,"WRC 5: FIA World Rally Championship","Racing","PC",0.01,0,0,0.01,0,2015
-"320",4685,"WRC 5: FIA World Rally Championship","Racing","PS4",0.06,0,0,0.05,0.01,2015
-"321",6550,"WRC 5: FIA World Rally Championship","Racing","XOne",0.02,0,0.01,0.01,0,2015
-"322",6599,"WRC 6","Racing","PC",0.02,0,0.01,0.01,0,2016
-"323",6640,"WRC 6","Racing","PS4",0.08,0.03,0.02,0.02,0.01,2017
-"324",5266,"WRC 6","Racing","XOne",0.03,0.03,0,0,0,2017
-"325",6527,"XCOM 2","Strategy","PC",0.31,0.12,0.01,0.16,0.02,2015
-"326",4830,"XCOM 2","Strategy","PS4",0.31,0.16,0,0.1,0.05,2016
-"327",4852,"XCOM 2","Strategy","XOne",0.19,0.15,0,0.02,0.02,2016
+,X,Name,Genre,Platform,Total_Sales,NA_Sales,JP_Sales,PAL_Sales,Other_Sales,Year
+1,718,Alien: Isolation,Adventure,PC,0.16,0,0.01,0.14,0.01,2014
+2,4336,Alien: Isolation,Adventure,PS4,1.09,0.29,0.05,0.59,0.16,2014
+3,4373,Alien: Isolation,Adventure,XOne,0.52,0.23,0,0.25,0.04,2014
+4,4221,Assassin's Creed IV: Black Flag,Action,PC,0.63,0.24,0,0.34,0.05,2013
+5,4191,Assassin's Creed IV: Black Flag,Action,PS4,3.19,1.07,0.06,1.55,0.51,2013
+6,4196,Assassin's Creed IV: Black Flag,Action,XOne,2.32,1.51,0,0.59,0.22,2013
+7,5494,Assassin's Creed Odyssey,Action,PC,0.06,0,0,0.06,0,2018
+8,5366,Assassin's Creed Odyssey,Action,PS4,3.18,1.18,0.09,1.4,0.51,2018
+9,5375,Assassin's Creed Odyssey,Action,XOne,1.39,0.91,0,0.35,0.13,2018
+10,4600,Assassin's Creed Syndicate,Action,PC,0.26,0.15,0,0.09,0.02,2015
+11,6511,Assassin's Creed Syndicate,Action,PS4,3.6,0.9,0.09,2.06,0.55,2015
+12,4538,Assassin's Creed Syndicate,Action,XOne,1.44,0.71,0,0.61,0.12,2015
+13,6488,Assassin's Creed: Unity,Action,PC,0.56,0.2,0.01,0.31,0.04,2014
+14,689,Assassin's Creed: Unity,Action,PS4,4.16,1.25,0.100000000000001,2.16,0.65,2014
+15,4315,Assassin's Creed: Unity,Action,XOne,3.58,2.34,0,0.9,0.34,2014
+16,4298,Battle Worlds: Kronos,Strategy,PC,0.01,0,0,0.01,0,2013
+17,5027,Battle Worlds: Kronos,Strategy,PS4,0.01,0.01,0,0,0,2016
+18,5041,Battle Worlds: Kronos,Strategy,XOne,0.01,0.01,0,0,0,2016
+19,4847,Battleborn,Shooter,PC,0.2,0.12,0,0.06,0.02,2016
+20,4807,Battleborn,Shooter,PS4,0.48,0.25,0.03,0.12,0.08,2016
+21,4833,Battleborn,Shooter,XOne,0.28,0.2,0,0.05,0.03,2016
+22,4795,Battlefield 1,Shooter,PC,0.77,0.3,0,0.41,0.06,2016
+23,4768,Battlefield 1,Shooter,PS4,7.26,2.2,0.29,3.65,1.12,2016
+24,4769,Battlefield 1,Shooter,XOne,5.13,3.37,0.02,1.26,0.48,2016
+25,4203,Battlefield 4,Shooter,PC,1.39,0.44,0,0.85,0.1,2013
+26,662,Battlefield 4,Shooter,PS4,3.96,1.4,0.2,1.74,0.62,2013
+27,664,Battlefield 4,Shooter,XOne,2.11,1.26,0.01,0.65,0.19,2013
+28,5466,Battlefield V,Shooter,PC,0.1,0,0,0.09,0.01,2018
+29,878,Battlefield V,Shooter,PS4,2.24,0.8,0.17,0.93,0.34,2018
+30,5373,Battlefield V,Shooter,XOne,1.55,1.05,0,0.35,0.15,2018
+31,4631,Battlefield: Hardline,Shooter,PC,0.14,0,0,0.13,0.01,2015
+32,729,Battlefield: Hardline,Shooter,PS4,2.17,0.72,0.15,0.97,0.33,2015
+33,4545,Battlefield: Hardline,Shooter,XOne,1.24,0.73,0.01,0.39,0.11,2015
+34,4383,Call of Duty: Advanced Warfare,Shooter,PC,0.42,0.17,0,0.22,0.03,2014
+35,686,Call of Duty: Advanced Warfare,Shooter,PS4,7.55,2.84,0.15,3.34,1.22,2014
+36,688,Call of Duty: Advanced Warfare,Shooter,XOne,5.24,3.25,0.020000000000001,1.49,0.48,2014
+37,4597,Call of Duty: Black Ops 3,Shooter,PC,0.3,0,0,0.28,0.02,2015
+38,6508,Call of Duty: Black Ops 3,Shooter,PS4,15.09,6.18,0.42,6.05,2.44,2015
+39,4519,Call of Duty: Black Ops 3,Shooter,XOne,7.37,4.63,0.02,2.04,0.68,2015
+40,5441,Call of Duty: Black Ops IIII,Shooter,PC,0.13,0.05,0,0.07,0.01,2018
+41,5361,Call of Duty: Black Ops IIII,Shooter,PS4,9.32,4.05,0.5,3.28,1.49,2018
+42,5365,Call of Duty: Black Ops IIII,Shooter,XOne,4.85,3.27,0,1.12,0.46,2018
+43,4219,Call of Duty: Ghosts,Shooter,PC,0.67,0.26,0,0.36,0.05,2013
+44,4189,Call of Duty: Ghosts,Shooter,PS4,4.17,1.79,0.05,1.64,0.69,2013
+45,6445,Call of Duty: Ghosts,Shooter,XOne,3.07,1.92,0.01,0.86,0.28,2013
+46,794,Call of Duty: Infinite Warfare,Shooter,PC,0.35,0.12,0.01,0.19,0.03,2016
+47,770,Call of Duty: Infinite Warfare,Shooter,PS4,8.5,3.11,0.2,3.83,1.36,2016
+48,4771,Call of Duty: Infinite Warfare,Shooter,XOne,4.79,2.91,0,1.44,0.44,2016
+49,5128,Call of Duty: WWII,Shooter,PC,0.19,0.07,0,0.11,0.01,2017
+50,5050,Call of Duty: WWII,Shooter,PS4,13.4,4.67,0.4,6.21,2.12,2017
+51,5051,Call of Duty: WWII,Shooter,XOne,6.23,3.75,0,1.91,0.57,2017
+52,5641,Darksiders III,Action,PC,0.01,0,0,0.01,0,2018
+53,6687,Darksiders III,Action,PS4,0.25,0.13,0.01,0.07,0.04,2018
+54,5447,Darksiders III,Action,XOne,0.12,0.11,0,0,0.01,2018
+55,5343,Deformers,Action,PC,0.01,0.01,0,0,0,2017
+56,5215,Deformers,Action,PS4,0.06,0.05,0,0,0.01,2017
+57,5238,Deformers,Action,XOne,0.05,0.04,0,0,0.01,2017
+58,6629,Destiny 2,Shooter,PC,0.16,0.09,0.01,0.05,0.01,2017
+59,824,Destiny 2,Shooter,PS4,4.16,1.92,0.110000000000001,1.44,0.69,2017
+60,827,Destiny 2,Shooter,XOne,2.37,1.66,0.01,0.47,0.23,2017
+61,5607,Destiny 2: Forsaken,Shooter,PC,0.02,0,0,0.02,0,2018
+62,5399,Destiny 2: Forsaken,Shooter,PS4,0.36,0.19,0,0.11,0.06,2018
+63,5439,Destiny 2: Forsaken,Shooter,XOne,0.13,0.08,0,0.04,0.01,2018
+64,6590,Deus Ex: Mankind Divided,Role-Playing,PC,0.07,0,0.01,0.06,0,2016
+65,4797,Deus Ex: Mankind Divided,Role-Playing,PS4,0.72,0.25,0.01,0.34,0.12,2016
+66,792,Deus Ex: Mankind Divided,Role-Playing,XOne,0.41,0.25,0.01,0.11,0.04,2016
+67,5331,DiRT 4,Racing,PC,0.01,0,0,0.01,0,2017
+68,5088,DiRT 4,Racing,PS4,0.49,0.1,0.02,0.3,0.07,2017
+69,5120,DiRT 4,Racing,XOne,0.23,0.11,0,0.1,0.02,2017
+70,6547,DiRT Rally,Racing,PC,0.04,0,0.01,0.03,0,2015
+71,4804,DiRT Rally,Racing,PS4,0.51,0.13,0,0.3,0.08,2016
+72,798,DiRT Rally,Racing,XOne,0.23,0.12,0.01,0.08,0.02,2016
+73,796,Dishonored 2,Action,PC,0.28,0.08,0.01,0.17,0.02,2016
+74,6559,Dishonored 2,Action,PS4,1.97,0.62,0.02,1.02,0.31,2016
+75,4792,Dishonored 2,Action,XOne,0.86,0.47,0,0.31,0.08,2016
+76,4819,Doom (2016),Shooter,PC,0.38,0.11,0,0.24,0.03,2016
+77,6555,Doom (2016),Shooter,PS4,2.92,0.93,0.05,1.48,0.46,2016
+78,778,Doom (2016),Shooter,XOne,1.47,0.76,0.01,0.57,0.13,2016
+79,4344,Dragon Age: Inquisition,Role-Playing,PC,0.78,0.38,0,0.33,0.07,2014
+80,6474,Dragon Age: Inquisition,Role-Playing,PS4,2.34,1.07,0.09,0.8,0.38,2014
+81,4339,Dragon Age: Inquisition,Role-Playing,XOne,0.99,0.63,0,0.27,0.09,2014
+82,4613,Evolve,Misc,PC,0.22,0.1,0,0.1,0.02,2015
+83,6516,Evolve,Shooter,PS4,1.01,0.38,0.06,0.41,0.16,2015
+84,6520,Evolve,Shooter,XOne,0.67,0.4,0.01,0.2,0.06,2015
+85,4680,F1 2015,Racing,PC,0.06,0,0,0.06,0,2015
+86,739,F1 2015,Racing,PS4,0.7,0.1,0.05,0.45,0.1,2015
+87,751,F1 2015,Racing,XOne,0.27,0.09,0.01,0.15,0.02,2015
+88,5287,F1 2017,Racing,PC,0.02,0,0,0.02,0,2017
+89,5074,F1 2017,Racing,PS4,0.62,0.04,0.02,0.47,0.09,2017
+90,6628,F1 2017,Racing,XOne,0.19,0.04,0.01,0.13,0.01,2017
+91,5629,F1 2018,Racing,PC,0.01,0,0,0.01,0,2018
+92,5388,F1 2018,Racing,PS4,0.53,0.05,0.01,0.39,0.08,2018
+93,6690,F1 2018,Racing,XOne,0.17,0.05,0.01,0.1,0.01,2018
+94,4539,Fallout 4,Role-Playing,PC,1.4,0.57,0,0.72,0.11,2015
+95,726,Fallout 4,Role-Playing,PS4,8.5,2.91,0.28,3.97,1.34,2015
+96,4522,Fallout 4,Role-Playing,XOne,5.03,2.94,0.02,1.62,0.45,2015
+97,5423,Fallout 76,Role-Playing,PC,0.21,0.12,0,0.07,0.02,2018
+98,6674,Fallout 76,Role-Playing,PS4,1.32,0.52,0.11,0.49,0.2,2018
+99,883,Fallout 76,Role-Playing,XOne,0.95,0.59,0.01,0.26,0.09,2018
+100,4360,Far Cry 4,Shooter,PC,0.65,0.19,0,0.41,0.05,2014
+101,4314,Far Cry 4,Shooter,PS4,4.06,1.18,0.11,2.14,0.63,2014
+102,692,Far Cry 4,Shooter,XOne,1.7,0.85,0.03,0.68,0.14,2014
+103,5478,Far Cry 5,Action,PC,0.07,0,0,0.07,0,2018
+104,6672,Far Cry 5,Action,PS4,3.95,1.44,0.16,1.73,0.62,2018
+105,5371,Far Cry 5,Action,XOne,1.78,1.14,0,0.47,0.17,2018
+106,4838,Far Cry: Primal,Action-Adventure,PC,0.25,0.07,0,0.16,0.02,2016
+107,6556,Far Cry: Primal,Action-Adventure,PS4,2.73,0.63,0.08,1.61,0.41,2016
+108,783,Far Cry: Primal,Action-Adventure,XOne,1.02,0.51,0.01,0.41,0.09,2016
+109,4785,Farming Simulator 17,Simulation,PC,1.12,0.11,0,0.94,0.07,2016
+110,4793,Farming Simulator 17,Simulation,PS4,0.85,0.19,0.01,0.52,0.13,2016
+111,4827,Farming Simulator 17,Simulation,XOne,0.33,0.19,0,0.11,0.03,2016
+112,5386,Farming Simulator 19,Simulation,PC,0.58,0,0,0.55,0.03,2018
+113,6679,Farming Simulator 19,Simulation,PS4,0.47,0.13,0.01,0.26,0.07,2018
+114,6685,Farming Simulator 19,Simulation,XOne,0.32,0.19,0.01,0.09,0.03,2018
+115,4334,Farming Simulator 2015,Simulation,PC,1.1,0.09,0,0.94,0.07,2014
+116,746,Farming Simulator 2015,Simulation,PS4,0.43,0.13,0.01,0.22,0.07,2015
+117,4604,Farming Simulator 2015,Simulation,XOne,0.24,0.13,0,0.09,0.02,2015
+118,4234,FIFA 14,Sports,PC,0.38,0.01,0,0.35,0.02,2013
+119,4190,FIFA 14,Sports,PS4,3.43,0.62,0.12,2.18,0.51,2013
+120,666,FIFA 14,Sports,XOne,1.33,0.44,0.01,0.78,0.1,2013
+121,4397,FIFA 15,Sports,PC,0.3,0,0,0.28,0.02,2014
+122,6473,FIFA 15,Sports,PS4,6.32,0.83,0.060000000000001,4.49,0.94,2014
+123,4321,FIFA 15,Sports,XOne,2.19,0.64,0,1.39,0.16,2014
+124,753,FIFA 16,Sports,PC,0.23,0.07,0.01,0.13,0.02,2015
+125,4517,FIFA 16,Sports,PS4,8.22,1.15,0.07,5.77,1.23,2015
+126,728,FIFA 16,Sports,XOne,3.27,0.92,0.01,2.1,0.24,2015
+127,4849,FIFA 17,Sports,PC,0.19,0,0,0.18,0.01,2016
+128,4767,FIFA 17,Sports,PS4,10.94,1.26,0.12,7.95,1.61,2016
+129,4773,FIFA 17,Sports,XOne,3.71,1.04,0,2.4,0.27,2016
+130,5188,FIFA 18,Sports,PC,0.08,0,0,0.08,0,2017
+131,6602,FIFA 18,Sports,PS4,11.8,1.27,0.160000000000002,8.64,1.73,2017
+132,6606,FIFA 18,Sports,XOne,3.14,0.98,0.01,1.92,0.23,2017
+133,5246,For Honor,Action,PC,0.04,0.02,0,0.02,0,2017
+134,6611,For Honor,Action,PS4,1.75,0.73,0.08,0.66,0.28,2017
+135,6614,For Honor,Action,XOne,0.87,0.57,0.01,0.21,0.08,2017
+136,5318,Fortnite,Action,PC,0.02,0,0,0.02,0,2017
+137,5065,Fortnite,Action,PS4,0.89,0.42,0,0.32,0.15,2017
+138,5066,Fortnite,Action,XOne,0.77,0.6,0,0.09,0.08,2017
+139,5336,Has-Been Heroes,Action,PC,0.01,0.01,0,0,0,2017
+140,5198,Has-Been Heroes,Action,PS4,0.07,0.06,0,0,0.01,2017
+141,5237,Has-Been Heroes,Action,XOne,0.05,0.04,0,0,0.01,2017
+142,4905,Homefront: The Revolution,Shooter,PC,0.08,0.04,0,0.03,0.01,2016
+143,791,Homefront: The Revolution,Shooter,PS4,0.52,0.11,0.05,0.29,0.07,2016
+144,4845,Homefront: The Revolution,Shooter,XOne,0.21,0.1,0,0.09,0.02,2016
+145,4622,Just Cause 3,Action-Adventure,PC,0.16,0.03,0,0.12,0.01,2015
+146,730,Just Cause 3,Action-Adventure,PS4,2,0.53,0.1,1.07,0.3,2015
+147,734,Just Cause 3,Action-Adventure,XOne,1.03,0.52,0.01,0.41,0.09,2015
+148,5339,Le Tour de France 2017,Simulation,PC,0.01,0,0,0.01,0,2017
+149,5206,Le Tour de France 2017,Simulation,PS4,0.07,0,0,0.06,0.01,2017
+150,6666,Le Tour de France 2017,Simulation,XOne,0.02,0,0.01,0.01,0,2017
+151,4465,LEGO The Hobbit,Action-Adventure,PC,0.05,0,0,0.05,0,2014
+152,700,LEGO The Hobbit,Action-Adventure,PS4,0.64,0.14,0.01,0.39,0.1,2014
+153,710,LEGO The Hobbit,Action-Adventure,XOne,0.29,0.13,0.01,0.13,0.02,2014
+154,4934,Life is Strange,Adventure,PC,0.05,0.01,0,0.04,0,2016
+155,4820,Life is Strange,Adventure,PS4,0.37,0.11,0.05,0.16,0.05,2016
+156,4875,Life is Strange,Adventure,XOne,0.12,0.08,0,0.03,0.01,2016
+157,5152,Mass Effect: Andromeda,Role-Playing,PC,0.13,0.04,0,0.08,0.01,2017
+158,830,Mass Effect: Andromeda,Role-Playing,PS4,1.51,0.58,0.01,0.67,0.25,2017
+159,6616,Mass Effect: Andromeda,Role-Playing,XOne,0.78,0.5,0.01,0.2,0.07,2017
+160,4388,Middle-Earth: Shadow of Mordor,Action,PC,0.37,0.14,0,0.2,0.03,2014
+161,4318,Middle-Earth: Shadow of Mordor,Action,PS4,3.19,1.03,0.05,1.6,0.51,2014
+162,4326,Middle-Earth: Shadow of Mordor,Action,XOne,1.42,0.77,0.01,0.52,0.12,2014
+163,862,Middle-Earth: Shadow of War,Action,PC,0.09,0.03,0.01,0.04,0.01,2017
+164,829,Middle-Earth: Shadow of War,Action,PS4,2.06,0.82,0.07,0.84,0.33,2017
+165,5062,Middle-Earth: Shadow of War,Action,XOne,1.15,0.75,0,0.29,0.11,2017
+166,5298,Minecraft: Story Mode - Season Two,Adventure,PC,0.02,0,0,0.02,0,2017
+167,5168,Minecraft: Story Mode - Season Two,Adventure,PS4,0.11,0.09,0,0,0.02,2017
+168,5111,Minecraft: Story Mode - Season Two,Adventure,XOne,0.27,0.17,0,0.08,0.02,2017
+169,4902,Mirror's Edge Catalyst,Platform,PC,0.08,0.01,0,0.06,0.01,2016
+170,6569,Mirror's Edge Catalyst,Platform,PS4,0.42,0.13,0.04,0.19,0.06,2016
+171,4851,Mirror's Edge Catalyst,Platform,XOne,0.19,0.11,0,0.06,0.02,2016
+172,4688,Mortal Kombat X,Fighting,PC,0.05,0.01,0,0.04,0,2015
+173,4526,Mortal Kombat X,Fighting,PS4,3.49,1.94,0,0.94,0.61,2015
+174,731,Mortal Kombat X,Fighting,XOne,1.76,1.34,0.01,0.23,0.18,2015
+175,4758,MX vs. ATV Supercross Encore,Sports,PC,0.01,0,0,0.01,0,2015
+176,4676,MX vs. ATV Supercross Encore,Sports,PS4,0.06,0,0,0.05,0.01,2015
+177,4678,MX vs. ATV Supercross Encore,Sports,XOne,0.06,0.05,0,0,0.01,2015
+178,5025,MXGP 2,Racing,PC,0.01,0,0,0.01,0,2016
+179,6582,MXGP 2,Racing,PS4,0.14,0.05,0.01,0.06,0.02,2016
+180,4889,MXGP 2,Racing,XOne,0.1,0.07,0,0.02,0.01,2016
+181,760,NBA 2K16,Sports,PC,0.14,0.05,0.01,0.07,0.01,2015
+182,4524,NBA 2K16,Sports,PS4,3.98,2.56,0.05,0.66,0.71,2015
+183,4532,NBA 2K16,Sports,XOne,2.41,2.01,0,0.15,0.25,2015
+184,4974,NBA 2K17,Sports,PC,0.03,0,0,0.03,0,2016
+185,772,NBA 2K17,Sports,PS4,3.54,2.28,0.04,0.59,0.63,2016
+186,6558,NBA 2K17,Sports,XOne,2.04,1.7,0.01,0.12,0.21,2016
+187,4942,Need for Speed (2015),Racing,PC,0.05,0,0,0.05,0,2016
+188,4528,Need for Speed (2015),Racing,PS4,2.72,0.59,0.06,1.66,0.41,2015
+189,4559,Need for Speed (2015),Racing,XOne,0.74,0.35,0,0.33,0.06,2015
+190,4244,Need for Speed Rivals,Racing,PC,0.25,0.04,0,0.19,0.02,2013
+191,4198,Need for Speed Rivals,Racing,PS4,2.17,0.75,0.03,1.04,0.35,2013
+192,671,Need for Speed Rivals,Racing,XOne,0.72,0.45,0.01,0.19,0.07,2013
+193,5297,Need for Speed: Payback,Racing,PC,0.02,0,0,0.02,0,2017
+194,5053,Need for Speed: Payback,Racing,PS4,2.18,0.62,0.04,1.18,0.34,2017
+195,5068,Need for Speed: Payback,Racing,XOne,0.73,0.42,0,0.24,0.07,2017
+196,4789,Overwatch,Shooter,PC,0.92,0.37,0,0.48,0.07,2016
+197,4772,Overwatch,Shooter,PS4,4.54,1.84,0.17,1.8,0.73,2016
+198,4777,Overwatch,Shooter,XOne,2.72,1.63,0,0.84,0.25,2016
+199,4279,Payday 2,Shooter,PC,0.05,0.04,0,0,0.01,2013
+200,6526,Payday 2,Shooter,PS4,0.32,0.12,0.01,0.14,0.05,2015
+201,4607,Payday 2,Shooter,XOne,0.23,0.14,0,0.07,0.02,2015
+202,4482,Plants vs Zombies: Garden Warfare,Shooter,PC,0.02,0,0,0.02,0,2014
+203,4356,Plants vs Zombies: Garden Warfare,Shooter,PS4,0.66,0.24,0.01,0.3,0.11,2014
+204,6485,Plants vs Zombies: Garden Warfare,Shooter,XOne,0.71,0.39,0.01,0.25,0.06,2014
+205,4936,Plants vs. Zombies: Garden Warfare 2,Shooter,PC,0.05,0.01,0,0.04,0,2016
+206,4800,Plants vs. Zombies: Garden Warfare 2,Shooter,PS4,0.63,0.22,0,0.31,0.1,2016
+207,784,Plants vs. Zombies: Garden Warfare 2,Shooter,XOne,0.88,0.47,0.01,0.32,0.08,2016
+208,4460,Pro Evolution Soccer 2015,Sports,PC,0.06,0,0,0.06,0,2014
+209,4345,Pro Evolution Soccer 2015,Sports,PS4,0.76,0.09,0.12,0.45,0.1,2014
+210,4427,Pro Evolution Soccer 2015,Sports,XOne,0.15,0.04,0,0.1,0.01,2014
+211,6545,Pro Evolution Soccer 2016,Sports,PC,0.05,0,0.01,0.04,0,2015
+212,6517,Pro Evolution Soccer 2016,Sports,PS4,0.82,0.14,0.15,0.43,0.1,2015
+213,4643,Pro Evolution Soccer 2016,Sports,XOne,0.12,0.05,0,0.06,0.01,2015
+214,4972,Pro Evolution Soccer 2017,Sports,PC,0.03,0,0,0.03,0,2016
+215,787,Pro Evolution Soccer 2017,Sports,PS4,0.77,0.08,0.19,0.41,0.09,2016
+216,6588,Pro Evolution Soccer 2017,Sports,XOne,0.1,0.05,0.01,0.03,0.01,2016
+217,5334,Pro Evolution Soccer 2018,Sports,PC,0.01,0,0,0.01,0,2017
+218,837,Pro Evolution Soccer 2018,Sports,PS4,0.77,0.12,0.2,0.36,0.09,2017
+219,5164,Pro Evolution Soccer 2018,Sports,XOne,0.12,0.06,0,0.05,0.01,2017
+220,4636,Project CARS,Racing,PC,0.13,0,0,0.12,0.01,2015
+221,4544,Project CARS,Racing,PS4,1.28,0.29,0.04,0.76,0.19,2015
+222,4581,Project CARS,Racing,XOne,0.41,0.21,0,0.16,0.04,2015
+223,4720,Ride,Racing,PC,0.03,0,0,0.03,0,2015
+224,6532,Ride,Racing,PS4,0.24,0.04,0.04,0.13,0.03,2015
+225,4645,Ride,Racing,XOne,0.11,0.05,0,0.05,0.01,2015
+226,5005,Ride 2,Racing,PC,0.02,0,0,0.02,0,2016
+227,853,Ride 2,Racing,PS4,0.18,0.07,0.02,0.06,0.03,2017
+228,5189,Ride 2,Racing,XOne,0.08,0.06,0,0.01,0.01,2017
+229,4641,Rocket League,Sports,PC,0.12,0.03,0,0.08,0.01,2015
+230,4779,Rocket League,Sports,PS4,2.02,0.37,0,1.34,0.31,2016
+231,4782,Rocket League,Sports,XOne,1.38,0.52,0,0.75,0.11,2016
+232,6565,Rocksmith 2014,Music,PC,0.7,0.39,0.01,0.24,0.06,2016
+233,4798,Rocksmith 2014,Music,PS4,0.67,0.38,0,0.17,0.12,2016
+234,4814,Rocksmith 2014,Music,XOne,0.43,0.31,0,0.08,0.04,2016
+235,4753,Rugby World Cup 2015,Sports,PC,0.01,0,0,0.01,0,2015
+236,4683,Rugby World Cup 2015,Sports,PS4,0.06,0,0,0.05,0.01,2015
+237,4729,Rugby World Cup 2015,Sports,XOne,0.02,0,0,0.02,0,2015
+238,5042,Sebastien Loeb Rally EVO,Racing,PC,0.01,0,0,0.01,0,2016
+239,4946,Sebastien Loeb Rally EVO,Racing,PS4,0.05,0,0,0.04,0.01,2016
+240,5034,Sebastien Loeb Rally EVO,Racing,XOne,0.01,0,0,0.01,0,2016
+241,4507,Sniper Elite III,Shooter,PC,0.01,0,0,0.01,0,2014
+242,4348,Sniper Elite III,Shooter,PS4,0.74,0.25,0,0.37,0.12,2014
+243,4380,Sniper Elite III,Shooter,XOne,0.43,0.27,0,0.12,0.04,2014
+244,4910,Song of the Deep,Action,PC,0.07,0.06,0,0,0.01,2016
+245,4861,Song of the Deep,Action,PS4,0.15,0.12,0,0,0.03,2016
+246,4873,Song of the Deep,Action,XOne,0.13,0.12,0,0,0.01,2016
+247,4415,South Park: The Stick of Truth,Role-Playing,PC,0.19,0.07,0,0.1,0.02,2014
+248,919,South Park: The Stick of Truth,Role-Playing,PS4,0.05,0.03,0.01,0,0.01,2018
+249,5590,South Park: The Stick of Truth,Role-Playing,XOne,0.02,0.02,0,0,0,2018
+250,744,Star Wars Battlefront (2015),Shooter,PC,0.51,0.13,0.01,0.33,0.04,2015
+251,4518,Star Wars Battlefront (2015),Shooter,PS4,8.03,3.31,0.23,3.19,1.3,2015
+252,4523,Star Wars Battlefront (2015),Shooter,XOne,4.15,2.49,0.02,1.26,0.38,2015
+253,6644,Star Wars Battlefront II (2017),Shooter,PC,0.05,0.02,0.01,0.02,0,2017
+254,823,Star Wars Battlefront II (2017),Shooter,PS4,4.55,1.7,0.13,1.99,0.73,2017
+255,6609,Star Wars Battlefront II (2017),Shooter,XOne,1.92,1.15,0.01,0.59,0.17,2017
+256,5252,Syberia III,Role-Playing,PC,0.04,0.02,0,0.02,0,2017
+257,4944,Syberia III,Adventure,PS4,0.05,0.04,0,0,0.01,2016
+258,5290,Syberia III,Adventure,XOne,0.02,0.02,0,0,0,2017
+259,4501,The Amazing Spider-Man 2 (2014),Action-Adventure,PC,0.01,0,0,0.01,0,2014
+260,702,The Amazing Spider-Man 2 (2014),Action-Adventure,PS4,0.58,0.2,0.03,0.26,0.09,2014
+261,4409,The Amazing Spider-Man 2 (2014),Action-Adventure,XOne,0.22,0.12,0,0.08,0.02,2014
+262,4428,The Crew,Racing,PC,0.15,0,0,0.14,0.01,2014
+263,6477,The Crew,Racing,PS4,1.79,0.44,0.04,1.04,0.27,2014
+264,699,The Crew,Racing,XOne,0.73,0.32,0.01,0.34,0.06,2014
+265,4735,The Crew: Wild Run,Racing,PC,0.02,0,0,0.02,0,2015
+266,4633,The Crew: Wild Run,Racing,PS4,0.14,0,0,0.12,0.02,2015
+267,4730,The Crew: Wild Run,Racing,XOne,0.02,0,0,0.02,0,2015
+268,5023,The Dwarves,Role-Playing,PC,0.01,0,0,0.01,0,2016
+269,821,The Dwarves,Role-Playing,PS4,0.05,0.03,0.01,0,0.01,2016
+270,5004,The Dwarves,Role-Playing,XOne,0.02,0.02,0,0,0,2016
+271,5234,The Elder Scrolls Online: Morrowind,MMO,PC,0.05,0.02,0,0.03,0,2017
+272,5117,The Elder Scrolls Online: Morrowind,MMO,PS4,0.24,0.11,0,0.09,0.04,2017
+273,6634,The Elder Scrolls Online: Morrowind,MMO,XOne,0.14,0.09,0.01,0.03,0.01,2017
+274,5620,The Elder Scrolls Online: Summerset,MMO,PC,0.01,0,0,0.01,0,2018
+275,5458,The Elder Scrolls Online: Summerset,MMO,PS4,0.1,0.08,0,0,0.02,2018
+276,5452,The Elder Scrolls Online: Summerset,MMO,XOne,0.11,0.09,0,0.01,0.01,2018
+277,4313,The Sims 4,Simulation,PC,4.1,1.2,0,2.6,0.3,2014
+278,5059,The Sims 4,Simulation,PS4,1.39,0.44,0.01,0.72,0.22,2017
+279,5067,The Sims 4,Simulation,XOne,0.73,0.42,0,0.24,0.07,2017
+280,6579,Titanfall 2,Shooter,PC,0.2,0.06,0.01,0.12,0.01,2016
+281,6560,Titanfall 2,Shooter,PS4,1.72,0.75,0.07,0.62,0.28,2016
+282,780,Titanfall 2,Shooter,XOne,1.39,0.88,0.01,0.37,0.13,2016
+283,5256,Tom Clancy's Ghost Recon Wildlands,Shooter,PC,0.04,0,0,0.04,0,2017
+284,6607,Tom Clancy's Ghost Recon Wildlands,Shooter,PS4,3.12,1.07,0.23,1.35,0.47,2017
+285,5056,Tom Clancy's Ghost Recon Wildlands,Shooter,XOne,1.61,0.98,0,0.48,0.15,2017
+286,4594,Tom Clancy's Rainbow Six: Siege,Shooter,PC,0.3,0.18,0,0.09,0.03,2015
+287,6509,Tom Clancy's Rainbow Six: Siege,Shooter,PS4,4.36,1.29,0.370000000000001,2.06,0.64,2015
+288,4529,Tom Clancy's Rainbow Six: Siege,Shooter,XOne,2.71,1.62,0,0.84,0.25,2015
+289,4809,Tom Clancy's The Division,Shooter,PC,0.48,0.26,0,0.18,0.04,2016
+290,771,Tom Clancy's The Division,Shooter,PS4,4.39,1.49,0.17,2.04,0.69,2016
+291,774,Tom Clancy's The Division,Shooter,XOne,2.61,1.54,0.01,0.82,0.24,2016
+292,5319,Torment: Tides of Numenera,Role-Playing,PC,0.02,0,0,0.02,0,2017
+293,5322,Torment: Tides of Numenera,Role-Playing,PS4,0.01,0.01,0,0,0,2017
+294,5346,Torment: Tides of Numenera,Role-Playing,XOne,0.01,0.01,0,0,0,2017
+295,5024,TrackMania Turbo,Racing,PC,0.01,0,0,0.01,0,2016
+296,6567,TrackMania Turbo,Racing,PS4,0.47,0.04,0.01,0.35,0.07,2016
+297,4892,TrackMania Turbo,Racing,XOne,0.1,0.05,0,0.04,0.01,2016
+298,4711,Transformers: Devastation,Action,PC,0.03,0,0,0.03,0,2015
+299,4605,Transformers: Devastation,Action,PS4,0.24,0.11,0,0.09,0.04,2015
+300,4629,Transformers: Devastation,Action,XOne,0.15,0.1,0,0.04,0.01,2015
+301,4712,Trials Fusion,Misc,PC,0.03,0,0,0.03,0,2015
+302,706,Trials Fusion,Misc,PS4,0.45,0.13,0.02,0.23,0.07,2014
+303,6531,Trials Fusion,Racing,XOne,0.25,0.12,0.01,0.1,0.02,2015
+304,4634,Tropico 5,Simulation,PC,0.14,0.04,0,0.09,0.01,2015
+305,4585,Tropico 5,Simulation,PS4,0.38,0.07,0.08,0.18,0.05,2015
+306,5016,Tropico 5,Simulation,XOne,0.02,0.02,0,0,0,2016
+307,5021,Valentino Rossi: The Game,Racing,PC,0.02,0,0,0.02,0,2016
+308,6584,Valentino Rossi: The Game,Racing,PS4,0.13,0.05,0.01,0.05,0.02,2016
+309,815,Valentino Rossi: The Game,Racing,XOne,0.09,0.05,0.01,0.02,0.01,2016
+310,6660,Vikings: Wolves of Midgard,Action,PC,0.02,0.01,0.01,0,0,2017
+311,874,Vikings: Wolves of Midgard,Action,PS4,0.06,0.03,0.01,0.01,0.01,2017
+312,6662,Vikings: Wolves of Midgard,Action,XOne,0.02,0.01,0.01,0,0,2017
+313,5670,Wasteland 2,Misc,PC,0.13,0.06,0,0.06,0.01,2020
+314,4628,Wasteland 2,Role-Playing,PS4,0.15,0.1,0.03,0,0.02,2015
+315,765,Wasteland 2,Role-Playing,XOne,0.08,0.05,0.01,0.01,0.01,2015
+316,703,Watch Dogs,Action-Adventure,PC,0.51,0.19,0.01,0.27,0.04,2014
+317,4311,Watch Dogs,Action-Adventure,PS4,4.32,1.4,0.11,2.13,0.68,2014
+318,693,Watch Dogs,Action-Adventure,XOne,1.66,0.91,0.01,0.59,0.15,2014
+319,4762,WRC 5: FIA World Rally Championship,Racing,PC,0.01,0,0,0.01,0,2015
+320,4685,WRC 5: FIA World Rally Championship,Racing,PS4,0.06,0,0,0.05,0.01,2015
+321,6550,WRC 5: FIA World Rally Championship,Racing,XOne,0.02,0,0.01,0.01,0,2015
+322,6599,WRC 6,Racing,PC,0.02,0,0.01,0.01,0,2016
+323,6640,WRC 6,Racing,PS4,0.08,0.03,0.02,0.02,0.01,2017
+324,5266,WRC 6,Racing,XOne,0.03,0.03,0,0,0,2017
+325,6527,XCOM 2,Strategy,PC,0.31,0.12,0.01,0.16,0.02,2015
+326,4830,XCOM 2,Strategy,PS4,0.31,0.16,0,0.1,0.05,2016
+327,4852,XCOM 2,Strategy,XOne,0.19,0.15,0,0.02,0.02,2016
