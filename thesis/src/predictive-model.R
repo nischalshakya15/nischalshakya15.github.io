@@ -135,7 +135,7 @@ ggplot(df_action, aes(fill = Platform, y = Total_Sales, x = Platform)) +
   geom_bar(position = "dodge", stat = "identity") +
   theme(legend.position = "none") +
   facet_wrap(~Name) +
-  geom_text(aes(label=Total_Sales), position=position_dodge(width=0.9), vjust=-0.25) +
+  geom_text(aes(label = Total_Sales), position = position_dodge(width = 0.9), vjust = -0.25) +
   ylab("Sales In Millions")
 
 # End of research question 2 : Whay the cross platform release matter when it comes to the sales of video games ?
