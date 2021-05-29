@@ -39,7 +39,7 @@ ggplot(df_vg_sales, aes(x = Platform, y = Total_Sales)) +
   labs(title = 'Platform vs Sales', x = 'Genre', y = 'Sales In Millions')
 
 # Research QUestion 1 : Do the sales vary in different regions ?
-df_sales_region <- read.csv(file = '../data-sets/vg_sales_region_year_wise.csv', sep = ',', dec = '.')
+df_sales_region <- read.csv(file = 'data-sets/vg_sales_region_year_wise.csv', sep = ',', dec = '.')
 
 # Line graph showing sales may vary in different region
 ggplot(df_sales_region, aes(x = Year, y = Sales, group = Region, color = Region)) +
@@ -50,7 +50,7 @@ ggplot(df_sales_region, aes(x = Year, y = Sales, group = Region, color = Region)
 # End of Research Question 1 : Do the sales vary in different region
 
 # Research Question 2 : Why the cross platform release matter when it comes to the sales of video games?
-df_cross_platform_release_generic <- read.csv(file = '../data-sets/vg_sales_platform_year_wise.csv', sep = ',', dec = '.')
+df_cross_platform_release_generic <- read.csv(file = 'data-sets/vg_sales_platform_year_wise.csv', sep = ',', dec = '.')
 
 ggplot(df_cross_platform_release_generic, aes(x = Year, y = Sales, group = Platform, color = Platform)) +
   geom_line() +

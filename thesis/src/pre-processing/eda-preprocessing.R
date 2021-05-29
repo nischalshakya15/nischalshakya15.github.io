@@ -10,11 +10,10 @@ library('ggplot2')
 library('viridis')
 library('RColorBrewer')
 
-setwd('/thesis')
 
 setwd('/home/nischal/repository/personal/nischalshakya15.github.io/thesis')
 
-df_vg_sales <- read.csv(file = 'data-sets/vgsales-processed.csv', sep = ',', dec = '..')
+df_vg_sales <- read.csv(file = 'data-sets/vgsales-processed.csv', sep = ',', dec = '.')
 
 unique_year <- unique(df_vg_sales$Year)
 df_sales_region <- data.frame()
@@ -110,4 +109,18 @@ for (p in unique(df_vg_sales$Platform)) {
 
 df_sales_platform_wise <- df_sales_platform %>% arrange(Platform)
 write_to_csv(df_sales_platform_wise, 'data-sets/vg_sales_platform_wise.csv')
-# Start vg_sales_platform_wise
+
+vg_pc_ps2_xbox <- read.csv('data-sets/vgsales-pc-ps2-xbox.csv', sep = ',', dec = '.')
+vg_pc_ps3_xbox <- read.csv('data-sets/vgsales-pc-ps3-xbox.csv', sep = ',', dec = '.')
+vg_pc_ps4_xbox <- read.csv('data-sets/vgsales-pc-ps4-xbox-one.csv', sep = ',', dec = '.')
+
+vg_sales_genre_platform_year_wise <- data.frame()
+df <- data.frame()
+
+for (y in vg_pc_ps2_xbox$Genre) {
+  res.df <- vg_pc_ps2_xbox %>%
+    filter(Genre == y)
+  for (year in res.df$Year) {
+
+  }
+}
