@@ -49,7 +49,6 @@ sales_genre_fc_df$Year <- sales_genre_fc_df$Year
 sales_genre_fc_df$Model <- rep("ets")
 
 
-
 ggplot() +
   geom_line(data = df_action, aes(x = Year, y = Sales)) +  # Plotting original data
   geom_line(data = sales_genre_fc_df, aes(x = as.numeric(Year), y = as.numeric(Point_Forecast), colour = Model, group = 1))
