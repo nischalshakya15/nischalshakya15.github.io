@@ -7,12 +7,12 @@ library('tidyr')
 setwd('/home/nischal/repository/personal/nischalshakya15.github.io/thesis')
 
 # Read data from csv file
-data <- read.csv(file = 'data-sets/vgsales-12-4-2019.csv', sep = ',', dec = '.', stringsAsFactors = FALSE)
+data <- read.csv(file = 'data-sets/original/vgsales-12-4-2019.csv', sep = ',', dec = '.', stringsAsFactors = FALSE)
 
 df <- data %>%
   select(Name, Genre, Platform, Global_Sales, NA_Sales, JP_Sales, PAL_Sales, Other_Sales, Year) %>%
   filter(
-    data$Year %in% (2000:2020) &
+    data$Year %in% (2000:2018) &
       !is.na(data$Global_Sales) &
       data$Global_Sales != 0.00 &
       (
@@ -110,3 +110,103 @@ df_pc_ps3_xbox_semi_join <- do.call('rbind', list(df_pc_two_semi_join, df_ps4_se
 df_pc_ps4_xbox_one <- df_pc_ps3_xbox_semi_join %>% arrange(Name)
 
 write_to_csv(df = df_pc_ps4_xbox_one, file = 'data-sets/vgsales-pc-ps4-xbox-one.csv')
+# Filter the sales data related to the PC and PS$4
+remove(list = ls())
+
+library('magrittr')
+library('dplyr')
+library('reader')
+library('tidyr')
+library('ggplot2')
+library('RColorBrewer')
+library('lubridate')
+library('forecast')
+library('stats')
+
+setwd('/home/nischal/repository/personal/nischalshakya15.github.io/thesis')
+
+source('src/utils/utils.R')
+df_vg_sales <- read.csv(file = 'data-sets/vgsales-processed.csv', sep = ',', dec = '.')
+
+df_pc_sales <- df_vg_sales %>%
+  filter(Platform == 'PC') %>%
+  arrange(Year)
+
+df <- data.frame()
+
+for (g in unique(df_pc_sales$Year)) {
+  res.df <- df_pc_sales %>% filter(Year == g)
+  df <- rbind(df, data.frame(
+    Year = g,
+    Sales = res.df %>%
+      group_by(Genre) %>%
+      summarize(sum(Total_Sales))
+  ))
+}
+
+write_to_csv(df = df, file = 'data-sets/vgsales-pc.csv')
+
+df_ps4_sales <- df_vg_sales %>%
+  filter(Platform == 'PS4') %>%
+  arrange(Year)
+
+df.ps4 <- data.frame()
+
+for (g in unique(df_ps4_sales$Year)) {
+  res.df <- df_ps4_sales %>% filter(Year == g)
+  df.ps4 <- rbind(df.ps4, data.frame(
+    Year = g,
+    TotalSales = res.df %>%
+      group_by(Genre) %>%
+      summarize(sum(Total_Sales))
+  ))
+}
+
+write_to_csv(df = df.ps4, file = 'data-sets/ps4.csv')
+# End of Filter the sales data related to the PC and PS4
+
+remove(list = ls())
+
+library('magrittr')
+library('dplyr')
+library('reader')
+library('tidyr')
+
+setwd('/home/nischal/repository/personal/nischalshakya15.github.io/thesis')
+
+source('src/utils/utils.R')
+pc.df <- read.csv(file = 'data-sets/time-series/pc-sales.csv', sep = ',', dec = '.')
+
+df <- data.frame()
+
+for (y in unique(pc.df$Year)) {
+  new.df <- pc.df %>% filter(Year == y)
+  count <- new.df %>% count()
+
+  month <- seq(as.Date(paste(y, '1', '2', sep = '-')), by = "month", length.out = 12) - 2
+
+  if (count == 12) {
+    df <- rbind(df, data.frame(
+      Month = month,
+      Sales = new.df$Sales
+    ))
+  } else if (count < 12) {
+    difference <- 12 - count
+    df <- rbind(df, data.frame(
+      Month = month,
+      Sales = c(new.df$Sales, rep(mean(new.df$Sales), difference))
+    ))
+  } else {
+    extra.sales <- new.df[1,]['Sales']
+    existing.sales <- new.df[2,]['Sales']
+    new.sales <- extra.sales + existing.sales
+    sales.df <- new.df[-1,]
+    sales.df[1,]['Sales'] <- new.sales
+    df <- rbind(df, data.frame(
+      Month = month,
+      Sales = sales.df$Sales
+    ))
+  }
+}
+
+write_to_csv(df = df, file = 'data-sets/pc-sales.csv')

@@ -1,1 +1,2 @@
 https://www.datanovia.com/en/blog/easy-way-to-expand-color-palettes-in-r/
+https://www.tutorialkart.com/r-tutorial/r-dataframe-delete-row/#:~:text=Delete%20Rows%20from%20R%20Data%20Frame&text=You%20cannot%20actually%20delete%20a,called%20subsetting%20in%20R%20language.&text=A%20Big%20Note%3A%20You%20should,negative%20index%20vector%20%2Dc().

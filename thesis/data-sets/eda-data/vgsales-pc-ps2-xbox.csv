@@ -1,0 +1,109 @@
+"","X","Name","Genre","Platform","Total_Sales","NA_Sales","JP_Sales","PAL_Sales","Other_Sales","Year"
+"1",2036,"Colin McRae Rally 04","Racing","PC",0.01,0,0,0.01,0,2004
+"2",1484,"Colin McRae Rally 04","Racing","PS2",0.94,0.01,0.01,0.71,0.21,2003
+"3",1954,"Colin McRae Rally 04","Action","XB",0.1,0.08,0,0.02,0,2004
+"4",6262,"Grand Theft Auto: The Trilogy","Adventure","PC",0.03,0,0.01,0.02,0,2009
+"5",5952,"Grand Theft Auto: The Trilogy","Adventure","PS2",1.14,0,0.01,0.51,0.62,2005
+"6",6009,"Grand Theft Auto: The Trilogy","Adventure","XB",0.09,0.06,0.01,0.02,0,2005
+"7",2365,"Gun","Shooter","PC",0.01,0,0,0.01,0,2005
+"8",270,"Gun","Shooter","PS2",1.19,0.98,0.01,0.04,0.16,2005
+"9",2117,"Gun","Shooter","XB",0.52,0.38,0,0.12,0.02,2005
+"10",1427,"Harry Potter and the Chamber of Secrets","Adventure","PC",0.01,0,0,0.01,0,2002
+"11",5691,"Harry Potter and the Chamber of Secrets","Adventure","PS2",2.61,0.9,0.0499999999999998,1.22,0.44,2002
+"12",1236,"Harry Potter and the Chamber of Secrets","Adventure","XB",0.36,0.27,0,0.08,0.01,2002
+"13",2369,"Harry Potter and the Goblet of Fire","Adventure","PC",0.01,0,0,0.01,0,2005
+"14",2099,"Harry Potter and the Goblet of Fire","Adventure","PS2",0.65,0.54,0,0.02,0.09,2005
+"15",293,"Harry Potter and the Goblet of Fire","Adventure","XB",0.25,0.18,0.00999999999999998,0.05,0.01,2005
+"16",5932,"Harry Potter and the Prisoner of Azkaban","Adventure","PC",0.04,0,0.01,0.03,0,2004
+"17",1802,"Harry Potter and the Prisoner of Azkaban","Adventure","PS2",1.02,0.5,0,0.39,0.13,2004
+"18",1907,"Harry Potter and the Prisoner of Azkaban","Adventure","XB",0.19,0.14,0,0.04,0.01,2004
+"19",1115,"Harry Potter and the Sorcerer's Stone","Action","PC",0.06,0.01,0,0.04,0.01,2001
+"20",145,"Harry Potter and the Sorcerer's Stone","Action","PS2",0.3,0.14,0.00999999999999995,0.11,0.04,2003
+"21",1692,"Harry Potter and the Sorcerer's Stone","Action","XB",0.07,0.05,0,0.02,0,2003
+"22",2358,"Heroes of the Pacific","Simulation","PC",0.02,0,0,0.02,0,2005
+"23",2156,"Heroes of the Pacific","Simulation","PS2",0.29,0.14,0,0.11,0.04,2005
+"24",2226,"Heroes of the Pacific","Simulation","XB",0.13,0.1,0,0.03,0,2005
+"25",2546,"Hitman: Blood Money","Action","PC",0.03,0,0,0.03,0,2006
+"26",2407,"Hitman: Blood Money","Action","PS2",0.5,0.25,0,0.19,0.06,2006
+"27",358,"Hitman: Blood Money","Action","XB",0.16,0.11,0.00999999999999998,0.03,0.01,2006
+"28",2351,"Indigo Prophecy","Adventure","PC",0.02,0,0,0.02,0,2005
+"29",2218,"Indigo Prophecy","Adventure","PS2",0.15,0.07,0,0.06,0.02,2005
+"30",2250,"Indigo Prophecy","Adventure","XB",0.1,0.07,0,0.03,0,2005
+"31",1741,"Jurassic Park: Operation Genesis","Simulation","PC",0.02,0,0,0.02,0,2003
+"32",5807,"Jurassic Park: Operation Genesis","Simulation","PS2",0.27,0.13,0.01,0.1,0.03,2003
+"33",5844,"Jurassic Park: Operation Genesis","Simulation","XB",0.07,0.05,0.01,0.01,0,2003
+"34",1757,"Legacy of Kain: Defiance","Adventure","PC",0.01,0,0,0.01,0,2003
+"35",1515,"Legacy of Kain: Defiance","Adventure","PS2",0.53,0.26,0,0.2,0.07,2003
+"36",1614,"Legacy of Kain: Defiance","Adventure","XB",0.19,0.14,0,0.04,0.01,2003
+"37",6102,"LEGO Star Wars II: The Original Trilogy","Action","PC",0.02,0,0.01,0.01,0,2006
+"38",2375,"LEGO Star Wars II: The Original Trilogy","Action","PS2",2.69,1.85,0.01,0.64,0.19,2006
+"39",352,"LEGO Star Wars II: The Original Trilogy","Action","XB",0.46,0.33,0.01,0.1,0.02,2006
+"40",6036,"LEGO Star Wars: The Video Game","Action","PC",0.02,0,0.01,0.01,0,2005
+"41",266,"LEGO Star Wars: The Video Game","Action","PS2",3.55,1.98,0.0200000000000002,1.14,0.41,2005
+"42",2067,"LEGO Star Wars: The Video Game","Action","XB",1.16,0.83,0,0.28,0.05,2005
+"43",2951,"Madden NFL 08","Sports","PC",0.01,0,0,0.01,0,2007
+"44",2656,"Madden NFL 08","Sports","PS2",2.57,2.14,0,0.08,0.35,2007
+"45",2734,"Madden NFL 08","Sports","XB",0.29,0.22,0,0.06,0.01,2007
+"46",1395,"Mafia","Action","PC",0.04,0,0,0.04,0,2002
+"47",1819,"Mafia","Action","PS2",0.7,0.34,0,0.27,0.09,2004
+"48",1894,"Mafia","Action","XB",0.23,0.17,0,0.05,0.01,2004
+"49",1130,"Max Payne","Shooter","PC",0.02,0,0,0.02,0,2001
+"50",979,"Max Payne","Shooter","PS2",3.31,1.99,0.05,1.05,0.22,2001
+"51",998,"Max Payne","Shooter","XB",1.22,0.98,0,0.19,0.05,2001
+"52",5852,"Max Payne 2: The Fall of Max Payne","Shooter","PC",0.03,0,0.01,0.02,0,2003
+"53",5771,"Max Payne 2: The Fall of Max Payne","Shooter","PS2",1.34,0.65,0.01,0.51,0.17,2003
+"54",1504,"Max Payne 2: The Fall of Max Payne","Shooter","XB",0.64,0.47,0,0.15,0.02,2003
+"55",2521,"Need for Speed Carbon","Racing","PC",0.05,0,0,0.04,0.01,2006
+"56",6045,"Need for Speed Carbon","Racing","PS2",1.34,1.22,0.06,0.05,0.01,2006
+"57",2415,"Need for Speed Carbon","Racing","XB",0.47,0.35,0,0.1,0.02,2006
+"58",1974,"Need for Speed Underground 2","Racing","PC",0.07,0,0,0.06,0.01,2004
+"59",1762,"Need for Speed Underground 2","Racing","PS2",6.9,2.71,0.08,3.02,1.09,2004
+"60",1768,"Need for Speed Underground 2","Racing","XB",2.28,1.38,0,0.8,0.1,2004
+"61",2161,"Need for Speed: Most Wanted","Racing","PC",0.28,0.02,0,0.24,0.02,2005
+"62",2043,"Need for Speed: Most Wanted","Racing","PS2",4.37,2.03,0.08,1.79,0.47,2005
+"63",2072,"Need for Speed: Most Wanted","Racing","XB",1.04,0.53,0,0.46,0.05,2005
+"64",1732,"Rayman 3: Hoodlum Havoc","Platform","PC",0.03,0,0,0.03,0,2003
+"65",1566,"Rayman 3: Hoodlum Havoc","Platform","PS2",0.29,0.14,0,0.11,0.04,2003
+"66",177,"Rayman 3: Hoodlum Havoc","Platform","XB",0.09,0.06,0.01,0.02,0,2003
+"67",6079,"Scarface: The World is Yours","Adventure","PC",0.04,0.01,0.01,0.02,0,2006
+"68",2381,"Scarface: The World is Yours","Adventure","PS2",1.19,0.99,0,0.04,0.16,2006
+"69",349,"Scarface: The World is Yours","Adventure","XB",0.51,0.37,0.01,0.11,0.02,2006
+"70",6037,"Sniper Elite","Shooter","PC",0.02,0,0.01,0.01,0,2005
+"71",2199,"Sniper Elite","Shooter","PS2",0.19,0.1,0,0.07,0.02,2005
+"72",2259,"Sniper Elite","Shooter","XB",0.09,0.07,0,0.02,0,2005
+"73",1889,"Star Wars Battlefront","Shooter","PC",0.24,0.08,0,0.14,0.02,2004
+"74",182,"Star Wars Battlefront","Shooter","PS2",3.63,1.93,0.0400000000000002,1.22,0.44,2004
+"75",188,"Star Wars Battlefront","Shooter","XB",1.77,1.24,0.01,0.45,0.07,2004
+"76",306,"Star Wars Battlefront II","Shooter","PC",0.2,0.03,0.01,0.14,0.02,2005
+"77",265,"Star Wars Battlefront II","Shooter","PS2",3.61,2.18,0.0400000000000002,1.02,0.37,2005
+"78",2056,"Star Wars Battlefront II","Shooter","XB",1.67,1.22,0,0.39,0.06,2005
+"79",6035,"The Incredibles: Rise of the Underminer","Platform","PC",0.02,0.01,0.01,0,0,2005
+"80",289,"The Incredibles: Rise of the Underminer","Action","PS2",0.38,0.18,0.01,0.14,0.05,2005
+"81",6010,"The Incredibles: Rise of the Underminer","Action","XB",0.09,0.06,0.01,0.02,0,2005
+"82",5658,"The Sims","Simulation","PC",0.05,0.01,0.01,0.03,0,2000
+"83",1446,"The Sims","Simulation","PS2",2.77,1.41,0,1.12,0.24,2003
+"84",1535,"The Sims","Simulation","XB",0.42,0.31,0,0.1,0.01,2003
+"85",1878,"The Sims 2","Simulation","PC",0.29,0.02,0,0.24,0.03,2004
+"86",2084,"The Sims 2","Simulation","PS2",0.81,0.67,0,0.03,0.11,2005
+"87",2174,"The Sims 2","Simulation","XB",0.25,0.19,0,0.05,0.01,2005
+"88",2370,"Tiger Woods PGA Tour 06","Sports","PC",0.01,0.01,0,0,0,2005
+"89",2080,"Tiger Woods PGA Tour 06","Sports","PS2",0.89,0.74,0,0.03,0.12,2005
+"90",2121,"Tiger Woods PGA Tour 06","Sports","XB",0.48,0.35,0,0.11,0.02,2005
+"91",2035,"Tiger Woods PGA Tour 2005","Sports","PC",0.01,0,0,0.01,0,2004
+"92",1785,"Tiger Woods PGA Tour 2005","Sports","PS2",1.44,1.03,0,0.32,0.09,2004
+"93",1809,"Tiger Woods PGA Tour 2005","Sports","XB",0.85,0.64,0,0.18,0.03,2004
+"94",2598,"TOCA Race Driver 3: The Ultimate Racing Simulator","Racing","PC",0.02,0,0,0.02,0,2006
+"95",2487,"TOCA Race Driver 3: The Ultimate Racing Simulator","Racing","PS2",0.08,0.04,0,0.03,0.01,2006
+"96",371,"TOCA Race Driver 3: The Ultimate Racing Simulator","Racing","XB",0.05,0.03,0.01,0.01,0,2006
+"97",5861,"Tom Clancy's Splinter Cell","Shooter","PC",0.01,0,0.01,0,0,2003
+"98",111,"Tom Clancy's Splinter Cell","Action","PS2",2.67,1.15,0.0100000000000002,1.11,0.4,2003
+"99",1142,"Tom Clancy's Splinter Cell","Action","XB",3.02,1.85,0,1.04,0.13,2002
+"100",2613,"Tomb Raider: Legend","Action","PC",0.02,0,0,0.02,0,2006
+"101",2403,"Tomb Raider: Legend","Action","PS2",0.52,0.25,0.02,0.19,0.06,2006
+"102",2471,"Tomb Raider: Legend","Action","XB",0.13,0.1,0,0.03,0,2006
+"103",2371,"Ultimate Spider-Man","Action","PC",0.01,0.01,0,0,0,2005
+"104",2087,"Ultimate Spider-Man","Action","PS2",0.72,0.6,0,0.02,0.1,2005
+"105",2141,"Ultimate Spider-Man","Action","XB",0.39,0.26,0,0.11,0.02,2005
+"106",2368,"X-Men Legends II: Rise of Apocalypse","Role-Playing","PC",0.01,0.01,0,0,0,2005
+"107",274,"X-Men Legends II: Rise of Apocalypse","Role-Playing","PS2",0.65,0.53,0.01,0.02,0.09,2005
+"108",2128,"X-Men Legends II: Rise of Apocalypse","Role-Playing","XB",0.44,0.3,0,0.12,0.02,2005

@@ -33,7 +33,7 @@ for (y in unique_year) {
 }
 
 df_sales_region_csv <- df_sales_region %>% arrange(Year)
-write_to_csv(df_sales_region, '../../data-sets/vg_sales_region_year_wise.csv')
+write_to_csv(df_sales_region, 'data-sets/vg_sales_region_year_wise.csv')
 # End vg_sales_region_wise
 
 # vg_sales_platform_wise
