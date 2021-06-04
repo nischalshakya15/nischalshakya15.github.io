@@ -25,8 +25,8 @@ sales_genre_ts <- ts(sales_genre_year_df$Sales, start = 2000, end = 2012, freque
 sales_genre_stl <- stl(sales_genre_ts, s.window = 'period')
 plot(sales_genre_stl)
 
-sales_genre_model <- window(x = sales_genre_ts, stat = 2000, end = 2012)
-sales_genre_test <- window(x = sales_genre_ts, start = 2006)
+sales_genre_model <- window(x = sales_genre_ts, stat = 2000, end = 2010)
+sales_genre_test <- window(x = sales_genre_ts, start = 2009)
 
 sales_genre_auto <- ets(sales_genre_model)
 sales_genre_ets_fc <- forecast(sales_genre_auto, h = 100)
