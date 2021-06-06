@@ -6,11 +6,13 @@ library('ggplot2')
 library('forecast')
 library('stats')
 
-setwd('/home/nischal/repository/personal/nischalshakya15.github.io/thesis')
+setwd('D:/works/nischalshakya15.github.io/thesis')
 
 source('src/utils/utils.R')
 
 df <- read.csv(file = 'data-sets/pc-sales.csv', sep = ',', dec = '.')
+
+head(df, 228)
 
 ggplot(df, aes(x = as.Date(Month), y = Sales)) +
   xlab('Year') +
@@ -19,7 +21,12 @@ ggplot(df, aes(x = as.Date(Month), y = Sales)) +
   scale_x_date(date_labels = "%Y", date_breaks = "1 year") +
   theme_classic()
 
-df_ts <- ts(df$Sales, start = 2005, end = 2012, frequency = 12)
+df.ts <- ts(df$Sales, start = 2000, frequency = 12)
+sales_genre_stl <- stl(df.ts, s.window = 'period')
+plot(sales_genre_stl)
+
+df_ts <- ts(df$Sales, start = 2000, frequency = 12)
+class(df_ts)
 sales_genre_stl <- stl(df_ts, s.window = 'period')
 plot(sales_genre_stl)
 
@@ -72,8 +79,8 @@ df_mmm_damped_fc_forecast$Model <- rep("ets_mmm_damped")
 forecast_all <- rbind(df_ets_fc_forecast, df_mmm_fc_forecast, df_zzz_fc_forecast, df_mmm_damped_fc_forecast)
 
 ggplot() +
-  geom_line(data = df, aes(x = as.Date(Month), y = Sales)) +  # Plotting original data
-  geom_line(data = df_mmm_damped_fc_forecast, aes(x = as.Date(Year), y = as.numeric(Point_Forecast), colour = Model))
+  geom_line(data = df, aes(x = as.Date(Month), y = Sales, xlab = 'Year')) +  # Plotting original data
+  geom_line(data = forecast_all, aes(x = as.Date(Year), y = as.numeric(Point_Forecast), colour = Model))
 
 accuracy(df_ets_fc, df_test)
 accuracy(df_ets_mmm_fc, df_test)
